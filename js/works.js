@@ -319,6 +319,30 @@ window.WORKS = [
     ]
   },
   {
+    id: "meomun",
+    school: true,
+    tag: "Product",
+    title: "머문",
+    titleEn: "Bookmark",
+    year: 2026,
+    period: "2026.10",
+    medium: "Laser-cut stainless steel 0.3t (tested: birch, basswood, poplar plywood 1.5t)",
+    credit: "Personal work — Digital Makers Lab",
+    cover: "meomun/m04.jpg",
+    hero: { img: "meomun/m04.jpg" },
+    line: "페이지가 아닌, 한 줄을 기억하는 책갈피.",
+    blocks: [
+      { t: "text", ko: [
+        "비행기 안에서 소설을 읽다 마음에 와닿는 문장을 만났다. 펜이 없어 그 페이지를 휴대폰으로 찍어 두었지만, 돌아오는 길에 그 문장을 다시 찾으려면 페이지를 처음부터 다시 읽어야 했다. 책에 밑줄을 긋지 않고도 마음에 남은 한 줄을 표시하고 기억할 수 있는 도구가 있다면 어떨까 — 책갈피의 위치 표시 기능을 페이지에서 문장 단위로 넓혔다.",
+        "가로로 긴 프레임의 중앙 개구부가 선택한 한 줄만 드러내고 주변 문장을 가린다. U자형 절개가 종이 한 장을 앞뒤에서 잡고, 돌출된 손잡이로 책을 덮은 상태에서도 위치를 찾고 뺄 수 있다.",
+        "자작나무, 바스우드, 포플러 합판 1.5t로 먼저 만들었더니 판이 겹치며 약 3mm 두께가 생겨 종이에 자국이 남았다. 절개를 더 길게 늘이고 0.3t 스테인리스로 바꿔 겹친 두께를 약 0.6mm로 줄였다. 레이저 출력을 낮춰 여러 번 나누어 가공해 탄 자국을 줄이고, 샌딩과 디버링으로 마감했다."
+      ] },
+      { t: "pair", src: ["meomun/m01.jpg", "meomun/m02.jpg"] },
+      { t: "pair", src: ["meomun/m03.jpg", "meomun/m15.jpg"] },
+      { t: "full", src: "meomun/m16.jpg", cap: "Material tests — plywood 1.5t / stainless steel 0.3t" }
+    ]
+  },
+  {
     id: "algomi",
     school: true,
     tag: "UX·GUI",
