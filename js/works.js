@@ -4,6 +4,7 @@
 window.WORKS = [
   {
     id: "gwannyeom",
+    tag: "Media Art",
     title: "관념 속의 집",
     year: 2026,
     period: "2026.10.31",
@@ -27,6 +28,7 @@ window.WORKS = [
   },
   {
     id: "seungmu",
+    tag: "Media Art",
     title: "〈승무〉",
     titleEn: "Seungmu",
     year: 2026,
@@ -50,11 +52,13 @@ window.WORKS = [
       { t: "trio", src: ["seungmu/s03.jpg", "seungmu/s05.jpg", "seungmu/s06.jpg"] },
       { t: "pair", src: ["seungmu/s08.jpg", "seungmu/s09.jpg"] },
       { t: "full", src: "seungmu/s11.jpg" },
+      { t: "trio", src: ["seungmu/s12.jpg", "seungmu/s13.jpg", "seungmu/s14.jpg"] },
       { t: "pair", src: ["seungmu/s10.jpg", "seungmu/s07.jpg"] }
     ]
   },
   {
     id: "xmf",
+    tag: "Media Art",
     title: "XMF 2026",
     titleEn: "Stage LED Visuals",
     year: 2026,
@@ -78,14 +82,16 @@ window.WORKS = [
   },
   {
     id: "chungman",
+    tag: "Installation",
     title: "충만한 세상에 복이 있을지어니?",
     year: 2026,
     period: "2026.09.02–09.05",
-    place: "갤러리 실 (옛 산일제사 공장), 세종 조치원",
+    place: "갤러리 실, 조치원 1927 아트센터",
     exhibition: "《ATTACHED HOME》",
-    supported: "K-Art 청년 창작자 지원사업 — 문화체육관광부, 한국문화예술위원회, 세종시문화관광재단",
+    supported: "본 전시는 문화체육관광부, 한국문화예술위원회, 세종시문화관광재단의 「K-Art 청년 창작자 지원사업」에 선정되어 지원받아 진행됩니다.",
     medium: "가변설치, 혼합재료 오브제, 감열지, 열전사 프린터",
     size: "Variable",
+    credit: "2인 공동 작업",
     poster: "chungman/poster.jpg",
     cover: "chungman/c05.jpg",
     hero: { img: "chungman/c01.jpg" },
@@ -117,13 +123,15 @@ window.WORKS = [
   },
   {
     id: "nimbus",
+    tag: "Object",
     title: "NIMBUS",
     year: 2026,
-    period: "2026.09",
-    exhibition: "Garage Project 3 — MOIN",
+    period: "2026.08.31–09.03",
+    place: "섭골길 일대, 조치원",
+    exhibition: "Garage Project 3 \"Find your Sp( )t\"",
     medium: "Steel mesh, pendant light",
     size: "300 × 700 × 500 mm",
-    credit: "Personal work, made within team MOIN",
+    credit: "Personal work — Team MOIN",
     cover: "nimbus/n09.jpg",
     hero: { img: "nimbus/n01.jpg" },
     line: "겹쳐 쌓은 철제 메쉬가 구름처럼 공간에 떠 있는 펜던트 조명.",
@@ -137,15 +145,66 @@ window.WORKS = [
       { t: "full", src: "nimbus/n04.jpg" },
       { t: "trio", src: ["nimbus/n05.jpg", "nimbus/n06.jpg", "nimbus/n07.jpg"] },
       { t: "pair", src: ["nimbus/n09.jpg", "nimbus/n10.jpg"] },
-      { t: "full", src: "nimbus/n08.jpg" }
+      { t: "full", src: "nimbus/n08.jpg" },
+      { t: "section", h: "Team MOIN — Space & Branding", ko: ["Garage Project 3에서 팀 MOIN의 공간 구성과 브랜딩을 함께 맡았다. MOIN은 사람들을 불러 모으기 위해 오래전부터 사물을 수집해온 한 컬렉터의 공간이라는 설정의 collective shop으로, 서로 다른 시대와 배경의 사물이 각자의 개성을 유지한 채 공존하고 방문객이 사물을 직접 쓰며 머물 때 완성된다. '사물이 모인다, 사람들이 모인다, 취향이 모인다'를 콘셉트로, 서로 다른 방향에서 하나의 중심으로 모이는 모습을 심볼로 삼았다."] },
+      { t: "pair", src: ["nimbus/moin1.jpg", "nimbus/moin2.jpg"] },
+      { t: "pair", src: ["nimbus/moin3.jpg", "nimbus/moin4.jpg"] },
+      { t: "pair", src: ["nimbus/moin5.jpg", "nimbus/moin6.jpg"] }
     ]
   },
   {
+    id: "algomi",
+    tag: "UX·GUI",
+    title: "Algomi",
+    titleEn: "Algorithm + Me",
+    year: 2026,
+    period: "2026.06",
+    medium: "Service ideation prototype, GUI design",
+    cover: "algomi/01.jpg",
+    hero: { img: "algomi/01.jpg" },
+    line: "쌓여 온 디지털 데이터를 하나의 캐릭터로 시각화해, 자신의 디지털 자아를 마주하게 하는 서비스.",
+    blocks: [
+      { t: "text", ko: [
+        "Algomi는 우리가 인지하지 못한 채 쌓아온 디지털 데이터를 시각화하여, 자신의 디지털 자아를 마주하게 하는 서비스다. 유튜브, 인스타그램, 네이버와 같은 여러 플랫폼에서 누적된 콘텐츠 소비 패턴은 Algomi를 통해 하나의 캐릭터로 시각화되며, 이를 통해 그동안 어렴풋이만 알고 있던 자신의 알고리즘을 직관적으로 확인할 수 있다.",
+        "캐릭터가 가진 각 키워드를 누르면 해당 알고리즘이 어떤 플랫폼에서, 어떤 콘텐츠를 통해 형성되었는지 그 출처까지 한눈에 모아볼 수 있다. 변화하고자 하는 방향을 키워드로 설정하면 캐릭터가 그에 맞춰 점진적으로 변해, 알고리즘과 디지털 세계 속 자신의 자아에 능동적인 태도를 취하도록 돕는다. 친구들의 알고리즘 캐릭터를 함께 탐색하고 비교하는 소셜 경험으로도 확장된다."
+      ] },
+      { t: "trio", src: ["algomi/02.jpg", "algomi/03.jpg", "algomi/04.jpg"] },
+      { t: "pair", src: ["algomi/06.jpg", "algomi/08.jpg"] }
+    ]
+  },
+  {
+    id: "mi",
+    tag: "Graphic·Drawing",
+    card: true,
+    title: "美 — 아름다울 미",
+    year: 2026,
+    period: "2026.06",
+    medium: "흑지, 화이트 마카, 실크원단",
+    size: "297 × 420 mm",
+    cover: "mi/cover.jpg"
+  },
+  {
+    id: "bodoni",
+    tag: "Graphic·Editorial",
+    title: "Bodoni",
+    titleEn: "Type Specimen Poster",
+    year: 2026,
+    period: "2026.06",
+    medium: "Poster, Adobe Illustrator",
+    size: "A2",
+    cover: "bodoni/b1.jpg",
+    hero: { img: "bodoni/b1.jpg", tall: true },
+    blocks: []
+  },
+  {
     id: "transparent",
+    tag: "Media Art",
     title: "투명해진 공간",
     year: 2026,
     period: "2026.05.13–05.24",
-    exhibition: "Pinned : Sejong (Group exhibition)",
+    place: "BRT작은미술관, 세종",
+    exhibition: "〈세종 즐겨찾기 : pinned sejong〉 (Group exhibition)",
+    supported: "세종시문화관광재단 전시공간지원사업",
     medium: "Interactive media art — MediaPipe hand tracking, HTML5 Canvas, projector, webcam, interview video",
     credit: "Solo — interviews, concept, development, installation",
     poster: "transparent/poster.jpg",
@@ -167,46 +226,13 @@ window.WORKS = [
       ] },
       { t: "yt", id: "jaBAGZCVVfU" },
       { t: "trio", src: ["transparent/i01.jpg", "transparent/i03.jpg", "transparent/i04.jpg"] },
+      { t: "trio", src: ["transparent/interview1.jpg", "transparent/interview2.jpg", "transparent/interview3.jpg"], cap: "Interviews" },
       { t: "yt", id: "TViC-ZjyzxE" }
     ]
   },
   {
-    id: "algomi",
-    other: true,
-    title: "Algomi",
-    titleEn: "Algorithm + Me",
-    year: 2026,
-    period: "2026.06",
-    medium: "Service ideation prototype, GUI design",
-    cover: "algomi/01.jpg",
-    hero: { img: "algomi/01.jpg" },
-    line: "쌓여 온 디지털 데이터를 하나의 캐릭터로 시각화해, 자신의 디지털 자아를 마주하게 하는 서비스.",
-    blocks: [
-      { t: "text", ko: [
-        "Algomi는 우리가 인지하지 못한 채 쌓아온 디지털 데이터를 시각화하여, 자신의 디지털 자아를 마주하게 하는 서비스다. 유튜브, 인스타그램, 네이버와 같은 여러 플랫폼에서 누적된 콘텐츠 소비 패턴은 Algomi를 통해 하나의 캐릭터로 시각화되며, 이를 통해 그동안 어렴풋이만 알고 있던 자신의 알고리즘을 직관적으로 확인할 수 있다.",
-        "캐릭터가 가진 각 키워드를 누르면 해당 알고리즘이 어떤 플랫폼에서, 어떤 콘텐츠를 통해 형성되었는지 그 출처까지 한눈에 모아볼 수 있다. 변화하고자 하는 방향을 키워드로 설정하면 캐릭터가 그에 맞춰 점진적으로 변해, 알고리즘과 디지털 세계 속 자신의 자아에 능동적인 태도를 취하도록 돕는다. 친구들의 알고리즘 캐릭터를 함께 탐색하고 비교하는 소셜 경험으로도 확장된다."
-      ] },
-      { t: "trio", src: ["algomi/02.jpg", "algomi/03.jpg", "algomi/04.jpg"] },
-      { t: "pair", src: ["algomi/06.jpg", "algomi/08.jpg"] }
-    ]
-  },
-  {
-    id: "bodoni",
-    other: true,
-    title: "Bodoni",
-    titleEn: "Type Specimen Poster",
-    year: 2026,
-    period: "2026.06",
-    medium: "Poster, Adobe Illustrator",
-    size: "A2",
-    cover: "bodoni/b1.jpg",
-    hero: { img: "bodoni/b1.jpg", tall: true },
-    line: "Bodoni 서체 견본 포스터.",
-    blocks: []
-  },
-  {
     id: "lake",
-    other: true,
+    tag: "Media Art",
     title: "Lake for your own",
     year: 2023,
     period: "2023.12",
@@ -223,33 +249,6 @@ window.WORKS = [
       ] },
       { t: "yt", id: "MC07K2WJ0-k" },
       { t: "trio", src: ["lake/l2.jpg", "lake/l3.jpg", "lake/l4.jpg"] }
-    ]
-  },
-  {
-    id: "deconstruction",
-    other: true,
-    title: "해체를 통한 부분의 재구성",
-    medium: "Drawing panel",
-    size: "841 × 594 mm",
-    cover: "deconstruction/d1.jpg",
-    hero: { img: "deconstruction/d1.jpg", tall: true },
-    line: "자전거와 가정용 TV의 부품으로 다시 지은 걷는 인체.",
-    blocks: [
-      { t: "text", ko: [
-        "자전거와 가정용 TV를 해체해 타이어, 손잡이, 지지대, PCB 기판, 전기선이라는 부분을 찾아냈다. 이 다섯 가지 부분을 결합해 인체를 구성했고, 걷는 모델로 표현했다."
-      ] },
-      { t: "full", src: "deconstruction/d2.jpg", narrow: true }
-    ]
-  },
-  {
-    id: "drawings",
-    other: true,
-    title: "Drawings",
-    medium: "연필, 광목, 캔버스",
-    cover: "drawings/r3.jpg",
-    hero: { img: "drawings/r1.jpg", tall: true },
-    blocks: [
-      { t: "trio", src: ["drawings/r2.jpg", "drawings/r3.jpg", "drawings/r4.jpg"] }
     ]
   }
 ];
@@ -270,3 +269,11 @@ window.PRESS = [
   { outlet: "뉴스와이어", date: "2026.10.28", title: "AI·미디어 체험부터 할로윈 파티까지 '2026 화성시 미디어 페스티벌' 10월 31일 개최", url: "https://www.newswire.co.kr/newsRead.php?no=1045647", kind: "Press release" }
 ];
 window.PRESS_WORKS = ["gwannyeom", "seungmu"];
+
+// Small Works: 상세 페이지 없이 썸네일 + 인스타 게시물 링크.
+window.SMALL = [
+  { title: "Immersive art", date: "2026.08.07", tool: "TouchDesigner", src: "small/sw1.jpg", url: "https://www.instagram.com/p/Dbue6O6xYSO/" },
+  { title: "Immersive art", date: "2026.08.20", tool: "TouchDesigner", src: "small/sw2.jpg", url: "https://www.instagram.com/p/DcOpApKP9_B/" },
+  { title: "몽환", date: "2026.09.08", tool: "Seedance 2.5, TouchDesigner", src: "small/sw3.jpg", url: "https://www.instagram.com/p/Dc__q-azZ6w/" },
+  { title: "HIGH", date: "2026.09.16", tool: "TouchDesigner", src: "small/sw4.jpg", url: "https://www.instagram.com/p/DdURip9zrZP/" }
+];

@@ -17,22 +17,45 @@
   function renderIndex() {
     var grid = document.getElementById("index-grid");
     if (!grid) return;
-    grid.innerHTML = WORKS.filter(function (w) { return !w.other; }).map(function (w) {
-      return '<a class="card" href="work.html?id=' + w.id + '">' +
-        '<span class="card__no">' + num(w) + "</span>" +
+    // 카드: 상세 페이지가 없는 작업(card: true)은 링크 없이 작은 이미지와 메타만.
+    grid.innerHTML = WORKS.map(function (w) {
+      var inner = '<span class="card__no">' + num(w) + '<span class="card__tag">' + esc(w.tag) + "</span></span>" +
         '<figure class="card__img">' + media(w.cover) + "</figure>" +
-        '<span class="card__title" lang="ko">' + esc(w.title) + "</span>" +
-        '<span class="card__meta">' + esc(w.period || w.year || "") + "</span></a>";
+        '<span class="card__title" lang="ko">' + esc(w.title) + (w.titleEn ? " <em>" + esc(w.titleEn) + "</em>" : "") + "</span>" +
+        '<span class="card__meta">' + esc(w.period || w.year || "") + "</span>" +
+        (w.card ? '<span class="card__medium" lang="ko">' + esc([w.medium, w.size].filter(Boolean).join(" · ")) + "</span>" : "");
+      return w.card
+        ? '<div class="card card--plain" data-tag="' + esc(w.tag) + '">' + inner + "</div>"
+        : '<a class="card" data-tag="' + esc(w.tag) + '" href="work.html?id=' + w.id + '">' + inner + "</a>";
     }).join("");
 
-    var list = document.getElementById("other-list");
-    if (list) list.innerHTML = WORKS.filter(function (w) { return w.other; }).map(function (w) {
-      return '<li><a href="work.html?id=' + w.id + '">' +
-        '<span class="ol__no">' + num(w) + "</span>" +
-        '<span class="ol__title" lang="ko">' + esc(w.title) + (w.titleEn ? " <em>" + esc(w.titleEn) + "</em>" : "") + "</span>" +
-        '<span class="ol__medium">' + esc(w.medium || "") + "</span>" +
-        '<span class="ol__year">' + esc(w.year || "") + "</span></a></li>";
-    }).join("");
+    var filters = document.getElementById("index-filters");
+    if (filters) {
+      var tags = ["All"];
+      WORKS.forEach(function (w) { if (tags.indexOf(w.tag) < 0) tags.push(w.tag); });
+      filters.innerHTML = tags.map(function (t, i) { return '<button type="button" aria-pressed="' + (i === 0) + '">' + esc(t) + "</button>"; }).join("");
+      filters.querySelectorAll("button").forEach(function (b) {
+        b.onclick = function () {
+          filters.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x === b); });
+          grid.querySelectorAll(".card").forEach(function (c) { c.hidden = b.textContent !== "All" && c.getAttribute("data-tag") !== b.textContent; });
+        };
+      });
+    }
+
+    var small = document.getElementById("small-grid"), toggle = document.getElementById("small-toggle");
+    if (small && toggle) {
+      small.innerHTML = (window.SMALL || []).map(function (s) {
+        return '<a class="small__item" href="' + s.url + '" target="_blank" rel="noopener">' +
+          '<figure class="small__img">' + media(s.src) + "</figure>" +
+          '<span class="card__title" lang="ko">' + esc(s.title) + "</span>" +
+          '<span class="card__meta">' + esc(s.date) + " — Instagram ↗</span></a>";
+      }).join("");
+      toggle.onclick = function () {
+        var open = small.hidden;
+        small.hidden = !open;
+        toggle.setAttribute("aria-expanded", open);
+      };
+    }
   }
 
   // ---------- 상세 ----------
@@ -57,6 +80,8 @@
     switch (b.t) {
       case "text":
         return '<section class="b-text' + (b.lead ? " b-text--lead" : "") + '"><div class="b-text__body">' + b.ko.map(function (p) { return ko(p); }).join("") + "</div></section>";
+      case "section":
+        return '<section class="b-section"><h2 class="label">' + esc(b.h) + '</h2><div class="b-text__body">' + b.ko.map(function (p) { return ko(p); }).join("") + "</div></section>";
       case "full":
         return '<figure class="b-full' + (b.narrow ? " b-full--narrow" : "") + '">' + media(b.src) + cap(b) + "</figure>";
       case "pair":
@@ -79,8 +104,9 @@
     var root = document.getElementById("work");
     if (!root) return;
     var id = new URLSearchParams(location.search).get("id");
-    var w = WORKS.filter(function (x) { return x.id === id; })[0] || WORKS[0];
-    var i = WORKS.indexOf(w);
+    var PAGES = WORKS.filter(function (x) { return !x.card; });
+    var w = PAGES.filter(function (x) { return x.id === id; })[0] || PAGES[0];
+    var i = PAGES.indexOf(w);
     document.title = w.title + (w.titleEn ? " " + w.titleEn : "") + " — Rihan Kim";
 
     var hero = w.hero.video
@@ -91,7 +117,7 @@
       '<div class="run"><span>Rihan Kim — Portfolio</span><span>N° ' + num(w) + " / " + esc(w.titleEn || w.title) + "</span></div>" +
       '<section class="opener' + (w.hero.tall ? " opener--tall" : "") + '">' +
         '<div class="opener__info">' +
-          '<p class="opener__no">' + num(w) + "</p>" +
+          '<p class="opener__no">' + num(w) + " — " + esc(w.tag) + "</p>" +
           '<h1 lang="ko">' + esc(w.title) + (w.titleEn ? '<span lang="en">' + esc(w.titleEn) + "</span>" : "") + "</h1>" +
           (w.line ? '<p class="opener__line" lang="ko">' + esc(w.line) + "</p>" : "") +
           facts(w) +
@@ -101,7 +127,7 @@
       "</section>" +
       w.blocks.map(block).join("");
 
-    var prev = WORKS[(i + WORKS.length - 1) % WORKS.length], next = WORKS[(i + 1) % WORKS.length];
+    var prev = PAGES[(i + PAGES.length - 1) % PAGES.length], next = PAGES[(i + 1) % PAGES.length];
     html += '<nav class="pager"><a href="work.html?id=' + prev.id + '"><small>Previous — ' + num(prev) + '</small><span lang="ko">' + esc(prev.title) + "</span></a>" +
       '<a href="index.html#works"><small>Index</small><span>All works</span></a>' +
       '<a href="work.html?id=' + next.id + '"><small>Next — ' + num(next) + '</small><span lang="ko">' + esc(next.title) + "</span></a></nav>";
