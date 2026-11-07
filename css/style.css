@@ -79,7 +79,7 @@ h1, h2, h3, p { margin: 0; }
 .opener--tall .opener__media img { aspect-ratio: auto; }
 .more { font-size: 14px; border-bottom: 1px solid currentColor; justify-self: start; }
 
-.facts { display: grid; grid-template-columns: 7.5em 1fr; gap: 6px 12px; margin: 0; font-size: 13px; line-height: 1.5; }
+.facts { display: grid; grid-template-columns: 8.6em 1fr; gap: 6px 12px; margin: 0; font-size: 13px; line-height: 1.5; }
 .facts dt { color: var(--mute); padding-top: 2px; }
 .facts dd { margin: 0; }
 .poster { display: grid; gap: 8px; width: 132px; }
@@ -200,7 +200,7 @@ h1, h2, h3, p { margin: 0; }
   .b-row--2 { grid-template-columns: 1fr; }
   .b-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .b-process ol { grid-template-columns: 1fr; }
-  .facts { grid-template-columns: 6.5em 1fr; }
+  .facts { grid-template-columns: 8.4em 1fr; gap: 6px 8px; }
   .pager { grid-template-columns: 1fr 1fr; }
   .pager a:nth-child(2) { display: none; }
   .press__list a { grid-template-columns: 1fr 1.5em; gap: 4px 12px; }
