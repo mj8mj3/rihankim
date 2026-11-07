@@ -1,123 +1,272 @@
-// 작품 데이터. 각 항목의 ko/en 문구를 고치면 목록과 상세 페이지가 함께 바뀐다.
-// [확인 필요] 표시는 1차 시안에서 사용자 확인이 남은 정보다.
+// 작품 데이터. 목록(최신순)과 상세 페이지가 이 파일 하나로 그려진다.
+// 메타 라벨은 영어, 값과 설명은 원문(한국어) 그대로. 정보가 없으면 그 칸을 비워 둔다(화면에 표시되지 않음).
+// blocks: text(본문) · full(한 장) · pair(두 장) · trio(세 장) · grid(여러 장) · yt(유튜브) · process(과정)
 window.WORKS = [
   {
     id: "gwannyeom",
+    title: "관념 속의 집",
     year: 2026,
-    tags: ["performance", "projection"],
-    media: { poster: "gwannyeom/wide.jpg", clip: "gwannyeom/clip.mp4" },
-    gallery: ["gwannyeom/s1.jpg", "gwannyeom/s2.jpg", "gwannyeom/s3.jpg", "gwannyeom/s4.jpg", "gwannyeom/s5.jpg", "gwannyeom/s6.jpg"],
-    galleryRatio: "4/5",
-    ko: {
-      title: "관념 속의 집",
-      medium: "2면 프로젝션 매핑, 실시간 영상(TouchDesigner), 사운드",
-      line: "호수, 숲, 회랑, 골목, 하늘. 열 개의 장면이 건물의 안쪽 벽과 바깥 프레임 위로 이어지는 공연 영상.",
-      body: [
-        "하반기 트랙 공연을 위해 만든 미디어 연출이다. 건물 안쪽 벽(내벽)과 그 앞의 ㄷ자 프레임(외벽) 두 면에 서로 이어지는 영상을 투사한다.",
-        "첫 물방울이 떨어지는 호수에서 시작해 숲과 연기, 끝없는 공간, 비틀린 철골 회랑, 거미줄의 파동, 점이 모였다 흩어지는 골목을 지나 먼 나무가 선 하늘에서 끝난다.",
-        "모든 장면은 TouchDesigner에서 실시간으로 계산했고, 소리에 맞춰 반응한다. 관객석 시점에서 두 면이 한 장면으로 보이도록 투사를 보정했다."
-      ],
-      role: "영상 연출·제작, TouchDesigner 시스템 [확인 필요]",
-      venue: "화성 [장소·날짜 확인 필요]",
-      galleryNote: "공연장 3D 미리보기 캡처"
-    },
-    en: {
-      title: "House in the Mind [title TBC]",
-      medium: "Two-surface projection mapping, real-time visuals (TouchDesigner), sound",
-      line: "Lake, forest, corridor, alley, sky — ten scenes flowing across the inner wall and outer frame of a building.",
-      body: [
-        "Media direction made for a second-half track performance. Two connected images are projected onto the building's inner wall and the U-shaped frame in front of it.",
-        "Starting from a lake where the first drop falls, it passes through forest and smoke, an endless space, a twisted steel corridor, rippling webs and an alley of gathering dots, and ends in a sky with distant trees.",
-        "Every scene is computed live in TouchDesigner and reacts to the sound. The projection is calibrated so both surfaces read as one image from the audience."
-      ],
-      role: "Visual direction & production, TouchDesigner system [TBC]",
-      venue: "Hwaseong [venue & date TBC]",
-      galleryNote: "Stills from the 3D venue preview"
-    }
+    period: "2026.10.31",
+    place: "화성예술의전당 Hwaseong Arts Center",
+    exhibition: "2026 HCF 미디어아트쇼 (2026 화성시 미디어 페스티벌)",
+    medium: "Sound interactive visual, two-surface projection mapping (outer & inner wall), TouchDesigner",
+    duration: "3'32\"",
+    credit: "Visual & Sound — 김리한",
+    cover: "gwannyeom/s2.jpg",
+    hero: { video: "gwannyeom/clip.mp4", poster: "gwannyeom/wide.jpg" },
+    line: "외벽과 내벽, 두 개의 면에 프로젝션 매핑으로 펼쳐지는 사운드 인터랙티브 영상.",
+    blocks: [
+      { t: "text", ko: [
+        "집은 벽과 지붕으로 이루어진 장소이기 전에, 우리가 머릿속에 짓고 허물기를 반복하는 하나의 관념이다. 어떤 이에게 집은 창밖으로 보이던 안개 낀 하늘이고, 어떤 이에게는 어린 시절 걷던 좁은 골목이며, 또 어떤 이에게는 아무 소리도 들리지 않는 깊은 고요다.",
+        "〈관념 속의 집〉은 이처럼 저마다 다른 모습으로 존재하는 '마음속의 집'을 하나의 여정으로 엮음과 동시에, 작가 스스로 관념 속에 존재하는 그 어떤 상태에 다다르고자 시도하는 작업이다.",
+        "우리는 누구나 마음 한편에 오래 머무는 생각과 시간의 덧칠로 이루어진 기억을 품고 살아간다. 그 기억들은 켜켜이 쌓여 하나의 집을 이루고, 이 작품은 그렇게 형성된 내면의 집에 닿고자 한다."
+      ] },
+      { t: "trio", src: ["gwannyeom/s1.jpg", "gwannyeom/s3.jpg", "gwannyeom/s4.jpg"], cap: "Venue preview (3D)" },
+      { t: "pair", src: ["gwannyeom/s5.jpg", "gwannyeom/s6.jpg"] }
+    ]
   },
   {
-    id: "sumuk",
+    id: "seungmu",
+    title: "〈승무〉",
+    titleEn: "Seungmu",
     year: 2026,
-    tags: ["generative", "projection"],
-    media: { poster: "inkmelt/poster.jpg", clip: "inkmelt/clip.mp4" },
-    series: [
-      { id: "inkmelt", ko: ["녹아내리는 수묵", "곽희 「조춘도」의 먹 그림이 녹아내렸다가 다시 스며든다."], en: ["inkMelt", "Guo Xi's 'Early Spring' melts away and seeps back in."] },
-      { id: "meokform", ko: ["먹", "흰 한지 위에서 먹과 물이 스스로 번지고 흐르는 시뮬레이션."], en: ["meokForm", "Ink and water spreading on their own over white hanji."] },
-      { id: "swarmmarks", ko: ["검은 손자국 군체", "손가락 목탄 자국 수천 개가 한 무리처럼 움직인다."], en: ["swarmMarks", "Thousands of charcoal finger marks moving as one swarm."] },
-      { id: "yongjusa", ko: ["용주사 천보루", "등불 켜진 누각을 지나 족자 속 바닷가 절벽으로 들어간다."], en: ["Yongjusa Cheonboru", "Through a lantern-lit pavilion into the cliffs of a hanging scroll."] },
-      { id: "yunggeonreung", ko: ["융건릉 정자각", "정자각과 적송 숲을 반투명한 파란 천의 건축으로 지었다."], en: ["Yunggeonneung Jeongjagak", "The shrine and pine forest rebuilt as translucent blue fabric."] },
-      { id: "okpae", ko: ["옥패", "해 질 녘 수묵 산 위에 떠 흔들리는 옥 노리개 셋."], en: ["Okpae", "Three jade pendants swaying above an ink landscape at dusk."] },
-      { id: "islandlines", ko: ["먹선 산맥", "먹선으로 그린 산맥 사이를 천천히 미끄러져 지나간다."], en: ["islandLines", "Gliding slowly through mountains drawn in ink lines."] },
-      { id: "sansuflight", ko: ["산수 비행", "청록 산수화 속 굽이치는 강 골짜기를 난다."], en: ["sansuFlight", "Flying the winding river valley of a blue-green landscape painting."] },
-      { id: "butterflyink", ko: ["흰빛 나비", "밤의 수묵 산 위로 흰 나비 스물두 마리가 난다."], en: ["butterflyInk", "Twenty-two white butterflies over night-ink mountains."] },
-      { id: "ripplewater", ko: ["물결", "종이빛 수면 위 두 곳에서 퍼지는 먹빛 물결의 간섭."], en: ["rippleWater", "Interfering ink ripples from two touches on paper-white water."] },
-      { id: "vortextunnel", ko: ["소용돌이", "자기 피드백으로 자라나는 물빛 소용돌이."], en: ["vortexTunnel", "A water-colored vortex grown by self-feedback."] },
-      { id: "creation", ko: ["창조 × 창살", "한국 창살 문양 위로 번지는 빛의 잔상."], en: ["creationPiece", "Afterimages of light over a Korean window lattice."] },
-      { id: "inkblossom", ko: ["잉크 블러섬", "마우스로 밀면 소용돌이치는 반응확산 패턴(인터랙티브)."], en: ["RD Ink Blossom", "A reaction–diffusion pattern you push into swirls (interactive)."] },
-      { id: "sevenwaves", ko: ["일곱 물결", "[설명 확인 필요]"], en: ["Seven Waves", "[description TBC]"] }
-    ],
-    ko: {
-      title: "수묵 생성 영상 연작",
-      medium: "실시간 생성 영상(TouchDesigner, GLSL), 2면 투사용 1920×707 / 1920×698",
-      line: "먹, 물, 종이, 그리고 화성의 장소들. 끝없이 계산되며 이어지는 열네 개의 영상.",
-      body: [
-        "공연장 안쪽 벽과 앞쪽 ㄷ자 프레임 두 화면에 투사하기 위해 만든 생성 영상 연작이다. 대부분 정해진 길이의 영상이 아니라 매 프레임 계산되는 실시간 작품이고, 일부는 이음매 없는 20초 루프다.",
-        "수묵의 번짐과 붓질, 옛 그림(곽희 「조춘도」), 화성의 용주사와 융건릉을 재료로 삼았다. 일부 작품은 Shadertoy 원본 셰이더의 메커니즘을 옮겨 와 발전시켰고, 출처는 각 작품 기록에 남겼다.",
-        "영상의 공연장 장면은 실제 상영이 아니라 3D 공연장 미리보기다."
-      ],
-      role: "개인 작업 [창작지원 사업명·기간 확인 필요]",
-      venue: "창작지원 [사업명 확인 필요]"
-    },
-    en: {
-      title: "Ink Generative Series",
-      medium: "Real-time generative video (TouchDesigner, GLSL) for two projection surfaces",
-      line: "Ink, water, paper and the places of Hwaseong — fourteen pieces computed endlessly.",
-      body: [
-        "A series of generative works made for two screens: a venue's inner wall and the U-shaped frame in front of it. Most are not fixed-length videos but real-time pieces computed every frame; some are seamless 20 s loops.",
-        "Materials include ink bleeds and brush strokes, old paintings (Guo Xi's 'Early Spring'), and Hwaseong's Yongjusa temple and Yunggeonneung tombs. Some pieces port and develop the mechanism of an original Shadertoy shader, credited in each work's notes.",
-        "Venue views are 3D previews, not documentation of a screening."
-      ],
-      role: "Solo work [program name & period TBC]",
-      venue: "Creative support program [TBC]"
-    }
+    period: "2026.10.31",
+    place: "화성예술의전당 야외공연장 Hwaseong Arts Center, Outdoor Stage",
+    exhibition: "2026 HCF 미디어아트쇼 (2026 화성시 미디어 페스티벌)",
+    medium: "2-channel projection mapping, live dance",
+    duration: "7'50\"",
+    credit: "Team houseCall (하우스콜)",
+    collab: "화성시 향토무형문화재 승무보존위원회",
+    cover: "seungmu/s07.jpg",
+    hero: { img: "seungmu/hero.jpg" },
+    line: "망자의 안녕을 비는 춤 승무와 함께, 용주사의 밤에서 낮으로 이어지는 프로젝션 매핑.",
+    blocks: [
+      { t: "text", ko: [
+        "화성시 향토무형문화재 승무보존위원회의 두 무용수가 추는 쌍승무와 함께한 프로젝션 매핑 공연이다. 무대 중앙의 북을 중심으로 한 두 무용수의 동선과 공연의 흐름에 맞춰 영상의 구성과 전환 시점을 설계했다.",
+        "조지훈의 시 「승무」의 배경인 화성 8경 용주사의 밤 풍경으로 시작해 낮 풍경으로 닫힌다. 흑백의 수묵에서 단청과 오방색, 색동으로 나아갔다가 다시 수묵으로 돌아오며, 죽음과 삶의 경계를 흑백과 유채색으로 나누어 표현했다."
+      ] },
+      { t: "pair", src: ["seungmu/s01.jpg", "seungmu/s02.jpg"] },
+      { t: "full", src: "seungmu/s04.jpg" },
+      { t: "trio", src: ["seungmu/s03.jpg", "seungmu/s05.jpg", "seungmu/s06.jpg"] },
+      { t: "pair", src: ["seungmu/s08.jpg", "seungmu/s09.jpg"] },
+      { t: "full", src: "seungmu/s11.jpg" },
+      { t: "pair", src: ["seungmu/s10.jpg", "seungmu/s07.jpg"] }
+    ]
   },
   {
-    id: "redforest",
+    id: "xmf",
+    title: "XMF 2026",
+    titleEn: "Stage LED Visuals",
     year: 2026,
-    tags: ["performance", "realtime"],
-    media: { poster: "redforest/poster.jpg" },
-    ko: {
-      title: "붉은 숲 (redForest)",
-      medium: "실시간 영상(TouchDesigner), 음악 반응",
-      line: "끝없는 붉은 숲을 1인칭으로 질주한다. 킥이 울릴 때마다 숲 뒤의 하늘이 붉게 번쩍인다.",
-      body: [
-        "공연 「못 죽는 기사와 비단 요람」의 한 장면이다. 검게 꼬인 나무 실루엣과 진홍색 안개 빛, 낙엽 바닥 사이를 달린다.",
-        "곡의 킥에 맞춰 숲 뒤의 하늘과 안개가 역광으로 번쩍이고, 나무는 검은 실루엣으로 남는다. 공연 중 키 하나로 화면 전체 색을 반전한다."
-      ],
-      role: "장면 영상 제작 [확인 필요]",
-      venue: "LUCY 공연 「못 죽는 기사와 비단 요람」, 2026.09 [확인 필요]"
-    },
-    en: {
-      title: "redForest",
-      medium: "Real-time visuals (TouchDesigner), music-reactive",
-      line: "A first-person sprint through an endless red forest; the sky flashes red with every kick.",
-      body: [
-        "A scene from the performance 'The Knight Who Cannot Die and the Silk Cradle'. It runs between black twisted tree silhouettes, crimson fog light and a floor of fallen leaves.",
-        "On each kick the sky and fog flare as backlight while the trees stay black. A single key inverts the whole image during the show."
-      ],
-      role: "Scene visuals [TBC]",
-      venue: "LUCY performance, Sep 2026 [TBC]"
-    }
+    period: "2026.10.03–04",
+    place: "인천 파라다이스시티 Paradise City, Incheon",
+    exhibition: "XMF 2026 (Xnterstellar Music Festival)",
+    medium: "Audio-reactive real-time visuals for stage LED, TouchDesigner",
+    credit: "Personal work",
+    artists: "Hi-Fi Un!corn, hrtz.wav, LUCY, THE FIX, YOUNHA",
+    cover: "xmf/lucy_knight_cradle_A.jpg",
+    hero: { video: "xmf/xmf_lucy_stage_15s.mp4", poster: "xmf/hero.jpg" },
+    line: "다섯 팀의 무대 LED에 곡마다 띄운, 소리에 반응하는 실시간 영상.",
+    blocks: [
+      { t: "text", ko: [
+        "한일 음악 페스티벌 XMF 2026의 무대 LED 영상을 만들었다. Hi-Fi Un!corn, hrtz.wav, LUCY, THE FIX, YOUNHA 다섯 팀의 곡마다 따로 영상을 짓고, 공연 중에는 소리에 반응하도록 TouchDesigner로 실시간으로 돌렸다.",
+        "Left or Right, 어리버리, sunday morning, 사랑은 어쩌고, 발아, 뜨거, 못 죽는 기사와 비단 요람, Don't Look Back, HIGH, Rock like star — 곡의 성격에 맞춰 화면의 재료와 움직임을 달리했다."
+      ] },
+      { t: "pair", src: ["xmf/xmf_lucy_reactive_12s.mp4", "xmf/xmf_hrtzwav_reactive_12s.mp4"], cap: "Reactive visuals — LUCY, hrtz.wav" },
+      { t: "grid", cols: 5, src: ["xmf/hifiunicorn_left_or_right_bubbles.jpg", "xmf/hrtzwav_eoribeori_A.jpg", "xmf/lucy_bara_A.jpg", "xmf/thefix_dont_look_back_B.jpg", "xmf/younha_rock_like_star_A.jpg", "xmf/hifiunicorn_left_or_right_firework.jpg", "xmf/hrtzwav_sunday_morning_B.jpg", "xmf/lucy_knight_cradle_A.jpg", "xmf/thefix_high_A.jpg", "xmf/younha_rock_like_star_C.jpg"], cap: "Stills by song — Hi-Fi Un!corn, hrtz.wav, LUCY, THE FIX, YOUNHA" }
+    ]
+  },
+  {
+    id: "chungman",
+    title: "충만한 세상에 복이 있을지어니?",
+    year: 2026,
+    period: "2026.09.02–09.05",
+    place: "갤러리 실 (옛 산일제사 공장), 세종 조치원",
+    exhibition: "《ATTACHED HOME》",
+    supported: "K-Art 청년 창작자 지원사업 — 문화체육관광부, 한국문화예술위원회, 세종시문화관광재단",
+    medium: "가변설치, 혼합재료 오브제, 감열지, 열전사 프린터",
+    size: "Variable",
+    poster: "chungman/poster.jpg",
+    cover: "chungman/c05.jpg",
+    hero: { img: "chungman/c01.jpg" },
+    line: "계속해서 주어진다. 감당의 여부는 중요하지 않다. '나'는 그것을 감아낸다.",
+    blocks: [
+      { t: "text", lead: true, ko: [
+        "계속해서 주어진다. 감당의 여부는 중요하지 않다. '나'는 그것을 감아낸다. 버거움에 멈춰 서고, 다시 더듬으며 끌어안는다. 받아내지 못한 것들은 쌓여, 세상은 어느새 넘치도록 가득해진다. 이토록 충만한 세상에, 복은 어디에 있을까?"
+      ] },
+      { t: "text", ko: [
+        "세상은 여러 발전을 이루었고 이루 말할 수 없는 풍요를 안겨주었다. 그러한 세계는 우리에게 확정적인 행복을 보장하는가. 많은 것이 빠르게 변화하고 쏟아져 나오는 동안, 우리는 그 속도에 온전히 닿지 못한 채 살아간다. 이 작품은 그 간극에서 발생하는 불안과 소외를 바라보며, 외부 상황 속 내면의 심리에 질문한다."
+      ] },
+      { t: "pair", src: ["chungman/c02.jpg", "chungman/c03.jpg"] },
+      { t: "trio", src: ["chungman/c04.jpg", "chungman/c06.jpg", "chungman/c07.jpg"] },
+      { t: "text", ko: [
+        "네 개의 기둥 위에 놓인 감열지 프린터가 멈추지 않고 종이를 출력하고, 종이는 바닥에 떨어져 쌓인다. 중앙의 낮은 자리에는 감열지를 감아올리는 오브제 '나'가 놓인다. 관객의 눈높이보다 조금 아래에 있고, 프린터보다 현저히 느리다.",
+        "오브제 '나'는 수평축에 감열지를 감는 장치다. 스테퍼 모터가 축을 돌리고, 종이의 지름은 20mm에서 시작해 최대 약 140mm까지 부푼다. 불규칙하게 멈췄다가 다시 돌기를 반복한다. 고장이 아니라 상태다.",
+        "감열지는 열과 빛에 의해 스스로 사라지는 매체다. 프레임은 원목과 금속이며, 볼트와 베어링, 축이 드러난 채로 실제로 작동한다."
+      ] },
+      { t: "full", src: "chungman/c12.jpg" },
+      { t: "trio", src: ["chungman/c08.jpg", "chungman/c10.jpg", "chungman/c11.jpg"] },
+      { t: "pair", src: ["chungman/c09.jpg", "chungman/c05.jpg"] },
+      { t: "process", steps: [
+        { h: "Idea", ko: "감열지(영수증 종이)를 거래와 시간, 순간의 기록으로 리서치했다. 실시간 출력, 출력과 스캔이 반복되는 재귀 구조, 계속 도는 장치를 떠올렸고, '세계와 나 사이의 시차, 거기서 오는 버거움과 잠식'을 키워드로 삼았다." },
+        { h: "Sketch", ko: "높이가 다른 스툴과 영수증 프린터, 쌓이는 감열지, 관객의 위치를 스케치하고, 아두이노로 프린터 출력과 감기 장치를 구현하는 계획을 세웠다." },
+        { h: "Engineering", ko: "TTL 감열지 프린터 4대와 57.5mm 감열지, ESP32로 출력부를 구성했다. 감기 장치는 Nema 23 스테퍼 모터와 TB6600 드라이버, 12mm 연마봉 축과 베어링으로 설계했다." },
+        { h: "Graphics", ko: "제목의 '복(福)'에서 출력 그래픽을 끌어왔다. 여러 서체의 福을 반복하고, 인복·돈복·일복을 대화 기록과 영수증, 계약서 같은 문서의 형식으로 출력했다." }
+      ], src: ["chungman/p1.jpg", "chungman/p2.jpg", "chungman/p3.jpg"] }
+    ]
+  },
+  {
+    id: "nimbus",
+    title: "NIMBUS",
+    year: 2026,
+    period: "2026.09",
+    exhibition: "Garage Project 3 — MOIN",
+    medium: "Steel mesh, pendant light",
+    size: "300 × 700 × 500 mm",
+    credit: "Personal work, made within team MOIN",
+    cover: "nimbus/n09.jpg",
+    hero: { img: "nimbus/n01.jpg" },
+    line: "겹쳐 쌓은 철제 메쉬가 구름처럼 공간에 떠 있는 펜던트 조명.",
+    blocks: [
+      { t: "text", ko: [
+        "철제 메쉬의 물성을 활용하고자 재료를 겹치고 쌓는 방식을 택했고 그것이 자연스럽게 형태의 출발점이 되었다. 낱장의 메쉬는 평면적이고 규칙적인 구조를 가지지만, 여러 겹이 적층되면서 예상하지 못한 곡면과 부피를 만들어낸다.",
+        "조명이 놓이는 공간 역시 사물과 사람, 서로 다른 취향이 한곳에 모이는 장소를 전제로 한다. 서로 다른 것들이 모여 하나의 장면을 이루는 공간의 성격과, 개별적인 메쉬가 축적되며 하나의 덩어리로 변해가는 방식 사이의 유사성을 조명의 형태로 연결했다.",
+        "겹쳐진 메쉬가 만들어내는 불분명한 윤곽과 밀도에서는 구름의 형상을 떠올렸다. 명확한 경계 없이 뭉치고 흩어지며 공중에 머무는 구름의 성질을 따라, 이 덩어리를 바닥에 두기보다 공간에 띄우는 펜던트 조명의 형식으로 완성했다. 불이 들어오면 촘촘한 격자 사이로 빛이 걸러지고 중첩되며, 단단한 철제는 시각적으로 가볍고 부유하는 덩어리로 전환된다."
+      ] },
+      { t: "pair", src: ["nimbus/n02.jpg", "nimbus/n03.jpg"] },
+      { t: "full", src: "nimbus/n04.jpg" },
+      { t: "trio", src: ["nimbus/n05.jpg", "nimbus/n06.jpg", "nimbus/n07.jpg"] },
+      { t: "pair", src: ["nimbus/n09.jpg", "nimbus/n10.jpg"] },
+      { t: "full", src: "nimbus/n08.jpg" }
+    ]
+  },
+  {
+    id: "transparent",
+    title: "투명해진 공간",
+    year: 2026,
+    period: "2026.05.13–05.24",
+    exhibition: "Pinned : Sejong (Group exhibition)",
+    medium: "Interactive media art — MediaPipe hand tracking, HTML5 Canvas, projector, webcam, interview video",
+    credit: "Solo — interviews, concept, development, installation",
+    poster: "transparent/poster.jpg",
+    cover: "transparent/i01.jpg",
+    hero: { img: "transparent/screen.jpg" },
+    line: "호수공원을 스쳐간 사람들의 기억이 글자가 되고, 글자는 호수의 수면이 된다.",
+    blocks: [
+      { t: "text", lead: true, ko: [
+        "익숙한 공간은 종종 투명해진다. 매일 보아서, 더 이상 보이지 않는 것들."
+      ] },
+      { t: "text", ko: [
+        "세종 호수공원은 도시 속 가장 익숙한 공간 중 하나다. 매일 스쳐 지나가지만 그 안에는 수많은 사람들의 시간과 감정이 조용히 쌓여 있다. 이 작업은 그 보이지 않던, 익숙해서 잊혀졌던 기억들을 수면 위로 끌어올려, 투명해진 공간을 다시 바라보게 만드는 것을 목표로 한다.",
+        "작품 속 모든 텍스트는 지어낸 문장이 아니다. 세종 호수공원을 경험한 사람들을 직접 인터뷰해 그들의 기억과 감정을 수집했다. 다섯 가지 공통 질문을 중심으로 처음 그 공간을 접했을 때의 인상부터 일상에서의 의미, 가장 기억에 남는 순간까지 자유롭게 풀어냈다. 수집된 답변을 작품의 톤에 맞게 재구성해 화면을 채웠고, 호수의 깊은 네이비 색상과 Pretendard Light 서체로 잔잔한 수면의 질감을 구현했다. 화면 전체는 하나의 수면이자, 한 도시에 쌓인 집단적 기억의 표면이 된다."
+      ] },
+      { t: "full", src: "transparent/view.jpg" },
+      { t: "text", ko: [
+        "관객은 카메라 앞에서 손을 뻗어 화면 속 글자들을 흐트러뜨릴 수 있다. 손끝을 따라 글자들이 물결처럼 출렁이고 흰빛의 파문이 번진다. 이 인터랙션은 타인의 내면에 직접 닿는 행위를 물리적 경험으로 번역한 결과이며, 관객은 단순한 감상자를 넘어 작품의 일부가 된다.",
+        "인터랙션은 MediaPipe Tasks Vision JS를 기반으로 구현했다. 웹캠으로 실시간으로 손의 랜드마크를 감지하고, 손끝 좌표를 HTML5 Canvas 위의 텍스트 파티클과 연동했다. 전시는 LG 프로젝터와 Logitech Brio 웹캠으로 구성했고, 작품 옆에 인터뷰 영상을 함께 상영해 화면 속 문장들이 실제 누군가의 이야기임을 전했다. 인터뷰 섭외부터 기획, 개발, 전시 구성까지 전 과정을 혼자 진행했다."
+      ] },
+      { t: "yt", id: "jaBAGZCVVfU" },
+      { t: "trio", src: ["transparent/i01.jpg", "transparent/i03.jpg", "transparent/i04.jpg"] },
+      { t: "yt", id: "TViC-ZjyzxE" }
+    ]
+  },
+  {
+    id: "algomi",
+    other: true,
+    title: "Algomi",
+    titleEn: "Algorithm + Me",
+    year: 2026,
+    period: "2026.06",
+    medium: "Service ideation prototype, GUI design",
+    cover: "algomi/01.jpg",
+    hero: { img: "algomi/01.jpg" },
+    line: "쌓여 온 디지털 데이터를 하나의 캐릭터로 시각화해, 자신의 디지털 자아를 마주하게 하는 서비스.",
+    blocks: [
+      { t: "text", ko: [
+        "Algomi는 우리가 인지하지 못한 채 쌓아온 디지털 데이터를 시각화하여, 자신의 디지털 자아를 마주하게 하는 서비스다. 유튜브, 인스타그램, 네이버와 같은 여러 플랫폼에서 누적된 콘텐츠 소비 패턴은 Algomi를 통해 하나의 캐릭터로 시각화되며, 이를 통해 그동안 어렴풋이만 알고 있던 자신의 알고리즘을 직관적으로 확인할 수 있다.",
+        "캐릭터가 가진 각 키워드를 누르면 해당 알고리즘이 어떤 플랫폼에서, 어떤 콘텐츠를 통해 형성되었는지 그 출처까지 한눈에 모아볼 수 있다. 변화하고자 하는 방향을 키워드로 설정하면 캐릭터가 그에 맞춰 점진적으로 변해, 알고리즘과 디지털 세계 속 자신의 자아에 능동적인 태도를 취하도록 돕는다. 친구들의 알고리즘 캐릭터를 함께 탐색하고 비교하는 소셜 경험으로도 확장된다."
+      ] },
+      { t: "trio", src: ["algomi/02.jpg", "algomi/03.jpg", "algomi/04.jpg"] },
+      { t: "pair", src: ["algomi/06.jpg", "algomi/08.jpg"] }
+    ]
+  },
+  {
+    id: "bodoni",
+    other: true,
+    title: "Bodoni",
+    titleEn: "Type Specimen Poster",
+    year: 2026,
+    period: "2026.06",
+    medium: "Poster, Adobe Illustrator",
+    size: "A2",
+    cover: "bodoni/b1.jpg",
+    hero: { img: "bodoni/b1.jpg", tall: true },
+    line: "Bodoni 서체 견본 포스터.",
+    blocks: []
+  },
+  {
+    id: "lake",
+    other: true,
+    title: "Lake for your own",
+    year: 2023,
+    period: "2023.12",
+    medium: "Interactive object — Arduino, Processing, 12 touch sensors (TTP-233B), potentiometer",
+    credit: "Solo — concept, circuit, code, object",
+    cover: "lake/l2.jpg",
+    hero: { img: "lake/l1.jpg", tall: true },
+    line: "언제 어디서든 손끝으로 만질 수 있는 호수의 풍경.",
+    blocks: [
+      { t: "text", ko: [
+        "바쁜 현대사회 속에서 사람들은 자연을 즐기고 싶어도 시간과 장소의 제약으로 쉽게 누리지 못한다. 이 작업은 언제 어디서든 호수의 풍경을 손끝으로 만질 수 있는 인터랙티브 오브젝트를 만드는 것을 목표로 한다. 물을 흐리고 물결을 일렁이는 감각을 물리적 인터랙션으로 번역해 전달하고자 했다.",
+        "상단에는 12개의 TTP-233B 터치센서를 4×3 그리드로 배치해 각 센서의 위치를 화면 좌표와 일대일로 매핑했다. 특정 지점을 누르거나 여러 개를 이어서 쓸면 그 위치에 맞춰 물파장이 화면에 퍼진다. 하단의 가변저항을 시계방향으로 돌리면 호수를 위에서 내려다본 물결이 서서히 나타나고, 반대로 돌리면 사라진다. 두 인터랙션은 각각 '수면을 건드리는 행위'와 '호수 전체를 조망하는 시점'을 물리적 조작으로 번역한 결과다.",
+        "하나의 Processing 창에서 Arduino와 시리얼 통신을 이중으로 처리하는 문제는 하나의 보드에서 보낸 두 값을 서로 다른 두 Processing 창에서 각각 받도록 구조를 다시 설계해 풀었다."
+      ] },
+      { t: "yt", id: "MC07K2WJ0-k" },
+      { t: "trio", src: ["lake/l2.jpg", "lake/l3.jpg", "lake/l4.jpg"] }
+    ]
+  },
+  {
+    id: "deconstruction",
+    other: true,
+    title: "해체를 통한 부분의 재구성",
+    medium: "Drawing panel",
+    size: "841 × 594 mm",
+    cover: "deconstruction/d1.jpg",
+    hero: { img: "deconstruction/d1.jpg", tall: true },
+    line: "자전거와 가정용 TV의 부품으로 다시 지은 걷는 인체.",
+    blocks: [
+      { t: "text", ko: [
+        "자전거와 가정용 TV를 해체해 타이어, 손잡이, 지지대, PCB 기판, 전기선이라는 부분을 찾아냈다. 이 다섯 가지 부분을 결합해 인체를 구성했고, 걷는 모델로 표현했다."
+      ] },
+      { t: "full", src: "deconstruction/d2.jpg", narrow: true }
+    ]
+  },
+  {
+    id: "drawings",
+    other: true,
+    title: "Drawings",
+    medium: "연필, 광목, 캔버스",
+    cover: "drawings/r3.jpg",
+    hero: { img: "drawings/r1.jpg", tall: true },
+    blocks: [
+      { t: "trio", src: ["drawings/r2.jpg", "drawings/r3.jpg", "drawings/r4.jpg"] }
+    ]
   }
 ];
 
-window.TAGS = {
-  all: { ko: "전체", en: "All" },
-  performance: { ko: "공연", en: "Performance" },
-  projection: { ko: "프로젝션", en: "Projection" },
-  installation: { ko: "설치", en: "Installation" },
-  realtime: { ko: "실시간", en: "Real-time" },
-  generative: { ko: "생성", en: "Generative" },
-  book: { ko: "책", en: "Book" },
-  branding: { ko: "브랜딩", en: "Branding" }
-};
+// 기사: 매체·날짜·제목·링크만. 언론사 사진은 쓰지 않는다.
+window.PRESS = [
+  { outlet: "K-Classic News", date: "2026.11.02", title: "온 가족이 함께한 AI·미디어 체험과 할로윈 파티 '2026 화성시 미디어 페스티벌' 1만 관람객 호응", url: "https://www.kclassicnews.com/news/article.html?no=232088" },
+  { outlet: "한국현대미술신문", date: "2026.11.02", title: "온 가족이 함께한 AI·미디어 체험과 할로윈 파티 '2026 화성시 미디어 페스티벌' 1만 관람객 호응", url: "https://www.kinn.co.kr/news/article.html?no=812504" },
+  { outlet: "비전21뉴스", date: "2026.11.02", title: "온 가족이 함께한 AI·미디어 체험과 할로윈 파티 '2026 화성시 미디어 페스티벌' 1만 관람객 호응", url: "https://www.vision21.kr/news/article.html?no=635291" },
+  { outlet: "경기헤드뉴스", date: "2026.11.02", title: "온 가족이 함께한 AI·미디어 체험과 할로윈 파티 '2026 화성시 미디어 페스티벌' 1만 관람객 호응", url: "https://www.ghnews.net/news/article.html?no=249061" },
+  { outlet: "경인미래신문", date: "2026.11.02", title: "화성시 미디어 페스티벌에 시민 1만여 명 참여", url: "https://www.kifuture.com/news/article.html?no=177741" },
+  { outlet: "뉴스프리존", date: "2026.11.02", title: "화성시 미디어 페스티벌 with Halloween Party..1만여 명 발길", url: "https://www.newsfreezone.co.kr/news/articleView.html?idxno=717261" },
+  { outlet: "화성저널", date: "2026.11.02", title: "AI·미디어 체험부터 할로윈 파티까지 '2026 화성시 미디어 페스티벌' 오는 31일 개최", url: "https://www.hsj.co.kr/news/articleView.html?idxno=56795" },
+  { outlet: "저널25방송", date: "2026.10.28", title: "화성예술의전당서 '미디어 페스티벌 with Halloween Party' 개최", url: "https://www.journal25.com/news/articleView.html?idxno=570546" },
+  { outlet: "화성인터넷신문", date: "2026.10.28", title: "AI·미디어 체험부터 할로윈 파티 '미디어 페스티벌' 31일", url: "https://www.hsinews.com/54229" },
+  { outlet: "이뉴스투데이", date: "2026.10.28", title: "화성시, AI·미디어 체험과 할로윈이 만나는 가을축제 31일 개최", url: "https://www.enewstoday.co.kr/news/articleView.html?idxno=2485361" },
+  { outlet: "글로벌비즈뉴스", date: "2026.10.28", title: "AI·미디어 체험부터 할로윈 파티까지 '2026 화성시 미디어 페스티벌' 10월 31일 개최", url: "http://www.gbnews.kr/news/articleView.html?idxno=76053" },
+  { outlet: "뉴스와이어", date: "2026.10.28", title: "AI·미디어 체험부터 할로윈 파티까지 '2026 화성시 미디어 페스티벌' 10월 31일 개최", url: "https://www.newswire.co.kr/newsRead.php?no=1045647", kind: "Press release" }
+];
+window.PRESS_WORKS = ["gwannyeom", "seungmu"];

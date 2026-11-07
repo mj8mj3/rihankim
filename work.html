@@ -1,24 +1,34 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>작업 — 김리한 Kim Rihan</title>
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
   <link rel="stylesheet" href="css/style.css">
+  <title>Work — Rihan Kim</title>
+  <meta name="description" content="Rihan Kim (김리한) — work.">
 </head>
-<body>
+<body data-page="works">
   <header class="site-header">
-    <a class="logo" href="index.html">김리한 <span>Kim Rihan</span></a>
+    <a class="logo" href="index.html">Rihan Kim</a>
     <nav class="nav">
-      <a href="index.html#works" data-ko="작업" data-en="Works">작업</a>
-      <a href="index.html#about" data-ko="소개" data-en="About">소개</a>
-      <a href="index.html#contact" data-ko="연락" data-en="Contact">연락</a>
+      <a data-page="works" href="index.html#works">Works</a>
+      <a data-page="about" href="about.html">About</a>
+      <a data-page="press" href="press.html">Press</a>
     </nav>
-    <div class="lang"><button type="button" data-lang="ko">KO</button><button type="button" data-lang="en">EN</button></div>
   </header>
-  <main id="work-detail" class="detail"></main>
-  <footer class="site-footer">© <span id="year">2026</span> Kim Rihan</footer>
+  <main id="work" class="work"></main>
+  <footer class="site-footer">
+    <div class="site-footer__contact">
+      <a class="js-mail" data-u="8230wjkjm" data-d="gmail.com" href="#">Email</a>
+      <a href="https://www.instagram.com/rhankim/" target="_blank" rel="noopener">Instagram @rhankim</a>
+      <a href="https://www.instagram.com/keemrihan/" target="_blank" rel="noopener">Works @keemrihan</a>
+    </div>
+    <span>© 2026 Rihan Kim</span>
+  </footer>
   <script src="js/works.js"></script>
   <script src="js/main.js"></script>
 </body>

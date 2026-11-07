@@ -1,109 +1,144 @@
 (function () {
   var MEDIA = "assets/media/";
-  var LANG_KEY = "rihan-lang";
-  var lang = "ko";
-  try { lang = localStorage.getItem(LANG_KEY) || "ko"; } catch (e) {}
+  var WORKS = window.WORKS || [];
 
-  function t(work) { return work[lang] || work.ko; }
-  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function pad(n) { return (n < 10 ? "0" : "") + n; }
+  function num(w) { return pad(WORKS.indexOf(w) + 1); }
 
-  // 정적 문구: data-ko / data-en 속성을 가진 요소를 현재 언어로 바꾼다.
-  function applyStatic() {
-    document.documentElement.lang = lang;
-    document.querySelectorAll("[data-ko]").forEach(function (el) { el.textContent = el.getAttribute("data-" + lang) || el.getAttribute("data-ko"); });
-    document.querySelectorAll(".lang button").forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.lang === lang); });
+  // 이미지와 mp4를 같은 방식으로 넣는다. mp4는 소리 없이 반복 재생.
+  function media(src, cls) {
+    if (/\.mp4$/.test(src)) return '<video class="' + (cls || "") + '" src="' + MEDIA + src + '" autoplay muted loop playsinline preload="metadata"></video>';
+    return '<img class="' + (cls || "") + '" src="' + MEDIA + src + '" alt="" loading="lazy">';
   }
+  function ko(text, tag) { return "<" + (tag || "p") + ' lang="ko">' + esc(text) + "</" + (tag || "p") + ">"; }
 
-  function setLang(l) {
-    lang = l;
-    try { localStorage.setItem(LANG_KEY, l); } catch (e) {}
-    render();
-  }
-
-  // 마우스를 올리면 짧은 클립을 재생한다. 터치 기기는 포스터만 보여 준다.
-  var canHover = window.matchMedia("(hover: hover)").matches;
-  function bindHoverVideo(card) {
-    var v = card.querySelector("video");
-    if (!v || !canHover) return;
-    card.addEventListener("mouseenter", function () { if (!v.src) v.src = v.dataset.src; v.play().catch(function () {}); });
-    card.addEventListener("mouseleave", function () { v.pause(); });
-  }
-
-  var filter = "all";
-  function renderGrid() {
-    var grid = document.getElementById("work-grid");
+  // ---------- 메인: 작품 색인 ----------
+  function renderIndex() {
+    var grid = document.getElementById("index-grid");
     if (!grid) return;
-    var filters = document.getElementById("work-filters");
-    var used = { all: 1 };
-    WORKS.forEach(function (w) { w.tags.forEach(function (g) { used[g] = 1; }); });
-    filters.innerHTML = Object.keys(TAGS).filter(function (k) { return used[k]; }).map(function (k) {
-      return '<button type="button" data-tag="' + k + '" aria-pressed="' + (k === filter) + '">' + esc(TAGS[k][lang]) + "</button>";
+    grid.innerHTML = WORKS.filter(function (w) { return !w.other; }).map(function (w) {
+      return '<a class="card" href="work.html?id=' + w.id + '">' +
+        '<span class="card__no">' + num(w) + "</span>" +
+        '<figure class="card__img">' + media(w.cover) + "</figure>" +
+        '<span class="card__title" lang="ko">' + esc(w.title) + "</span>" +
+        '<span class="card__meta">' + esc(w.period || w.year || "") + "</span></a>";
     }).join("");
-    filters.querySelectorAll("button").forEach(function (b) { b.onclick = function () { filter = b.dataset.tag; renderGrid(); }; });
 
-    grid.innerHTML = WORKS.filter(function (w) { return filter === "all" || w.tags.indexOf(filter) >= 0; }).map(function (w, i) {
-      var d = t(w);
-      return '<a class="card' + (i === 0 && filter === "all" ? " card--wide" : "") + '" href="work.html?id=' + w.id + '">' +
-        '<div class="card__media"><img src="' + MEDIA + w.media.poster + '" alt="" loading="lazy">' +
-        (w.media.clip ? '<video muted loop playsinline preload="none" data-src="' + MEDIA + w.media.clip + '"></video>' : "") +
-        "</div>" +
-        '<div class="card__meta"><h3>' + esc(d.title) + "</h3><span>" + w.year + "</span></div>" +
-        '<p class="card__line">' + esc(d.medium) + "</p></a>";
+    var list = document.getElementById("other-list");
+    if (list) list.innerHTML = WORKS.filter(function (w) { return w.other; }).map(function (w) {
+      return '<li><a href="work.html?id=' + w.id + '">' +
+        '<span class="ol__no">' + num(w) + "</span>" +
+        '<span class="ol__title" lang="ko">' + esc(w.title) + (w.titleEn ? " <em>" + esc(w.titleEn) + "</em>" : "") + "</span>" +
+        '<span class="ol__medium">' + esc(w.medium || "") + "</span>" +
+        '<span class="ol__year">' + esc(w.year || "") + "</span></a></li>";
     }).join("");
-    grid.querySelectorAll(".card").forEach(bindHoverVideo);
   }
 
-  function renderDetail() {
-    var root = document.getElementById("work-detail");
+  // ---------- 상세 ----------
+  function facts(w) {
+    var rows = [
+      ["Date", [w.period, w.place].filter(Boolean).join(" — ")],
+      ["Exhibition", w.exhibition],
+      ["Supported by", w.supported],
+      ["Medium", w.medium],
+      ["Size", w.size],
+      ["Duration", w.duration],
+      ["Credit", w.credit],
+      ["Collaboration", w.collab],
+      ["Artists", w.artists]
+    ].filter(function (r) { return r[1]; });
+    return '<dl class="facts">' + rows.map(function (r) {
+      return "<dt>" + r[0] + '</dt><dd lang="ko">' + esc(r[1]) + "</dd>";
+    }).join("") + "</dl>";
+  }
+
+  function block(b) {
+    switch (b.t) {
+      case "text":
+        return '<section class="b-text' + (b.lead ? " b-text--lead" : "") + '"><div class="b-text__body">' + b.ko.map(function (p) { return ko(p); }).join("") + "</div></section>";
+      case "full":
+        return '<figure class="b-full' + (b.narrow ? " b-full--narrow" : "") + '">' + media(b.src) + cap(b) + "</figure>";
+      case "pair":
+      case "trio":
+        return '<figure class="b-row b-row--' + b.src.length + '">' + b.src.map(function (s) { return "<div>" + media(s) + "</div>"; }).join("") + cap(b) + "</figure>";
+      case "grid":
+        return '<figure class="b-grid" style="--cols:' + (b.cols || 4) + '">' + b.src.map(function (s) { return "<div>" + media(s) + "</div>"; }).join("") + cap(b) + "</figure>";
+      case "yt":
+        return '<figure class="b-yt"><div class="b-yt__frame"><iframe src="https://www.youtube-nocookie.com/embed/' + b.id + '?rel=0" title="Video" loading="lazy" allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div></figure>';
+      case "process":
+        return '<section class="b-process"><h2 class="label">Process</h2><ol>' + b.steps.map(function (s, i) {
+          return "<li><span>" + pad(i + 1) + " " + esc(s.h) + "</span>" + ko(s.ko) + "</li>";
+        }).join("") + "</ol>" + (b.src ? '<div class="b-row b-row--' + b.src.length + '">' + b.src.map(function (s) { return "<div>" + media(s) + "</div>"; }).join("") + "</div>" : "") + "</section>";
+    }
+    return "";
+  }
+  function cap(b) { return b.cap ? "<figcaption>" + esc(b.cap) + "</figcaption>" : ""; }
+
+  function renderWork() {
+    var root = document.getElementById("work");
     if (!root) return;
     var id = new URLSearchParams(location.search).get("id");
-    var idx = WORKS.findIndex(function (w) { return w.id === id; });
-    if (idx < 0) idx = 0;
-    var w = WORKS[idx], d = t(w);
-    document.title = d.title + " — 김리한 Kim Rihan";
-    var L = lang === "ko"
-      ? { medium: "매체", role: "역할", venue: "발표", year: "연도", back: "작품 목록", prev: "이전 작품", next: "다음 작품" }
-      : { medium: "Medium", role: "Role", venue: "Context", year: "Year", back: "All works", prev: "Previous", next: "Next" };
+    var w = WORKS.filter(function (x) { return x.id === id; })[0] || WORKS[0];
+    var i = WORKS.indexOf(w);
+    document.title = w.title + (w.titleEn ? " " + w.titleEn : "") + " — Rihan Kim";
 
-    var hero = w.media.clip
-      ? '<video class="detail__video" src="' + MEDIA + w.media.clip + '" poster="' + MEDIA + w.media.poster + '" autoplay muted loop playsinline></video>'
-      : '<img class="detail__video" src="' + MEDIA + w.media.poster + '" alt="">';
+    var hero = w.hero.video
+      ? '<video src="' + MEDIA + w.hero.video + '" poster="' + MEDIA + w.hero.poster + '" autoplay muted loop playsinline></video>'
+      : media(w.hero.img);
 
-    var html = '<a class="back" href="index.html#works">← ' + L.back + "</a>" +
-      '<header class="detail__head"><h1>' + esc(d.title) + '</h1><p class="detail__line">' + esc(d.line) + "</p></header>" +
-      '<figure class="detail__hero">' + hero + "</figure>" +
-      '<div class="detail__body"><dl class="facts">' +
-      "<dt>" + L.year + "</dt><dd>" + w.year + "</dd>" +
-      "<dt>" + L.medium + "</dt><dd>" + esc(d.medium) + "</dd>" +
-      "<dt>" + L.role + "</dt><dd>" + esc(d.role) + "</dd>" +
-      "<dt>" + L.venue + "</dt><dd>" + esc(d.venue) + (d.link ? '<br><a href="' + d.link.href + '" target="_blank" rel="noopener">' + esc(d.link.label) + "</a>" : "") + "</dd>" +
-      '</dl><div class="text">' + d.body.map(function (p) { return "<p>" + esc(p) + "</p>"; }).join("") + "</div></div>";
+    var html =
+      '<div class="run"><span>Rihan Kim — Portfolio</span><span>N° ' + num(w) + " / " + esc(w.titleEn || w.title) + "</span></div>" +
+      '<section class="opener' + (w.hero.tall ? " opener--tall" : "") + '">' +
+        '<div class="opener__info">' +
+          '<p class="opener__no">' + num(w) + "</p>" +
+          '<h1 lang="ko">' + esc(w.title) + (w.titleEn ? '<span lang="en">' + esc(w.titleEn) + "</span>" : "") + "</h1>" +
+          (w.line ? '<p class="opener__line" lang="ko">' + esc(w.line) + "</p>" : "") +
+          facts(w) +
+          (w.poster ? '<figure class="poster"><figcaption>Poster</figcaption>' + media(w.poster) + "</figure>" : "") +
+        "</div>" +
+        '<figure class="opener__media">' + hero + "</figure>" +
+      "</section>" +
+      w.blocks.map(block).join("");
 
-    if (w.gallery) {
-      html += '<section class="gallery" style="--ratio:' + (w.galleryRatio || "auto") + '">' +
-        w.gallery.map(function (g) { return '<img src="' + MEDIA + g + '" alt="" loading="lazy">'; }).join("") + "</section>" +
-        (d.galleryNote ? '<p class="gallery__note">' + esc(d.galleryNote) + "</p>" : "");
-    }
-    if (w.series) {
-      html += '<section class="series">' + w.series.map(function (s) {
-        var st = s[lang] || s.ko;
-        return '<article class="series__item"><div class="card__media"><img src="' + MEDIA + s.id + '/poster.jpg" alt="" loading="lazy">' +
-          '<video muted loop playsinline preload="none" data-src="' + MEDIA + s.id + '/clip.mp4"></video></div>' +
-          "<h3>" + esc(st[0]) + "</h3><p>" + esc(st[1]) + "</p></article>";
-      }).join("") + "</section>";
-    }
-    var prev = WORKS[(idx + WORKS.length - 1) % WORKS.length], next = WORKS[(idx + 1) % WORKS.length];
-    html += '<nav class="pager"><a href="work.html?id=' + prev.id + '"><small>' + L.prev + "</small>" + esc(t(prev).title) + "</a>" +
-      '<a href="work.html?id=' + next.id + '"><small>' + L.next + "</small>" + esc(t(next).title) + "</a></nav>";
+    var prev = WORKS[(i + WORKS.length - 1) % WORKS.length], next = WORKS[(i + 1) % WORKS.length];
+    html += '<nav class="pager"><a href="work.html?id=' + prev.id + '"><small>Previous — ' + num(prev) + '</small><span lang="ko">' + esc(prev.title) + "</span></a>" +
+      '<a href="index.html#works"><small>Index</small><span>All works</span></a>' +
+      '<a href="work.html?id=' + next.id + '"><small>Next — ' + num(next) + '</small><span lang="ko">' + esc(next.title) + "</span></a></nav>";
     root.innerHTML = html;
-    root.querySelectorAll(".series__item").forEach(bindHoverVideo);
   }
 
-  function render() { applyStatic(); renderGrid(); renderDetail(); }
+  // ---------- Press ----------
+  function renderPress() {
+    var list = document.getElementById("press-list");
+    if (!list) return;
+    var related = (window.PRESS_WORKS || []).map(function (id) {
+      var w = WORKS.filter(function (x) { return x.id === id; })[0];
+      return w ? '<a href="work.html?id=' + w.id + '" lang="ko">' + esc(w.title) + "</a>" : "";
+    }).join(", ");
+    var rel = document.getElementById("press-related");
+    if (rel) rel.innerHTML = related;
+    list.innerHTML = (window.PRESS || []).map(function (p) {
+      return '<li><a href="' + p.url + '" target="_blank" rel="noopener">' +
+        '<span class="pr__date">' + p.date + "</span>" +
+        '<span class="pr__outlet" lang="ko">' + esc(p.outlet) + (p.kind ? " <em>" + esc(p.kind) + "</em>" : "") + "</span>" +
+        '<span class="pr__title" lang="ko">' + esc(p.title) + "</span>" +
+        '<span class="pr__go">↗</span></a></li>';
+    }).join("");
+  }
+
+  // 메일 주소는 화면에서 조립한다(긁어가기 방지용 간단한 인코딩).
+  function renderMail() {
+    document.querySelectorAll(".js-mail").forEach(function (a) {
+      var addr = a.getAttribute("data-u").split("").reverse().join("") + "@" + a.getAttribute("data-d");
+      a.href = "mailto:" + addr;
+      a.textContent = addr;
+    });
+  }
 
   document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll(".lang button").forEach(function (b) { b.onclick = function () { setLang(b.dataset.lang); }; });
-    var y = document.getElementById("year"); if (y) y.textContent = new Date().getFullYear();
-    render();
+    renderIndex(); renderWork(); renderPress(); renderMail();
+    var here = document.body.getAttribute("data-page");
+    document.querySelectorAll(".nav a").forEach(function (a) { if (a.getAttribute("data-page") === here) a.setAttribute("aria-current", "page"); });
   });
 })();

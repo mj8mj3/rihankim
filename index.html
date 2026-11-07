@@ -1,72 +1,66 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>김리한 Kim Rihan — Media Art</title>
-  <meta name="description" content="김리한 Kim Rihan. 미디어아트, 인터랙티브, 실시간 영상 작업.">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
   <link rel="stylesheet" href="css/style.css">
+  <title>Rihan Kim — Portfolio</title>
+  <meta name="description" content="Rihan Kim (김리한). Media art, installation and interaction.">
 </head>
-<body>
+<body data-page="works">
   <header class="site-header">
-    <a class="logo" href="index.html">김리한 <span>Kim Rihan</span></a>
+    <a class="logo" href="index.html">Rihan Kim</a>
     <nav class="nav">
-      <a href="#works" data-ko="작업" data-en="Works">작업</a>
-      <a href="#about" data-ko="소개" data-en="About">소개</a>
-      <a href="#contact" data-ko="연락" data-en="Contact">연락</a>
+      <a data-page="works" href="index.html#works">Works</a>
+      <a data-page="about" href="about.html">About</a>
+      <a data-page="press" href="press.html">Press</a>
     </nav>
-    <div class="lang"><button type="button" data-lang="ko">KO</button><button type="button" data-lang="en">EN</button></div>
   </header>
-
   <main>
-    <section class="hero">
-      <video class="hero__video" src="assets/media/gwannyeom/clip.mp4" poster="assets/media/gwannyeom/wide.jpg" autoplay muted loop playsinline></video>
-      <div class="hero__text">
-        <h1>김리한<br><span>Kim Rihan</span></h1>
-        <p data-ko="실시간 영상으로 벽과 건물 위에 장면을 짓는 미디어 아티스트" data-en="A media artist building scenes on walls and buildings with real-time image">실시간 영상으로 벽과 건물 위에 장면을 짓는 미디어 아티스트</p>
-      </div>
-      <a class="hero__caption" href="work.html?id=gwannyeom" data-ko="「관념 속의 집」 공연장 미리보기, 2026" data-en="'House in the Mind', venue preview, 2026">「관념 속의 집」 공연장 미리보기, 2026</a>
+    <div class="run"><span>Rihan Kim — Portfolio</span><span>2023 — 2026</span></div>
+    <section class="cover">
+      <h1 class="cover__name">Rihan<br>Kim</h1>
+      <p class="cover__sub"><span lang="ko">김리한</span><span>Media art · Installation · Interaction</span></p>
     </section>
 
-    <section id="works" class="section">
-      <div class="section__head">
-        <h2 data-ko="작업" data-en="Works">작업</h2>
-        <div id="work-filters" class="filters"></div>
+    <section class="opener featured">
+      <div class="opener__info">
+        <p class="label">Featured — N° 01</p>
+        <h2 lang="ko">관념 속의 집</h2>
+        <p class="opener__line" lang="ko">외벽과 내벽, 두 개의 면에 프로젝션 매핑으로 펼쳐지는 사운드 인터랙티브 영상.</p>
+        <dl class="facts">
+          <dt>Date</dt><dd lang="ko">2026.10.31 — 화성예술의전당 Hwaseong Arts Center</dd>
+          <dt>Exhibition</dt><dd lang="ko">2026 HCF 미디어아트쇼</dd>
+        </dl>
+        <a class="more" href="work.html?id=gwannyeom">View project →</a>
       </div>
-      <div id="work-grid" class="grid"></div>
+      <a class="opener__media" href="work.html?id=gwannyeom" aria-label="관념 속의 집">
+        <video src="assets/media/gwannyeom/clip.mp4" poster="assets/media/gwannyeom/wide.jpg" autoplay muted loop playsinline></video>
+      </a>
     </section>
 
-    <section id="about" class="section about">
-      <h2 data-ko="소개" data-en="About">소개</h2>
-      <div class="about__body">
-        <div class="text">
-          <p data-ko="김리한은 미디어아트 작업을 한다. TouchDesigner와 GLSL로 실시간 영상을 만들고, 그것을 공연장 벽, 건물의 면, 관객이 들어가는 공간에 놓는다." data-en="Kim Rihan is a media artist making real-time images with TouchDesigner and GLSL and placing them on stage walls, building surfaces and spaces the audience walks into.">김리한은 미디어아트 작업을 한다. TouchDesigner와 GLSL로 실시간 영상을 만들고, 그것을 공연장 벽, 건물의 면, 관객이 들어가는 공간에 놓는다.</p>
-          <p data-ko="먹이 번지는 시간, 옛 그림과 장소 속으로 들어가는 길, 소리에 맞춰 바뀌는 빛처럼, 화면이 하나의 공간이 되는 순간에 관심이 있다." data-en="The work is drawn to moments when an image becomes a space — the time it takes ink to spread, a way into old paintings and places, light that shifts with sound.">먹이 번지는 시간, 옛 그림과 장소 속으로 들어가는 길, 소리에 맞춰 바뀌는 빛처럼, 화면이 하나의 공간이 되는 순간에 관심이 있다.</p>
-        </div>
-        <div class="cv">
-          <h3 data-ko="작업과 참여" data-en="Projects">작업과 참여</h3>
-          <ul>
-            <li><span>2026</span><span data-ko="「관념 속의 집」 공연 미디어 연출, 화성" data-en="'House in the Mind', performance media, Hwaseong">「관념 속의 집」 공연 미디어 연출, 화성</span></li>
-            <li><span>2026</span><span data-ko="수묵 생성 영상 연작, 창작지원" data-en="Ink generative series, creative support program">수묵 생성 영상 연작, 창작지원</span></li>
-            <li><span>2026</span><span data-ko="LUCY 공연 「못 죽는 기사와 비단 요람」 장면 영상" data-en="Scene visuals for a LUCY performance">LUCY 공연 「못 죽는 기사와 비단 요람」 장면 영상</span></li>
-          </ul>
-          <h3 data-ko="도구" data-en="Tools">도구</h3>
-          <p class="tools">TouchDesigner · GLSL · Python · Arduino · Blender · Figma · InDesign</p>
-        </div>
-      </div>
+    <section id="works" class="index">
+      <div class="index__head"><h2 class="label">Index</h2><span class="label">Selected works</span></div>
+      <div id="index-grid" class="index__grid"></div>
     </section>
 
-    <section id="contact" class="section contact">
-      <h2 data-ko="연락" data-en="Contact">연락</h2>
-      <ul class="contact__list">
-        <li><span>Email</span><a href="#" data-ko="" data-en=""></a></li>
-        <li><span>Instagram</span><a href="#" data-ko="" data-en=""></a></li>
-      </ul>
+    <section class="others">
+      <div class="index__head"><h2 class="label">Other works</h2></div>
+      <ul id="other-list" class="others__list"></ul>
     </section>
   </main>
-
-  <footer class="site-footer">© <span id="year">2026</span> Kim Rihan</footer>
+  <footer class="site-footer">
+    <div class="site-footer__contact">
+      <a class="js-mail" data-u="8230wjkjm" data-d="gmail.com" href="#">Email</a>
+      <a href="https://www.instagram.com/rhankim/" target="_blank" rel="noopener">Instagram @rhankim</a>
+      <a href="https://www.instagram.com/keemrihan/" target="_blank" rel="noopener">Works @keemrihan</a>
+    </div>
+    <span>© 2026 Rihan Kim</span>
+  </footer>
   <script src="js/works.js"></script>
   <script src="js/main.js"></script>
 </body>
