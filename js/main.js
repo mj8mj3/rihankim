@@ -3,12 +3,13 @@
   var ALL = window.WORKS || [];
   var SIZES = window.MEDIA_SIZES || {};
   // 대표 작업(Works)과 학교 과제(School Projects)를 나눈다. 번호는 각 묶음 안에서 매긴다.
-  var WORKS = ALL.filter(function (w) { return !w.school; });
+  var WORKS = ALL.filter(function (w) { return !w.school && !w.ongoing; });
+  var ONGOING = ALL.filter(function (w) { return w.ongoing; });
   var SCHOOL = ALL.filter(function (w) { return w.school; });
 
   function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
   function pad(n) { return (n < 10 ? "0" : "") + n; }
-  function num(w) { return w.school ? "P" + pad(SCHOOL.indexOf(w) + 1) : pad(WORKS.indexOf(w) + 1); }
+  function num(w) { return w.ongoing ? "O" + pad(ONGOING.indexOf(w) + 1) : w.school ? "P" + pad(SCHOOL.indexOf(w) + 1) : pad(WORKS.indexOf(w) + 1); }
 
   // 이미지와 mp4를 같은 방식으로 넣는다. mp4는 소리 없이 반복 재생.
   // 이미지는 js/media-sizes.js 목록이 있으면 WebP 여러 폭(srcset)으로, 없으면 파일 그대로 넣는다.
@@ -62,6 +63,16 @@
         };
       });
     }
+
+    // Ongoing: 진행 중인 작업. 완성작과 섞지 않는다.
+    var ongoing = document.getElementById("ongoing-grid");
+    if (ongoing) ongoing.innerHTML = ONGOING.map(function (w) {
+      return '<a class="card card--ongoing" href="work.html?id=' + w.id + '">' +
+        '<span class="card__no">' + num(w) + '<span class="badge">' + esc(w.status) + "</span></span>" +
+        '<figure class="card__img">' + media(w.cover, "", false, CARD) + "</figure>" +
+        '<span class="card__title" lang="ko">' + esc(w.title) + "</span>" +
+        '<span class="card__meta">' + esc(w.period) + " — " + esc(w.exhibition) + "</span></a>";
+    }).join("");
 
     // School Projects: 상세가 있으면 상세로, 없으면(card) 이미지를 새 탭으로.
     var school = document.getElementById("school-grid");
@@ -125,6 +136,8 @@
         return '<section class="b-reel"><div class="b-reel__info"><h2 class="label">' + esc(b.h) + "</h2>" + b.ko.map(function (p) { return ko(p); }).join("") +
           (b.url ? '<a class="more" href="' + b.url + '" target="_blank" rel="noopener">Full version on Instagram ↗</a>' : "") + "</div>" +
           '<figure class="b-reel__video"><video src="' + MEDIA + b.src + '" poster="' + MEDIA + key(b.src) + '-poster.webp" controls muted playsinline preload="metadata"></video></figure></section>';
+      case "link":
+        return '<section class="b-text"><p class="b-text__body"><a class="more" href="' + b.url + '" target="_blank" rel="noopener">' + esc(b.label) + "</a></p></section>";
       case "list":
         return '<section class="b-text"><ul class="b-list" lang="ko">' + b.items.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul></section>";
       case "full":
@@ -164,7 +177,7 @@
     // 예전 NIMBUS 주소는 Garage Project 3의 Object 섹션으로 보낸다.
     if (id === "nimbus") { id = "garage3"; facet = facet || "object"; }
     var w = ALL.filter(function (x) { return x.id === id && !x.card; })[0] || WORKS[0];
-    var PAGES = (w.school ? SCHOOL : WORKS).filter(function (x) { return !x.card; });
+    var PAGES = (w.ongoing ? ONGOING : w.school ? SCHOOL : WORKS).filter(function (x) { return !x.card; });
     var i = PAGES.indexOf(w);
     document.title = w.title + (w.titleEn ? " " + w.titleEn : "") + " — Rihan Kim";
     var fc = w.facets && facet ? w.facets.filter(function (f) { return f.id === facet; })[0] : null;
@@ -182,10 +195,11 @@
       '<div class="run"><span>Rihan Kim — Portfolio</span><span>N° ' + num(w) + " / " + esc(w.titleEn || w.title) + "</span></div>" +
       '<section class="opener' + (w.hero.tall ? " opener--tall" : "") + '">' +
         '<div class="opener__info">' +
-          '<p class="opener__no">' + num(w) + " — " + esc(w.tag) + "</p>" +
+          '<p class="opener__no">' + num(w) + " — " + esc(w.tag) + (w.status ? ' <span class="badge">' + esc(w.status) + "</span>" : "") + "</p>" +
           '<h1 lang="ko">' + esc(w.title) + (w.titleEn ? '<span lang="en">' + esc(w.titleEn) + "</span>" : "") + "</h1>" +
           (w.line ? '<p class="opener__line" lang="ko">' + esc(w.line) + "</p>" : "") +
           facts(w) +
+          (w.site ? '<a class="more" href="' + w.site + '" target="_blank" rel="noopener">Visit site ↗</a>' : "") +
           (w.poster ? '<figure class="poster"><figcaption>Poster</figcaption>' + media(w.poster, "", true, "132px") + "</figure>" : "") +
         "</div>" +
         '<figure class="opener__media">' + hero + "</figure>" +
@@ -194,7 +208,7 @@
 
     var prev = PAGES[(i + PAGES.length - 1) % PAGES.length], next = PAGES[(i + 1) % PAGES.length];
     html += '<nav class="pager"><a href="work.html?id=' + prev.id + '"><small>Previous — ' + num(prev) + '</small><span lang="ko">' + esc(prev.title) + "</span></a>" +
-      (w.school ? '<a href="index.html#school"><small>Index</small><span>School Projects</span></a>' : '<a href="index.html#works"><small>Index</small><span>All works</span></a>') +
+      (w.ongoing ? '<a href="index.html#ongoing"><small>Index</small><span>Ongoing</span></a>' : w.school ? '<a href="index.html#school"><small>Index</small><span>School Projects</span></a>' : '<a href="index.html#works"><small>Index</small><span>All works</span></a>') +
       '<a href="work.html?id=' + next.id + '"><small>Next — ' + num(next) + '</small><span lang="ko">' + esc(next.title) + "</span></a></nav>";
     root.innerHTML = html;
   }

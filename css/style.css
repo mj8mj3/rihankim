@@ -159,6 +159,8 @@ h1, h2, h3, p { margin: 0; }
 .b-reel__video { justify-self: center; }
 .b-reel__video video { width: auto; height: min(90vh, 1200px); aspect-ratio: 9 / 16; background: #000; }
 
+.badge { display: inline-block; margin-left: 8px; padding: 2px 8px; border: 1px solid var(--ink); border-radius: 999px; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink); vertical-align: 1px; }
+
 /* work blocks */
 .work { padding-bottom: var(--step); }
 .work > section, .work > figure { padding-left: var(--gut); padding-right: var(--gut); margin-bottom: clamp(40px, 6vw, 96px); }
