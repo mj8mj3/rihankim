@@ -25,7 +25,7 @@
     return MEDIA + key(src) + "-" + w + ".webp";
   }
   function media(src, cls, eager, sizes) {
-    if (/\.mp4$/.test(src)) return '<video class="' + (cls || "") + '" src="' + MEDIA + src + '" poster="' + MEDIA + key(src) + '-poster.webp" autoplay muted loop playsinline preload="metadata"></video>';
+    if (/\.mp4$/.test(src)) return '<video class="' + (cls || "") + '" src="' + MEDIA + src + '" poster="' + MEDIA + key(src) + '-poster.webp" autoplay muted loop playsinline controls preload="metadata"></video>';
     var e = SIZES[key(src)];
     var attrs = e
       ? ' src="' + MEDIA + key(src) + "-" + e.w[0] + '.webp" srcset="' + srcset(key(src)) + '" sizes="' + (sizes || "100vw") + '" width="' + e.size[0] + '" height="' + e.size[1] + '"'
@@ -88,11 +88,13 @@
     var small = document.getElementById("small-grid"), toggle = document.getElementById("small-toggle");
     if (small && toggle) {
       // Reels: 인스타 게시물로 연결.
-      var reels = (window.SMALL || []).map(function (s) {
+      var reels = (window.SMALL || []).map(function (s, i) {
         return '<a class="small__item" href="' + s.url + '" target="_blank" rel="noopener">' +
+          '<span class="card__no">R' + pad(i + 1) + "</span>" +
           '<figure class="small__img">' + media(s.src) + "</figure>" +
           '<span class="card__title" lang="ko">' + esc(s.title) + "</span>" +
-          '<span class="card__meta">' + esc(s.date) + " — Instagram ↗</span></a>";
+          '<span class="card__meta">' + esc(s.date) + "</span>" +
+          '<span class="card__medium">' + esc(s.tool) + " — Instagram ↗</span></a>";
       }).join("");
       small.innerHTML = '<h3 class="label small__sub">Projects</h3><div class="small__row">' + projects + "</div>" +
         '<h3 class="label small__sub">Reels</h3><div class="small__row">' + reels + "</div>";

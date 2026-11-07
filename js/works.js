@@ -111,7 +111,8 @@ window.WORKS = [
         "우리는 누구나 마음 한편에 오래 머무는 생각과 시간의 덧칠로 이루어진 기억을 품고 살아간다. 그 기억들은 켜켜이 쌓여 하나의 집을 이루고, 이 작품은 그렇게 형성된 내면의 집에 닿고자 한다."
       ] },
       { t: "reel", src: "gwannyeom/reels.mp4", h: "Highlight — 60\" (full version 3'32\" on Instagram)", url: "https://www.instagram.com/p/DfMk1Yah3jI/", ko: ["외벽과 내벽, 두 개의 면에 프로젝션 매핑으로 펼쳐지는 사운드 인터랙티브 영상에서 1분을 골랐다. 소리를 켜고 보면 장면들이 소리에 반응해 움직이는 모습을 볼 수 있다. 3분 32초 전체 버전은 인스타그램에서 볼 수 있다."] },
-      { t: "section", h: "Live — 2026.10.31", ko: ["2026 HCF 미디어아트쇼 당일, 화성예술의전당 관객석에서 기록한 현장 사진."] },
+      { t: "section", h: "Live — 2026.10.31", ko: ["2026 HCF 미디어아트쇼 당일, 화성예술의전당 외벽에 투사된 현장 기록."] },
+      { t: "trio", src: ["gwannyeom/gwannyeom_live_01_opening.mp4", "gwannyeom/gwannyeom_live_02_structure.mp4", "gwannyeom/gwannyeom_live_03_city.mp4"], cap: "Live — opening / structure / city" },
       { t: "pair", src: ["gwannyeom/live1.jpg", "gwannyeom/live2.jpg"] },
       { t: "trio", src: ["gwannyeom/live3.jpg", "gwannyeom/live4.jpg", "gwannyeom/live5.jpg"] },
       { t: "trio", src: ["gwannyeom/live6.jpg", "gwannyeom/live7.jpg", "gwannyeom/live8.jpg"] },
@@ -169,6 +170,14 @@ window.WORKS = [
         "Left or Right, 어리버리, sunday morning, 사랑은 어쩌고, 발아, 뜨거, 못 죽는 기사와 비단 요람, Don't Look Back, HIGH, Rock like star — 곡의 성격에 맞춰 화면의 재료와 움직임을 달리했다."
       ] },
       { t: "pair", src: ["xmf/xmf_lucy_reactive_12s.mp4", "xmf/xmf_hrtzwav_reactive_12s.mp4"], cap: "Reactive visuals — LUCY, hrtz.wav" },
+      { t: "section", h: "On site — 2026.09.29–10.04", ko: ["작업실에서 영상을 준비하고, 무대 설치부터 리허설, 공연까지 현장의 운영석에서 LED 영상을 직접 운용했다."] },
+      { t: "trio", src: ["xmf/site02.jpg", "xmf/site03.jpg", "xmf/site04.jpg"] },
+      { t: "grid", cols: 4, src: ["xmf/site05.jpg", "xmf/site06.jpg", "xmf/site07.jpg", "xmf/site08.jpg"] },
+      { t: "full", src: "xmf/xmf_live_01_ledstage.mp4", narrow: true, cap: "LED stage — on site" },
+      { t: "trio", src: ["xmf/site09.jpg", "xmf/site14.jpg", "xmf/site15.jpg"] },
+      { t: "grid", cols: 4, src: ["xmf/site10.jpg", "xmf/site11.jpg", "xmf/site12.jpg", "xmf/site13.jpg"] },
+      { t: "grid", cols: 4, src: ["xmf/site16.jpg", "xmf/site17.jpg", "xmf/site18.jpg", "xmf/site19.jpg"] },
+      { t: "grid", cols: 4, src: ["xmf/site01.jpg", "xmf/site20.jpg"], cap: "Preparation / rehearsal pass" },
       { t: "grid", cols: 5, src: ["xmf/hifiunicorn_left_or_right_bubbles.jpg", "xmf/hrtzwav_eoribeori_A.jpg", "xmf/lucy_bara_A.jpg", "xmf/thefix_dont_look_back_B.jpg", "xmf/younha_rock_like_star_A.jpg", "xmf/hifiunicorn_left_or_right_firework.jpg", "xmf/hrtzwav_sunday_morning_B.jpg", "xmf/lucy_knight_cradle_A.jpg", "xmf/thefix_high_A.jpg", "xmf/younha_rock_like_star_C.jpg"], cap: "Stills by song — Hi-Fi Un!corn, hrtz.wav, LUCY, THE FIX, YOUNHA" }
     ]
   },
