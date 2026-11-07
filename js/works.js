@@ -223,7 +223,7 @@ window.WORKS = [
   },
   {
     id: "algomi",
-    small: true,
+    school: true,
     tag: "UX·GUI",
     title: "Algomi",
     titleEn: "Algorithm + Me",
@@ -244,7 +244,7 @@ window.WORKS = [
   },
   {
     id: "mi",
-    small: true,
+    school: true,
     tag: "Graphic·Drawing",
     card: true,
     title: "美 — 아름다울 미",
@@ -256,7 +256,7 @@ window.WORKS = [
   },
   {
     id: "bodoni",
-    small: true,
+    school: true,
     tag: "Graphic·Editorial",
     title: "Bodoni",
     titleEn: "Type Specimen Poster",
@@ -304,7 +304,7 @@ window.WORKS = [
   },
   {
     id: "lake",
-    small: true,
+    school: true,
     tag: "Media Art",
     title: "Lake for your own",
     year: 2023,

@@ -2,13 +2,13 @@
   var MEDIA = "assets/media/";
   var ALL = window.WORKS || [];
   var SIZES = window.MEDIA_SIZES || {};
-  // 대표 작업(Works)과 작은 작업(Small Works)을 나눈다. 번호는 각 묶음 안에서 매긴다.
-  var WORKS = ALL.filter(function (w) { return !w.small; });
-  var SMALLW = ALL.filter(function (w) { return w.small; });
+  // 대표 작업(Works)과 학교 과제(School Projects)를 나눈다. 번호는 각 묶음 안에서 매긴다.
+  var WORKS = ALL.filter(function (w) { return !w.school; });
+  var SCHOOL = ALL.filter(function (w) { return w.school; });
 
   function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
   function pad(n) { return (n < 10 ? "0" : "") + n; }
-  function num(w) { return w.small ? "S" + pad(SMALLW.indexOf(w) + 1) : pad(WORKS.indexOf(w) + 1); }
+  function num(w) { return w.school ? "P" + pad(SCHOOL.indexOf(w) + 1) : pad(WORKS.indexOf(w) + 1); }
 
   // 이미지와 mp4를 같은 방식으로 넣는다. mp4는 소리 없이 반복 재생.
   // 이미지는 js/media-sizes.js 목록이 있으면 WebP 여러 폭(srcset)으로, 없으면 파일 그대로 넣는다.
@@ -63,25 +63,28 @@
       });
     }
 
+    // School Projects: 상세가 있으면 상세로, 없으면(card) 이미지를 새 탭으로.
+    var school = document.getElementById("school-grid");
+    if (school) school.innerHTML = SCHOOL.map(function (w) {
+      var href = w.card ? MEDIA + w.cover : "work.html?id=" + w.id;
+      return '<a class="small__item small__item--project" href="' + href + '"' + (w.card ? ' target="_blank" rel="noopener"' : "") + ">" +
+        '<span class="card__no">' + num(w) + "</span>" +
+        '<figure class="small__img small__img--project">' + media(w.cover, "", false, "240px") + "</figure>" +
+        '<span class="card__title" lang="ko">' + esc(w.title) + "</span>" +
+        '<span class="card__meta">' + esc(w.year || "") + "</span>" +
+        '<span class="card__medium" lang="ko">' + esc(w.medium || "") + "</span></a>";
+    }).join("");
+
     var small = document.getElementById("small-grid"), toggle = document.getElementById("small-toggle");
     if (small && toggle) {
-      // Projects: 상세가 있으면 상세로, 없으면(card) 이미지를 새 탭으로. Reels: 인스타 게시물.
-      var projects = SMALLW.map(function (w) {
-        var href = w.card ? MEDIA + w.cover : "work.html?id=" + w.id;
-        return '<a class="small__item small__item--project" href="' + href + '"' + (w.card ? ' target="_blank" rel="noopener"' : "") + ">" +
-          '<figure class="small__img small__img--project">' + media(w.cover, "", false, "240px") + "</figure>" +
-          '<span class="card__title" lang="ko">' + esc(w.title) + "</span>" +
-          '<span class="card__meta">' + esc(w.year || "") + "</span>" +
-          '<span class="card__medium" lang="ko">' + esc(w.medium || "") + "</span></a>";
-      }).join("");
+      // Reels: 인스타 게시물로 연결.
       var reels = (window.SMALL || []).map(function (s) {
         return '<a class="small__item" href="' + s.url + '" target="_blank" rel="noopener">' +
           '<figure class="small__img">' + media(s.src) + "</figure>" +
           '<span class="card__title" lang="ko">' + esc(s.title) + "</span>" +
           '<span class="card__meta">' + esc(s.date) + " — Instagram ↗</span></a>";
       }).join("");
-      small.innerHTML = '<h3 class="label small__sub">Projects</h3><div class="small__row">' + projects + "</div>" +
-        '<h3 class="label small__sub">Reels</h3><div class="small__row">' + reels + "</div>";
+      small.innerHTML = '<div class="small__row">' + reels + "</div>";
       toggle.onclick = function () {
         var open = small.hidden;
         small.hidden = !open;
@@ -161,7 +164,7 @@
     // 예전 NIMBUS 주소는 Garage Project 3의 Object 섹션으로 보낸다.
     if (id === "nimbus") { id = "garage3"; facet = facet || "object"; }
     var w = ALL.filter(function (x) { return x.id === id && !x.card; })[0] || WORKS[0];
-    var PAGES = (w.small ? SMALLW : WORKS).filter(function (x) { return !x.card; });
+    var PAGES = (w.school ? SCHOOL : WORKS).filter(function (x) { return !x.card; });
     var i = PAGES.indexOf(w);
     document.title = w.title + (w.titleEn ? " " + w.titleEn : "") + " — Rihan Kim";
     var fc = w.facets && facet ? w.facets.filter(function (f) { return f.id === facet; })[0] : null;
@@ -191,7 +194,7 @@
 
     var prev = PAGES[(i + PAGES.length - 1) % PAGES.length], next = PAGES[(i + 1) % PAGES.length];
     html += '<nav class="pager"><a href="work.html?id=' + prev.id + '"><small>Previous — ' + num(prev) + '</small><span lang="ko">' + esc(prev.title) + "</span></a>" +
-      (w.small ? '<a href="index.html#small"><small>Index</small><span>Small Works</span></a>' : '<a href="index.html#works"><small>Index</small><span>All works</span></a>') +
+      (w.school ? '<a href="index.html#school"><small>Index</small><span>School Projects</span></a>' : '<a href="index.html#works"><small>Index</small><span>All works</span></a>') +
       '<a href="work.html?id=' + next.id + '"><small>Next — ' + num(next) + '</small><span lang="ko">' + esc(next.title) + "</span></a></nav>";
     root.innerHTML = html;
   }
