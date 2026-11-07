@@ -22,6 +22,11 @@ window.WORKS = [
         "〈관념 속의 집〉은 이처럼 저마다 다른 모습으로 존재하는 '마음속의 집'을 하나의 여정으로 엮음과 동시에, 작가 스스로 관념 속에 존재하는 그 어떤 상태에 다다르고자 시도하는 작업이다.",
         "우리는 누구나 마음 한편에 오래 머무는 생각과 시간의 덧칠로 이루어진 기억을 품고 살아간다. 그 기억들은 켜켜이 쌓여 하나의 집을 이루고, 이 작품은 그렇게 형성된 내면의 집에 닿고자 한다."
       ] },
+      { t: "section", h: "Live — 2026.10.31", ko: ["2026 HCF 미디어아트쇼 당일, 화성예술의전당 관객석에서 기록한 현장 실황."] },
+      { t: "full", src: "gwannyeom/live.mp4" },
+      { t: "pair", src: ["gwannyeom/live1.jpg", "gwannyeom/live2.jpg"] },
+      { t: "trio", src: ["gwannyeom/live3.jpg", "gwannyeom/live4.jpg", "gwannyeom/live5.jpg"] },
+      { t: "trio", src: ["gwannyeom/live6.jpg", "gwannyeom/live7.jpg", "gwannyeom/live8.jpg"] },
       { t: "trio", src: ["gwannyeom/s1.jpg", "gwannyeom/s3.jpg", "gwannyeom/s4.jpg"], cap: "Venue preview (3D)" },
       { t: "pair", src: ["gwannyeom/s5.jpg", "gwannyeom/s6.jpg"] }
     ]
@@ -40,7 +45,7 @@ window.WORKS = [
     credit: "Team houseCall (하우스콜)",
     collab: "화성시 향토무형문화재 승무보존위원회",
     cover: "seungmu/s07.jpg",
-    hero: { img: "seungmu/hero.jpg" },
+    hero: { video: "seungmu/preview.mp4", poster: "seungmu/hero.jpg" },
     line: "망자의 안녕을 비는 춤 승무와 함께, 용주사의 밤에서 낮으로 이어지는 프로젝션 매핑.",
     blocks: [
       { t: "text", ko: [
