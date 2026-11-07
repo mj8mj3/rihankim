@@ -7,7 +7,7 @@
   function num(w) { return pad(WORKS.indexOf(w) + 1); }
 
   // 이미지와 mp4를 같은 방식으로 넣는다. mp4는 소리 없이 반복 재생.
-  function media(src, cls) {
+  function media(src, cls, eager) {
     if (/\.mp4$/.test(src)) return '<video class="' + (cls || "") + '" src="' + MEDIA + src + '" autoplay muted loop playsinline preload="metadata"></video>';
     return '<img class="' + (cls || "") + '" src="' + MEDIA + src + '" alt="" loading="lazy">';
   }
@@ -85,7 +85,7 @@
 
     var hero = w.hero.video
       ? '<video src="' + MEDIA + w.hero.video + '" poster="' + MEDIA + w.hero.poster + '" autoplay muted loop playsinline></video>'
-      : media(w.hero.img);
+      : media(w.hero.img, "", true);
 
     var html =
       '<div class="run"><span>Rihan Kim — Portfolio</span><span>N° ' + num(w) + " / " + esc(w.titleEn || w.title) + "</span></div>" +
@@ -95,7 +95,7 @@
           '<h1 lang="ko">' + esc(w.title) + (w.titleEn ? '<span lang="en">' + esc(w.titleEn) + "</span>" : "") + "</h1>" +
           (w.line ? '<p class="opener__line" lang="ko">' + esc(w.line) + "</p>" : "") +
           facts(w) +
-          (w.poster ? '<figure class="poster"><figcaption>Poster</figcaption>' + media(w.poster) + "</figure>" : "") +
+          (w.poster ? '<figure class="poster"><figcaption>Poster</figcaption>' + media(w.poster, "", true) + "</figure>" : "") +
         "</div>" +
         '<figure class="opener__media">' + hero + "</figure>" +
       "</section>" +
