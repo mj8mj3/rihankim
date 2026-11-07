@@ -93,8 +93,8 @@ window.WORKS = [
     size: "Variable",
     credit: "2인 공동 작업",
     poster: "chungman/poster.jpg",
-    cover: "chungman/c05.jpg",
-    hero: { img: "chungman/c01.jpg" },
+    cover: "chungman/overview.jpg",
+    hero: { img: "chungman/overview.jpg", tall: true },
     line: "계속해서 주어진다. 감당의 여부는 중요하지 않다. '나'는 그것을 감아낸다.",
     blocks: [
       { t: "text", lead: true, ko: [
@@ -103,6 +103,7 @@ window.WORKS = [
       { t: "text", ko: [
         "세상은 여러 발전을 이루었고 이루 말할 수 없는 풍요를 안겨주었다. 그러한 세계는 우리에게 확정적인 행복을 보장하는가. 많은 것이 빠르게 변화하고 쏟아져 나오는 동안, 우리는 그 속도에 온전히 닿지 못한 채 살아간다. 이 작품은 그 간극에서 발생하는 불안과 소외를 바라보며, 외부 상황 속 내면의 심리에 질문한다."
       ] },
+      { t: "full", src: "chungman/c01.jpg" },
       { t: "pair", src: ["chungman/c02.jpg", "chungman/c03.jpg"] },
       { t: "trio", src: ["chungman/c04.jpg", "chungman/c06.jpg", "chungman/c07.jpg"] },
       { t: "text", ko: [
