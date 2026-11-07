@@ -143,6 +143,9 @@ h1, h2, h3, p { margin: 0; }
 .facet__head p { font-size: 13px; color: var(--mute); }
 .facet__link { font-size: 12px; color: var(--mute); justify-self: start; border-bottom: 1px solid var(--line); }
 
+.b-list { grid-column: 2; list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.b-list li { padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+
 /* work blocks */
 .work { padding-bottom: var(--step); }
 .work > section, .work > figure { padding-left: var(--gut); padding-right: var(--gut); margin-bottom: clamp(40px, 6vw, 96px); }
@@ -211,7 +214,7 @@ h1, h2, h3, p { margin: 0; }
   .opener, .b-text, .b-yt, .about__grid { grid-template-columns: 1fr; }
   .opener__media { order: -1; }
   .opener--tall .opener__media { justify-self: stretch; width: 100%; }
-  .b-text__body, .b-yt__frame { grid-column: 1; }
+  .b-text__body, .b-yt__frame, .b-list { grid-column: 1; }
   .index__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .small__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .b-section { grid-template-columns: 1fr; }

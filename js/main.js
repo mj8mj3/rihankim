@@ -83,6 +83,8 @@
         return '<section class="b-text' + (b.lead ? " b-text--lead" : "") + '"><div class="b-text__body">' + b.ko.map(function (p) { return ko(p); }).join("") + "</div></section>";
       case "section":
         return '<section class="b-section"><h2 class="label">' + esc(b.h) + '</h2><div class="b-text__body">' + b.ko.map(function (p) { return ko(p); }).join("") + "</div></section>";
+      case "list":
+        return '<section class="b-text"><ul class="b-list" lang="ko">' + b.items.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul></section>";
       case "full":
         return '<figure class="b-full' + (b.narrow ? " b-full--narrow" : "") + '">' + media(b.src) + cap(b) + "</figure>";
       case "pair":
@@ -93,7 +95,7 @@
       case "yt":
         return '<figure class="b-yt"><div class="b-yt__frame"><iframe src="https://www.youtube-nocookie.com/embed/' + b.id + '?rel=0" title="Video" loading="lazy" allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div></figure>';
       case "process":
-        return '<section class="b-process"><h2 class="label">Process</h2><ol>' + b.steps.map(function (s, i) {
+        return '<section class="b-process"><h2 class="label">' + esc(b.h || "Process") + "</h2><ol>" + b.steps.map(function (s, i) {
           return "<li><span>" + pad(i + 1) + " " + esc(s.h) + "</span>" + ko(s.ko) + "</li>";
         }).join("") + "</ol>" + (b.src ? '<div class="b-row b-row--' + b.src.length + '">' + b.src.map(function (s) { return "<div>" + media(s) + "</div>"; }).join("") + "</div>" : "") + "</section>";
     }

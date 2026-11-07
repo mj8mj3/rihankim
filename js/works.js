@@ -137,7 +137,7 @@ window.WORKS = [
     place: "섭골길 일대, 조치원",
     exhibition: "Garage Project 3 \"Find your Sp( )t\"",
     medium: "Collective shop — planning, branding, space, operation, program / Object: NIMBUS (steel mesh pendant light)",
-    role: "Space design · fixtures & furniture (Team MOIN) / NIMBUS (solo)",
+    role: "Space design · Fixtures & furniture making (Team MOIN) / NIMBUS (solo)",
     cover: "nimbus/n09.jpg",
     hero: { img: "garage3/ov_space.jpg" },
     line: "사람과 시대와 사물이 한 방에 모이는 collective shop MOIN, 그리고 그 안에 띄운 철제 메쉬 조명 NIMBUS.",
@@ -169,13 +169,18 @@ window.WORKS = [
         { t: "pair", src: ["garage3/br_logo.jpg", "garage3/br_symbol.jpg"] },
         { t: "full", src: "garage3/br_symbol_mid.jpg", narrow: true }
       ] },
-      { id: "space", label: "Space", credit: "Team MOIN — space design, fixtures & furniture: 김리한 참여", blocks: [
+      { id: "space", label: "Space", credit: "Team MOIN — space design · fixtures & furniture making: 김리한", blocks: [
         { t: "text", ko: [
           "공간은 ENJOY, DISPLAY, REST, PURCHASE 구역으로 나눴다. 낮은 테이블과 눈높이의 행잉 조명으로 컵이 놓이는 높낮이에 변주를 주고, 2층은 좌식 카페트와 낮은 탁자로 프라이빗하게 감쌌다. 무드보드의 키워드는 collected, nonchalant, handcrafted, natural texture, aged."
         ] },
         { t: "pair", src: ["garage3/sp_iso.jpg", "garage3/sp_zones.jpg"] },
         { t: "pair", src: ["garage3/sp_display1.jpg", "garage3/sp_display2.jpg"] },
-        { t: "trio", src: ["garage3/sp_plan.jpg", "garage3/sp_section.jpg", "garage3/sp_zoning.jpg"] }
+        { t: "trio", src: ["garage3/sp_plan.jpg", "garage3/sp_section.jpg", "garage3/sp_zoning.jpg"] },
+        { t: "section", h: "Fixtures — 김리한 제작", ko: [
+          "스탠딩 테이블과 벤치를 직접 만들었다. 컵이 놓이는 로우 테이블은 테이블소로 직접 깎아 형태를 냈고, 공간 곳곳에 둔 돌은 직접 주워 왔다."
+        ] },
+        { t: "list", items: ["Standing table — 직접 제작", "Bench — 직접 제작", "Low table — 테이블소로 직접 가공", "Stones — 직접 수집"] },
+        { t: "trio", src: ["nimbus/n03.jpg", "nimbus/n05.jpg", "nimbus/n06.jpg"], cap: "Low table, stones, standing tables and benches in the space" }
       ] },
       { id: "operation", label: "Operation", credit: "Team MOIN", blocks: [
         { t: "text", ko: [
@@ -199,8 +204,17 @@ window.WORKS = [
       ] },
       { id: "program", label: "Program", credit: "Team MOIN", blocks: [
         { t: "text", ko: [
-          "낮과 밤의 프로그램을 따로 짰다. 첫날 밤 DJ PARTY는 하이퍼팝과 테크노가 흐르는 공간에서 게임과 비밀 미션으로 처음 만난 사람들이 자연스럽게 이야기하게 했고, 둘째 날 밤 TEA TASTING은 사전 예약한 열 명이 각자 좋아하는 음악 한 곡과 세 가지 차를 나누며 서로의 취향을 공유하는 시간이었다."
-        ] }
+          "3일 동안 낮과 밤을 다르게 운영했다. 낮은 사물을 발견하는 시간, 밤은 사람과 사람이 이어지는 시간이다. 낮에는 매일 같은 방식으로 컵을 고르고 음료를 즐기게 했고, 밤은 날마다 다른 콘셉트로 꾸렸다."
+        ] },
+        { t: "process", h: "Day / Night", steps: [
+          { h: "Daytime — every day", ko: "사물을 발견하는 시간. 방문객이 진열된 컵 가운데 하나를 고르면 그 컵에 음료를 담아 낸다." },
+          { h: "1st Night — DJ Party", ko: "Hyperpop과 Techno 디제잉이 흐르는 공간에서 비어퐁과 시크릿 미션을 함께 즐긴다. 팀을 이루어 게임을 하고 각자 받은 비밀 미션을 수행하며 자연스럽게 대화하고 교류한다." },
+          { h: "2nd Night — Tea Tasting", ko: "사전 예약으로 모인 10명이 각자 좋아하는 음악 한 곡을 골라 오고, 준비된 세 종류의 차를 함께 맛보며 서로의 플레이리스트를 나눈다." },
+          { h: "3rd Night — Movie Night", ko: "마지막 밤, 넓은 공간을 최대한 열어 모두가 함께 영화를 본다." }
+        ] },
+        { t: "pair", src: ["garage3/pg_night.jpg", "garage3/pg_dj1.jpg"] },
+        { t: "full", src: "garage3/pg_dj2.jpg" },
+        { t: "pair", src: ["garage3/pg_tea1.jpg", "garage3/pg_tea2.jpg"], cap: "1st Night DJ Party / 2nd Night Tea Tasting" }
       ] }
     ]
   },
