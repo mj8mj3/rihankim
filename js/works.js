@@ -159,6 +159,8 @@ window.WORKS = [
         { t: "text", ko: [
           "개인 기획 노트에서는 '시간의 흔적, 낡음의 미학'을 붙잡았다. 새것을 낡아 보이게 만드는 대신 시간이 만든 흔적을 그대로 담는 오브젝트를 인사이트 트립에서 발로 뛰며 모으고, 고쳐서 공간에 두는 방향이다. 현장 답사에서는 뻥 뚫린 2층 공간을 조금 더 아늑하고 프라이빗하게 감싸는 방법을 고민했다."
         ] },
+        { t: "section", h: "Insight trip — 강릉, 2026.08.10–11", ko: ["강릉의 소품샵과 거리를 걸으며 시간이 만든 흔적이 남은 사물들을 찾아다녔다."] },
+        { t: "full", src: "garage3/pl_trip.jpg", narrow: true },
         { t: "trio", src: ["garage3/pl_rihan1.jpg", "garage3/pl_rihan2.jpg", "garage3/pl_rihan3.jpg"] },
         { t: "pair", src: ["garage3/pl_rihan4.jpg", "garage3/pl_rihan5.jpg"], cap: "Personal planning notes & site survey" }
       ] },
