@@ -2,7 +2,7 @@
   var MEDIA = "assets/media/";
   var ALL = window.WORKS || [];
   var SIZES = window.MEDIA_SIZES || {};
-  // 대표 작업(Works)과 학교 과제(School Projects)를 나눈다. 번호는 각 묶음 안에서 매긴다.
+  // 대표 작업(Works)과 작은 프로젝트(Small Works 안 Projects)를 나눈다. 번호는 각 묶음 안에서 매긴다.
   var WORKS = ALL.filter(function (w) { return !w.school && !w.ongoing; });
   var ONGOING = ALL.filter(function (w) { return w.ongoing; });
   var SCHOOL = ALL.filter(function (w) { return w.school; });
@@ -74,9 +74,8 @@
         '<span class="card__meta">' + esc(w.period) + " — " + esc(w.exhibition) + "</span></a>";
     }).join("");
 
-    // School Projects: 상세가 있으면 상세로, 없으면(card) 이미지를 새 탭으로.
-    var school = document.getElementById("school-grid");
-    if (school) school.innerHTML = SCHOOL.map(function (w) {
+    // Small Works — Projects: 상세가 있으면 상세로, 없으면(card) 이미지를 새 탭으로.
+    var projects = SCHOOL.map(function (w) {
       var href = w.card ? MEDIA + w.cover : "work.html?id=" + w.id;
       return '<a class="small__item small__item--project" href="' + href + '"' + (w.card ? ' target="_blank" rel="noopener"' : "") + ">" +
         '<span class="card__no">' + num(w) + "</span>" +
@@ -95,7 +94,8 @@
           '<span class="card__title" lang="ko">' + esc(s.title) + "</span>" +
           '<span class="card__meta">' + esc(s.date) + " — Instagram ↗</span></a>";
       }).join("");
-      small.innerHTML = '<div class="small__row">' + reels + "</div>";
+      small.innerHTML = '<h3 class="label small__sub">Projects</h3><div class="small__row">' + projects + "</div>" +
+        '<h3 class="label small__sub">Reels</h3><div class="small__row">' + reels + "</div>";
       toggle.onclick = function () {
         var open = small.hidden;
         small.hidden = !open;
@@ -208,7 +208,7 @@
 
     var prev = PAGES[(i + PAGES.length - 1) % PAGES.length], next = PAGES[(i + 1) % PAGES.length];
     html += '<nav class="pager"><a href="work.html?id=' + prev.id + '"><small>Previous — ' + num(prev) + '</small><span lang="ko">' + esc(prev.title) + "</span></a>" +
-      (w.ongoing ? '<a href="index.html#ongoing"><small>Index</small><span>Ongoing</span></a>' : w.school ? '<a href="index.html#school"><small>Index</small><span>School Projects</span></a>' : '<a href="index.html#works"><small>Index</small><span>All works</span></a>') +
+      (w.ongoing ? '<a href="index.html#ongoing"><small>Index</small><span>Ongoing</span></a>' : w.school ? '<a href="index.html#small"><small>Index</small><span>Small Works</span></a>' : '<a href="index.html#works"><small>Index</small><span>All works</span></a>') +
       '<a href="work.html?id=' + next.id + '"><small>Next — ' + num(next) + '</small><span lang="ko">' + esc(next.title) + "</span></a></nav>";
     root.innerHTML = html;
   }

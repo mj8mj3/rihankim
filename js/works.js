@@ -340,7 +340,7 @@ window.WORKS = [
     period: "2026.06",
     medium: "흑지, 화이트 마카, 실크원단",
     size: "297 × 420 mm",
-    cover: "mi/cover.jpg"
+    cover: "mi/cover.png"
   },
   {
     id: "bodoni",

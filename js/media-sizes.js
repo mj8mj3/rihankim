@@ -172,4 +172,5 @@ window.MEDIA_SIZES = {"gwannyeom/s1":{"w":[960,1920,2304],"size":[2304,2880]},
 "sdf/cover_draft_C":{"w":[729],"size":[729,516]},
 "sdf/cover_draft_D":{"w":[729],"size":[729,516]},
 "sdf/cover_draft_E":{"w":[729],"size":[729,516]},
-"sdf/proc_requests":{"w":[1200,1980],"size":[1980,1796]}};
+"sdf/proc_requests":{"w":[1200,1980],"size":[1980,1796]},
+"mi/cover":{"w":[900],"size":[900,1124]}};
