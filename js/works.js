@@ -71,14 +71,14 @@ window.WORKS = [
     place: "인천 파라다이스시티 Paradise City, Incheon",
     exhibition: "XMF 2026 (Xnterstellar Music Festival)",
     medium: "Audio-reactive real-time visuals for stage LED, TouchDesigner",
-    credit: "Personal work",
+    role: "LED Visual Production & Live Operation",
     artists: "Hi-Fi Un!corn, hrtz.wav, LUCY, THE FIX, YOUNHA",
     cover: "xmf/lucy_knight_cradle_A.jpg",
     hero: { video: "xmf/xmf_lucy_stage_15s.mp4", poster: "xmf/hero.jpg" },
-    line: "다섯 팀의 무대 LED에 곡마다 띄운, 소리에 반응하는 실시간 영상.",
+    line: "XMF 2026 한국 아티스트 무대 LED 영상 중 일부를 TouchDesigner로 제작하고 현장에서 운용했다.",
     blocks: [
       { t: "text", ko: [
-        "한일 음악 페스티벌 XMF 2026의 무대 LED 영상을 만들었다. Hi-Fi Un!corn, hrtz.wav, LUCY, THE FIX, YOUNHA 다섯 팀의 곡마다 따로 영상을 짓고, 공연 중에는 소리에 반응하도록 TouchDesigner로 실시간으로 돌렸다.",
+        "XMF 2026 한국 아티스트 무대 LED 영상 중 일부를 TouchDesigner로 제작하고 현장에서 운용했다. 이 페이지에는 그중 직접 만든 Hi-Fi Un!corn, hrtz.wav, LUCY, THE FIX, YOUNHA 무대의 곡별 영상을 모았다. 공연 중에는 소리에 반응하도록 실시간으로 돌렸다.",
         "Left or Right, 어리버리, sunday morning, 사랑은 어쩌고, 발아, 뜨거, 못 죽는 기사와 비단 요람, Don't Look Back, HIGH, Rock like star — 곡의 성격에 맞춰 화면의 재료와 움직임을 달리했다."
       ] },
       { t: "pair", src: ["xmf/xmf_lucy_reactive_12s.mp4", "xmf/xmf_hrtzwav_reactive_12s.mp4"], cap: "Reactive visuals — LUCY, hrtz.wav" },
@@ -128,34 +128,80 @@ window.WORKS = [
     ]
   },
   {
-    id: "nimbus",
-    tag: "Object",
-    title: "NIMBUS",
+    id: "garage3",
+    tag: "Space·Object",
+    title: "Garage Project 3 — Team MOIN",
+    titleEn: "(NIMBUS)",
     year: 2026,
     period: "2026.08.31–09.03",
     place: "섭골길 일대, 조치원",
     exhibition: "Garage Project 3 \"Find your Sp( )t\"",
-    medium: "Steel mesh, pendant light",
-    size: "300 × 700 × 500 mm",
-    credit: "Personal work — Team MOIN",
+    medium: "Collective shop — planning, branding, space, operation, program / Object: NIMBUS (steel mesh pendant light)",
+    role: "Space design · fixtures & furniture (Team MOIN) / NIMBUS (solo)",
     cover: "nimbus/n09.jpg",
-    hero: { img: "nimbus/n01.jpg" },
-    line: "겹쳐 쌓은 철제 메쉬가 구름처럼 공간에 떠 있는 펜던트 조명.",
-    blocks: [
-      { t: "text", ko: [
+    hero: { img: "garage3/ov_space.jpg" },
+    line: "사람과 시대와 사물이 한 방에 모이는 collective shop MOIN, 그리고 그 안에 띄운 철제 메쉬 조명 NIMBUS.",
+    facets: [
+      { id: "overview", label: "Overview", credit: "Team MOIN", blocks: [
+        { t: "text", ko: [
+          "Garage Project 3 \"Find your Sp( )t\"는 조치원 섭골길 골목 곳곳의 공간에서 열린 프로젝트다. 'Spot'은 내 취향이 세상과 만나는 점이자, 서로의 관심이 이어져 만들어지는 문화의 거리를 뜻한다.",
+          "팀 MOIN은 '사람들을 불러 모으기 위해 오래전부터 사물을 수집해온 한 컬렉터의 공간'이라는 설정의 collective shop을 열었다. 팀이 함께 기획·브랜딩·공간·운영·프로그램을 만들고, 팀원 각자는 그 공간 안에 놓일 개인 작품을 만들었다. 김리한은 공간 디자인과 집기·가구 제작을 맡았고, 개인 작품으로 펜던트 조명 NIMBUS를 만들었다.",
+          "방문객들은 '조치원에서 못 보던 공간 같다', '감도 높다', '편안하고 아늑하다'고 말했다. 감도를 과시하기보다 편안하게 체감할 수 있는 공간을 만들고자 했던 의도가 그 반응 속에서 확인되었다."
+        ] },
+        { t: "full", src: "garage3/ov_feedback.jpg" }
+      ] },
+      { id: "planning", label: "Planning", credit: "Team MOIN · personal notes: 김리한", blocks: [
+        { t: "text", ko: [
+          "조치원(鳥致院)은 충청권의 남북과 동서를 잇는 요충지이자 사람과 물산이 모이던 곳이다. 이름의 '원(院)'은 말을 묶어 두고 쉬어 가던 조선시대의 역원에서 왔다. 오늘의 조치원은 더 이상 중심지가 아니고 사람들은 흩어졌다. 팀은 여기서 다시 사람을 모으는 컬렉터의 공간을 떠올렸다.",
+          "관람과 사용, 감상과 구매의 경계가 나뉘지 않는 체류형 컬렉트 숍, 그 중심에는 컵이 있다. 콘셉트는 '사물이 모인다, 사람들이 모인다, 취향이 모인다'로 정리했다."
+        ] },
+        { t: "grid", cols: 5, src: ["garage3/pl_team1.jpg", "garage3/pl_team2.jpg", "garage3/pl_team3.jpg", "garage3/pl_team4.jpg", "garage3/pl_team5.jpg"] },
+        { t: "text", ko: [
+          "개인 기획 노트에서는 '시간의 흔적, 낡음의 미학'을 붙잡았다. 새것을 낡아 보이게 만드는 대신 시간이 만든 흔적을 그대로 담는 오브젝트를 인사이트 트립에서 발로 뛰며 모으고, 고쳐서 공간에 두는 방향이다. 현장 답사에서는 뻥 뚫린 2층 공간을 조금 더 아늑하고 프라이빗하게 감싸는 방법을 고민했다."
+        ] },
+        { t: "trio", src: ["garage3/pl_rihan1.jpg", "garage3/pl_rihan2.jpg", "garage3/pl_rihan3.jpg"] },
+        { t: "pair", src: ["garage3/pl_rihan4.jpg", "garage3/pl_rihan5.jpg"], cap: "Personal planning notes & site survey" }
+      ] },
+      { id: "branding", label: "Branding", credit: "Team MOIN", blocks: [
+        { t: "text", ko: [
+          "MOIN은 '모인'에서 왔다. 슬로건은 People, Times and Objects Gathered in One Room. 심볼은 서로 다른 방향에서 사람들이 하나의 중심을 향해 모이는 모습을 그렸다. 중심의 작은 형태들은 한곳에 모인 사람들을, 바깥으로 뻗는 선들은 그 만남에서 다시 퍼져 나가는 관계와 이야기를 뜻한다. 손으로 그린 듯 불규칙한 선으로 다듬었다."
+        ] },
+        { t: "pair", src: ["garage3/br_logo.jpg", "garage3/br_symbol.jpg"] },
+        { t: "full", src: "garage3/br_symbol_mid.jpg", narrow: true }
+      ] },
+      { id: "space", label: "Space", credit: "Team MOIN — space design, fixtures & furniture: 김리한 참여", blocks: [
+        { t: "text", ko: [
+          "공간은 ENJOY, DISPLAY, REST, PURCHASE 구역으로 나눴다. 낮은 테이블과 눈높이의 행잉 조명으로 컵이 놓이는 높낮이에 변주를 주고, 2층은 좌식 카페트와 낮은 탁자로 프라이빗하게 감쌌다. 무드보드의 키워드는 collected, nonchalant, handcrafted, natural texture, aged."
+        ] },
+        { t: "pair", src: ["garage3/sp_iso.jpg", "garage3/sp_zones.jpg"] },
+        { t: "pair", src: ["garage3/sp_display1.jpg", "garage3/sp_display2.jpg"] },
+        { t: "trio", src: ["garage3/sp_plan.jpg", "garage3/sp_section.jpg", "garage3/sp_zoning.jpg"] }
+      ] },
+      { id: "operation", label: "Operation", credit: "Team MOIN", blocks: [
+        { t: "text", ko: [
+          "MOIN에서는 모든 것을 살 수 있다. 방문객이 고른 컵에 음료를 담아 내고, 쓴 컵은 씻고 포장해 각자의 공간으로 가져가게 했다. 컵 외의 사물은 전시가 끝난 뒤 받는 예약판매로 운영했다. 낮은 사물을 발견하는 시간, 밤은 사람과 사람이 이어지는 시간으로, 조도와 조명의 색, 음료로 둘을 나눴다."
+        ] },
+        { t: "full", src: "garage3/op_cup.jpg", narrow: true }
+      ] },
+      { id: "object", label: "Object: NIMBUS", credit: "김리한 (solo) — Steel mesh, pendant light, 300 × 700 × 500 mm", blocks: [
+        { t: "text", ko: [
         "철제 메쉬의 물성을 활용하고자 재료를 겹치고 쌓는 방식을 택했고 그것이 자연스럽게 형태의 출발점이 되었다. 낱장의 메쉬는 평면적이고 규칙적인 구조를 가지지만, 여러 겹이 적층되면서 예상하지 못한 곡면과 부피를 만들어낸다.",
         "조명이 놓이는 공간 역시 사물과 사람, 서로 다른 취향이 한곳에 모이는 장소를 전제로 한다. 서로 다른 것들이 모여 하나의 장면을 이루는 공간의 성격과, 개별적인 메쉬가 축적되며 하나의 덩어리로 변해가는 방식 사이의 유사성을 조명의 형태로 연결했다.",
         "겹쳐진 메쉬가 만들어내는 불분명한 윤곽과 밀도에서는 구름의 형상을 떠올렸다. 명확한 경계 없이 뭉치고 흩어지며 공중에 머무는 구름의 성질을 따라, 이 덩어리를 바닥에 두기보다 공간에 띄우는 펜던트 조명의 형식으로 완성했다. 불이 들어오면 촘촘한 격자 사이로 빛이 걸러지고 중첩되며, 단단한 철제는 시각적으로 가볍고 부유하는 덩어리로 전환된다."
       ] },
-      { t: "pair", src: ["nimbus/n02.jpg", "nimbus/n03.jpg"] },
-      { t: "full", src: "nimbus/n04.jpg" },
-      { t: "trio", src: ["nimbus/n05.jpg", "nimbus/n06.jpg", "nimbus/n07.jpg"] },
-      { t: "pair", src: ["nimbus/n09.jpg", "nimbus/n10.jpg"] },
-      { t: "full", src: "nimbus/n08.jpg" },
-      { t: "section", h: "Team MOIN — Space & Branding", ko: ["Garage Project 3에서 팀 MOIN의 공간 구성과 브랜딩을 함께 맡았다. MOIN은 사람들을 불러 모으기 위해 오래전부터 사물을 수집해온 한 컬렉터의 공간이라는 설정의 collective shop으로, 서로 다른 시대와 배경의 사물이 각자의 개성을 유지한 채 공존하고 방문객이 사물을 직접 쓰며 머물 때 완성된다. '사물이 모인다, 사람들이 모인다, 취향이 모인다'를 콘셉트로, 서로 다른 방향에서 하나의 중심으로 모이는 모습을 심볼로 삼았다."] },
-      { t: "pair", src: ["nimbus/moin1.jpg", "nimbus/moin2.jpg"] },
-      { t: "pair", src: ["nimbus/moin3.jpg", "nimbus/moin4.jpg"] },
-      { t: "pair", src: ["nimbus/moin5.jpg", "nimbus/moin6.jpg"] }
+        { t: "full", src: "nimbus/n01.jpg" },
+        { t: "pair", src: ["nimbus/n02.jpg", "nimbus/n03.jpg"] },
+        { t: "full", src: "nimbus/n04.jpg" },
+        { t: "trio", src: ["nimbus/n05.jpg", "nimbus/n06.jpg", "nimbus/n07.jpg"] },
+        { t: "pair", src: ["nimbus/n09.jpg", "nimbus/n10.jpg"] },
+        { t: "full", src: "nimbus/n08.jpg" },
+        { t: "pair", src: ["garage3/ob_drawing.jpg", "garage3/sp_display1.jpg"], cap: "Drawing / planned position in DISPLAY(1)" }
+      ] },
+      { id: "program", label: "Program", credit: "Team MOIN", blocks: [
+        { t: "text", ko: [
+          "낮과 밤의 프로그램을 따로 짰다. 첫날 밤 DJ PARTY는 하이퍼팝과 테크노가 흐르는 공간에서 게임과 비밀 미션으로 처음 만난 사람들이 자연스럽게 이야기하게 했고, 둘째 날 밤 TEA TASTING은 사전 예약한 열 명이 각자 좋아하는 음악 한 곡과 세 가지 차를 나누며 서로의 취향을 공유하는 시간이었다."
+        ] }
+      ] }
     ]
   },
   {

@@ -67,6 +67,7 @@
       ["Medium", w.medium],
       ["Size", w.size],
       ["Duration", w.duration],
+      ["Role", w.role],
       ["Credit", w.credit],
       ["Collaboration", w.collab],
       ["Artists", w.artists]
@@ -98,17 +99,33 @@
     }
     return "";
   }
+  // 분야별 섹션: 위쪽 탭(All + 분야), 각 섹션 #앵커, &facet= 로 한 분야만 보기.
+  function facets(w, fc) {
+    var base = "work.html?id=" + w.id;
+    var tabs = '<nav class="facet-tabs" aria-label="Sections"><a href="' + base + '"' + (fc ? "" : ' aria-current="page"') + ">All</a>" +
+      w.facets.map(function (f) { return '<a href="' + base + "&facet=" + f.id + '"' + (fc === f ? ' aria-current="page"' : "") + ">" + esc(f.label) + "</a>"; }).join("") + "</nav>";
+    return tabs + (fc ? [fc] : w.facets).map(function (f) {
+      return '<section class="facet" id="' + f.id + '"><header class="facet__head"><h2>' + esc(f.label) + '</h2><p lang="ko">' + esc(f.credit || "") + "</p>" +
+        (fc ? "" : '<a class="facet__link" href="' + base + "&facet=" + f.id + '">View only this section →</a>') + "</header>" +
+        f.blocks.map(block).join("") + "</section>";
+    }).join("");
+  }
   function cap(b) { return b.cap ? "<figcaption>" + esc(b.cap) + "</figcaption>" : ""; }
 
   function renderWork() {
     var root = document.getElementById("work");
     if (!root) return;
-    var id = new URLSearchParams(location.search).get("id");
+    var q = new URLSearchParams(location.search);
+    var id = q.get("id"), facet = q.get("facet");
+    // 예전 NIMBUS 주소는 Garage Project 3의 Object 섹션으로 보낸다.
+    if (id === "nimbus") { id = "garage3"; facet = facet || "object"; }
     var PAGES = WORKS.filter(function (x) { return !x.card; });
     var w = PAGES.filter(function (x) { return x.id === id; })[0] || PAGES[0];
     var i = PAGES.indexOf(w);
     document.title = w.title + (w.titleEn ? " " + w.titleEn : "") + " — Rihan Kim";
-    var url = "https://rihankim.com/work.html?id=" + w.id;
+    var fc = w.facets && facet ? w.facets.filter(function (f) { return f.id === facet; })[0] : null;
+    if (fc) document.title = w.title + " — " + fc.label + " — Rihan Kim";
+    var url = "https://rihankim.com/work.html?id=" + w.id + (fc ? "&facet=" + fc.id : "");
     [["link[rel=canonical]", "href", url], ['meta[property="og:url"]', "content", url], ['meta[property="og:title"]', "content", document.title]].forEach(function (x) {
       var el = document.querySelector(x[0]); if (el) el.setAttribute(x[1], x[2]);
     });
@@ -129,7 +146,7 @@
         "</div>" +
         '<figure class="opener__media">' + hero + "</figure>" +
       "</section>" +
-      w.blocks.map(block).join("");
+      (w.facets ? facets(w, fc) : w.blocks.map(block).join(""));
 
     var prev = PAGES[(i + PAGES.length - 1) % PAGES.length], next = PAGES[(i + 1) % PAGES.length];
     html += '<nav class="pager"><a href="work.html?id=' + prev.id + '"><small>Previous — ' + num(prev) + '</small><span lang="ko">' + esc(prev.title) + "</span></a>" +
