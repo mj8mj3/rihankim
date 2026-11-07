@@ -9,7 +9,7 @@
   // 이미지와 mp4를 같은 방식으로 넣는다. mp4는 소리 없이 반복 재생.
   function media(src, cls, eager) {
     if (/\.mp4$/.test(src)) return '<video class="' + (cls || "") + '" src="' + MEDIA + src + '" autoplay muted loop playsinline preload="metadata"></video>';
-    return '<img class="' + (cls || "") + '" src="' + MEDIA + src + '" alt="" loading="lazy">';
+    return '<img class="' + (cls || "") + '" src="' + MEDIA + src + '" alt=""' + (eager ? "" : ' loading="lazy"') + ">";
   }
   function ko(text, tag) { return "<" + (tag || "p") + ' lang="ko">' + esc(text) + "</" + (tag || "p") + ">"; }
 
