@@ -13,8 +13,8 @@ window.WORKS = [
     medium: "Sound interactive visual, two-surface projection mapping (outer & inner wall), TouchDesigner",
     duration: "3'32\"",
     credit: "Visual & Sound — 김리한",
-    cover: "gwannyeom/s2.jpg",
-    hero: { video: "gwannyeom/clip.mp4", poster: "gwannyeom/wide.jpg" },
+    cover: "gwannyeom/s4.jpg",
+    hero: { video: "gwannyeom/clip.mp4", poster: "gwannyeom/clip-poster.webp" },
     line: "외벽과 내벽, 두 개의 면에 프로젝션 매핑으로 펼쳐지는 사운드 인터랙티브 영상.",
     blocks: [
       { t: "text", ko: [
@@ -22,13 +22,12 @@ window.WORKS = [
         "〈관념 속의 집〉은 이처럼 저마다 다른 모습으로 존재하는 '마음속의 집'을 하나의 여정으로 엮음과 동시에, 작가 스스로 관념 속에 존재하는 그 어떤 상태에 다다르고자 시도하는 작업이다.",
         "우리는 누구나 마음 한편에 오래 머무는 생각과 시간의 덧칠로 이루어진 기억을 품고 살아간다. 그 기억들은 켜켜이 쌓여 하나의 집을 이루고, 이 작품은 그렇게 형성된 내면의 집에 닿고자 한다."
       ] },
-      { t: "section", h: "Live — 2026.10.31", ko: ["2026 HCF 미디어아트쇼 당일, 화성예술의전당 관객석에서 기록한 현장 실황."] },
-      { t: "full", src: "gwannyeom/live.mp4" },
+      { t: "reel", src: "gwannyeom/reels.mp4", h: "Highlight — 60\" (full version 3'32\" on Instagram)", url: "https://www.instagram.com/p/DfMk1Yah3jI/", ko: ["외벽과 내벽, 두 개의 면에 프로젝션 매핑으로 펼쳐지는 사운드 인터랙티브 영상에서 1분을 골랐다. 소리를 켜고 보면 장면들이 소리에 반응해 움직이는 모습을 볼 수 있다. 3분 32초 전체 버전은 인스타그램에서 볼 수 있다."] },
+      { t: "section", h: "Live — 2026.10.31", ko: ["2026 HCF 미디어아트쇼 당일, 화성예술의전당 관객석에서 기록한 현장 사진."] },
       { t: "pair", src: ["gwannyeom/live1.jpg", "gwannyeom/live2.jpg"] },
       { t: "trio", src: ["gwannyeom/live3.jpg", "gwannyeom/live4.jpg", "gwannyeom/live5.jpg"] },
       { t: "trio", src: ["gwannyeom/live6.jpg", "gwannyeom/live7.jpg", "gwannyeom/live8.jpg"] },
-      { t: "trio", src: ["gwannyeom/s1.jpg", "gwannyeom/s3.jpg", "gwannyeom/s4.jpg"], cap: "Venue preview (3D)" },
-      { t: "pair", src: ["gwannyeom/s5.jpg", "gwannyeom/s6.jpg"] }
+      { t: "grid", cols: 4, src: ["gwannyeom/s1.jpg", "gwannyeom/s2.jpg", "gwannyeom/s3.jpg", "gwannyeom/s4.jpg", "gwannyeom/s5.jpg", "gwannyeom/s6.jpg", "gwannyeom/s7.jpg", "gwannyeom/s8.jpg"], cap: "Venue preview (3D) — scenes" }
     ]
   },
   {
@@ -45,7 +44,7 @@ window.WORKS = [
     credit: "Team houseCall (하우스콜)",
     collab: "화성시 향토무형문화재 승무보존위원회",
     cover: "seungmu/s07.jpg",
-    hero: { video: "seungmu/preview.mp4", poster: "seungmu/hero.jpg" },
+    hero: { video: "seungmu/preview.mp4", poster: "seungmu/preview-poster.webp" },
     line: "망자의 안녕을 비는 춤 승무와 함께, 용주사의 밤에서 낮으로 이어지는 프로젝션 매핑.",
     blocks: [
       { t: "text", ko: [
@@ -136,10 +135,11 @@ window.WORKS = [
     period: "2026.08.31–09.03",
     place: "섭골길 일대, 조치원",
     exhibition: "Garage Project 3 \"Find your Sp( )t\"",
+    organizer: "문화공작소 (Sejong)",
     medium: "Collective shop — planning, branding, space, operation, program / Object: NIMBUS (steel mesh pendant light)",
     role: "Space design · Fixtures & furniture making (Team MOIN) / NIMBUS (solo)",
     cover: "nimbus/n09.jpg",
-    hero: { img: "garage3/ov_space.jpg" },
+    hero: { img: "nimbus/n05.jpg" },
     line: "사람과 시대와 사물이 한 방에 모이는 collective shop MOIN, 그리고 그 안에 띄운 철제 메쉬 조명 NIMBUS.",
     facets: [
       { id: "overview", label: "Overview", credit: "Team MOIN", blocks: [
@@ -148,7 +148,8 @@ window.WORKS = [
           "팀 MOIN은 '사람들을 불러 모으기 위해 오래전부터 사물을 수집해온 한 컬렉터의 공간'이라는 설정의 collective shop을 열었다. 팀이 함께 기획·브랜딩·공간·운영·프로그램을 만들고, 팀원 각자는 그 공간 안에 놓일 개인 작품을 만들었다. 김리한은 공간 디자인과 집기·가구 제작을 맡았고, 개인 작품으로 펜던트 조명 NIMBUS를 만들었다.",
           "방문객들은 '조치원에서 못 보던 공간 같다', '감도 높다', '편안하고 아늑하다'고 말했다. 감도를 과시하기보다 편안하게 체감할 수 있는 공간을 만들고자 했던 의도가 그 반응 속에서 확인되었다."
         ] },
-        { t: "full", src: "garage3/ov_feedback.jpg" }
+        { t: "full", src: "nimbus/n06.jpg" },
+        { t: "full", src: "garage3/ov_space.jpg", narrow: true }
       ] },
       { id: "planning", label: "Planning", credit: "Team MOIN · personal notes: 김리한", blocks: [
         { t: "text", ko: [
@@ -214,14 +215,15 @@ window.WORKS = [
           { h: "2nd Night — Tea Tasting", ko: "사전 예약으로 모인 10명이 각자 좋아하는 음악 한 곡을 골라 오고, 준비된 세 종류의 차를 함께 맛보며 서로의 플레이리스트를 나눈다." },
           { h: "3rd Night — Movie Night", ko: "마지막 밤, 넓은 공간을 최대한 열어 모두가 함께 영화를 본다." }
         ] },
-        { t: "pair", src: ["garage3/pg_night.jpg", "garage3/pg_dj1.jpg"] },
         { t: "full", src: "garage3/pg_dj2.jpg" },
+        { t: "pair", src: ["garage3/pg_dj1.jpg", "garage3/pg_night.jpg"] },
         { t: "pair", src: ["garage3/pg_tea1.jpg", "garage3/pg_tea2.jpg"], cap: "1st Night DJ Party / 2nd Night Tea Tasting" }
       ] }
     ]
   },
   {
     id: "algomi",
+    small: true,
     tag: "UX·GUI",
     title: "Algomi",
     titleEn: "Algorithm + Me",
@@ -242,6 +244,7 @@ window.WORKS = [
   },
   {
     id: "mi",
+    small: true,
     tag: "Graphic·Drawing",
     card: true,
     title: "美 — 아름다울 미",
@@ -253,6 +256,7 @@ window.WORKS = [
   },
   {
     id: "bodoni",
+    small: true,
     tag: "Graphic·Editorial",
     title: "Bodoni",
     titleEn: "Type Specimen Poster",
@@ -300,6 +304,7 @@ window.WORKS = [
   },
   {
     id: "lake",
+    small: true,
     tag: "Media Art",
     title: "Lake for your own",
     year: 2023,
