@@ -108,6 +108,10 @@
     var w = PAGES.filter(function (x) { return x.id === id; })[0] || PAGES[0];
     var i = PAGES.indexOf(w);
     document.title = w.title + (w.titleEn ? " " + w.titleEn : "") + " — Rihan Kim";
+    var url = "https://rihankim.com/work.html?id=" + w.id;
+    [["link[rel=canonical]", "href", url], ['meta[property="og:url"]', "content", url], ['meta[property="og:title"]', "content", document.title]].forEach(function (x) {
+      var el = document.querySelector(x[0]); if (el) el.setAttribute(x[1], x[2]);
+    });
 
     var hero = w.hero.video
       ? '<video src="' + MEDIA + w.hero.video + '" poster="' + MEDIA + w.hero.poster + '" autoplay muted loop playsinline></video>'
