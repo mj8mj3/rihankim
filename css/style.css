@@ -85,6 +85,13 @@ h1, h2, h3, p { margin: 0; }
 .facts dd { margin: 0; }
 .poster { display: grid; gap: 8px; width: 132px; }
 .poster figcaption { color: var(--mute); }
+.poster__open { display: block; padding: 0; border: 0; background: none; cursor: zoom-in; }
+.poster__open img { display: block; width: 100%; height: auto; transition: opacity .2s; }
+.poster__open:hover img { opacity: .85; }
+.poster__hint { font-size: 11px; color: var(--mute); }
+.lightbox { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 24px; background: rgba(20, 20, 20, .92); cursor: zoom-out; }
+.lightbox img { max-width: 100%; max-height: calc(100vh - 48px); width: auto; height: auto; object-fit: contain; }
+.lightbox__close { position: fixed; top: 16px; right: 20px; padding: 6px 10px; border: 1px solid #eeede9; border-radius: 999px; background: none; color: #eeede9; font: inherit; font-size: 12px; letter-spacing: .04em; cursor: pointer; }
 
 /* index: numbered vertical cards */
 .index, .others { padding: 0 var(--gut) var(--step); }

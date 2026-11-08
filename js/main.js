@@ -24,6 +24,30 @@
     var w = e.w.filter(function (x) { return x <= 2400; }).pop() || e.w[0];
     return MEDIA + key(src) + "-" + w + ".webp";
   }
+  // 크게 보기용: 가장 큰 변형.
+  function largest(src) {
+    var e = SIZES[key(src)];
+    return e ? MEDIA + key(src) + "-" + e.w[e.w.length - 1] + ".webp" : MEDIA + src;
+  }
+  // 포스터를 누르면 화면 가득 크게 보여 준다. 배경·이미지 클릭이나 Esc로 닫는다.
+  function lightbox(url) {
+    var box = document.createElement("div");
+    box.className = "lightbox";
+    box.setAttribute("role", "dialog");
+    box.setAttribute("aria-label", "Poster");
+    box.innerHTML = '<img src="' + url + '" alt=""><button class="lightbox__close" type="button" aria-label="Close">Close</button>';
+    function close() { box.remove(); document.removeEventListener("keydown", onKey); document.documentElement.style.overflow = ""; }
+    function onKey(e) { if (e.key === "Escape") close(); }
+    box.addEventListener("click", close);
+    document.addEventListener("keydown", onKey);
+    document.documentElement.style.overflow = "hidden";
+    document.body.appendChild(box);
+    box.querySelector("button").focus();
+  }
+  document.addEventListener("click", function (e) {
+    var t = e.target.closest && e.target.closest("[data-full]");
+    if (t) { e.preventDefault(); lightbox(t.getAttribute("data-full")); }
+  });
   function media(src, cls, eager, sizes) {
     if (/\.mp4$/.test(src)) return '<video class="' + (cls || "") + '" src="' + MEDIA + src + '" poster="' + MEDIA + key(src) + '-poster.webp" autoplay muted loop playsinline controls preload="metadata"></video>';
     var e = SIZES[key(src)];
@@ -202,7 +226,7 @@
           (w.line ? '<p class="opener__line" lang="ko">' + esc(w.line) + "</p>" : "") +
           facts(w) +
           (w.site ? '<a class="more" href="' + w.site + '" target="_blank" rel="noopener">Visit site ↗</a>' : "") +
-          (w.poster ? '<figure class="poster"><figcaption>Poster</figcaption>' + media(w.poster, "", true, "132px") + "</figure>" : "") +
+          (w.poster ? '<figure class="poster"><figcaption>Poster</figcaption><button class="poster__open" type="button" data-full="' + largest(w.poster) + '" aria-label="Poster — view large">' + media(w.poster, "", true, "132px") + '</button><span class="poster__hint">Click to enlarge</span></figure>' : "") +
         "</div>" +
         '<figure class="opener__media">' + hero + "</figure>" +
       "</section>" +
