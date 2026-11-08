@@ -157,6 +157,12 @@
         return '<section class="b-text' + (b.lead ? " b-text--lead" : "") + '"><div class="b-text__body">' + b.ko.map(function (p) { return ko(p); }).join("") + "</div></section>";
       case "section":
         return '<section class="b-section"><h2 class="label">' + esc(b.h) + '</h2><div class="b-text__body">' + b.ko.map(function (p) { return ko(p); }).join("") + "</div></section>";
+      case "videos":
+        // 긴 영상 여러 편: 나란히 두고, 누를 때만 재생(자동재생·미리 받기 없음). 높이를 맞춘다.
+        return '<section class="b-videos">' + b.items.map(function (v) {
+          return '<figure class="b-videos__item" style="flex:' + v.ar + ' 1 0"><video style="aspect-ratio:' + v.ar + '" src="' + MEDIA + v.src + '" poster="' + MEDIA + v.src.replace(/\.mp4$/, "") + '-poster.webp" controls playsinline preload="none"></video>' +
+            '<figcaption class="label">' + esc(v.cap) + "</figcaption></figure>";
+        }).join("") + "</section>";
       case "reel":
         // 세로 영상: 가운데 화면 높이 안쪽으로, 옆에 설명. 소리는 컨트롤로 켠다.
         return '<section class="b-reel"><div class="b-reel__info"><h2 class="label">' + esc(b.h) + "</h2>" + b.ko.map(function (p) { return ko(p); }).join("") +

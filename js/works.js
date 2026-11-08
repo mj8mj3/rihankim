@@ -17,17 +17,16 @@ window.WORKS = [
     site: "https://2ndlab.kr",
     cover: "sdf/brand_logo_preview.png",
     hero: { img: "sdf/brand_logo_preview.png" },
-    line: "다섯 팀이 함께 여는 캡스톤 디자인 전시 2nd LAB — 버려진 재료의 두 번째 가능성을 탐구하는 실험실. 전체 브랜딩과 웹사이트를 만들었다.",
+    line: "캡스톤 디자인 다섯 팀이 함께 여는 전시 2nd LAB — 버려진 재료의 두 번째 가능성을 탐구하는 실험실. 전체 브랜딩과 웹사이트를 만들었다.",
     facets: [
-      { id: "brand", label: "Branding", credit: "Brand identity — 김리한 (logo system)", blocks: [
+      { id: "brand", label: "Branding", credit: "Brand identity — 김리한", blocks: [
         { t: "text", ko: [
-          "서울디자인페스티벌 2026에서 캡스톤 디자인 다섯 팀이 부스 하나를 함께 쓴다. 전체 이름은 2nd LAB — 버려진 재료의 두 번째 가능성을 탐구하는 실험실이다. 다섯 팀이 각자 폐기물을 모으고 실험해 새로운 소재와 오브제로 만든 과정을 함께 보여 준다.",
-          "키워드는 '차곡한' — 표본, 샘플 라이브러리, 조직된 혼재, 수집과 축적. 기본 로고 '2nd LAB'과 변형 로고들을 하나의 시스템으로 만들었다. 서체는 JetBrains Mono와 Noto Sans KR, 색은 #C4B6A0 · #FCFCFC · #101010 · Cloud Dancer(#F0EEE9). 다섯 팀의 엽서(100 × 152 mm)는 로고와 레이아웃을 통일해 하나의 묶음으로 보이게 했다."
+          "홍익대 「Design Challenge[캡스톤디자인]」 다섯 팀이 서울디자인페스티벌 2026에서 부스 하나를 함께 쓴다. 전체 이름은 2nd LAB — 버려진 재료의 두 번째 가능성을 탐구하는 실험실이다. 다섯 팀이 각자 폐기물을 모으고 실험해 새로운 소재와 오브제로 만든 과정을 함께 보여 준다.",
+          "기본 로고 '2nd LAB'과 변형 로고들을 하나의 시스템으로 만들었다. 서체는 JetBrains Mono와 Noto Sans KR, 색은 #C4B6A0 · #FCFCFC · #101010 · Cloud Dancer(#F0EEE9). 다섯 팀의 엽서(100 × 152 mm)는 로고와 레이아웃을 통일해 하나의 묶음으로 보이게 했다."
         ] },
         { t: "full", src: "sdf/brand_logo_set.png" },
-        { t: "pair", src: ["sdf/brand_rihan.jpg", "sdf/brand_palette.png"] },
-        { t: "full", src: "sdf/brand_postcard.jpg", cap: "Postcard layout — 김리한" },
-        { t: "trio", src: ["sdf/brand_keyword.jpg", "sdf/brand_decisions.jpg", "sdf/brand_postcard_spec.jpg"] }
+        { t: "full", src: "sdf/brand_palette.png", narrow: true },
+        { t: "full", src: "sdf/brand_postcard.jpg", cap: "Postcard layout" }
       ] },
       { id: "web", label: "Web", credit: "Design & development — 김리한", blocks: [
         { t: "text", ko: [
@@ -35,8 +34,7 @@ window.WORKS = [
         ] },
         { t: "link", url: "https://2ndlab.kr", label: "Visit site — 2ndlab.kr ↗" },
         { t: "pair", src: ["sdf/web_pc_main.jpg", "sdf/web_pc_team1.jpg"] },
-        { t: "grid", cols: 4, src: ["sdf/web_m_main.jpg", "sdf/web_m_team1.jpg"] },
-        { t: "full", src: "sdf/web_wire.jpg", narrow: true, cap: "Wireframe" }
+        { t: "grid", cols: 4, src: ["sdf/web_m_main.jpg", "sdf/web_m_team1.jpg"] }
       ] }
     ]
   },
@@ -46,48 +44,51 @@ window.WORKS = [
     status: "In progress",
     tag: "Branding·Product",
     title: "공백[ ]수명",
-    titleEn: "2nd LAB Team 1",
+    titleEn: "Empty Lifespan — 2nd LAB Team 1",
     year: 2026,
     period: "2026.11.26–11.29",
     place: "코엑스 A홀, 서울",
     exhibition: "서울디자인페스티벌 2026 (SDF 2026) — 2nd LAB",
-    role: "Logo & brand (공백[ ]수명), Book design, Photography / Product — Team 1",
-    cover: "sdf/rs02.jpg",
-    hero: { img: "sdf/rs05.jpg" },
-    line: "목포의 폐어망을 바구니로 다시 짓는 팀. 쓰임을 다한 그물의 수명 사이에 다음 쓰임이 들어갈 자리를 남긴다.",
+    role: "Team 1 branding, process book, field photography & filming (Team 1, 5)",
+    cover: "sdf/t1_b2.jpg",
+    hero: { img: "sdf/t1_b2.jpg" },
+    line: "목포의 폐어망으로 바스켓을 만드는 팀. 쓰임을 다했다고 선언된 뒤에도 남아 있는 시간, '공백수명'을 들여다본다.",
     facets: [
-      { id: "branding", label: "Branding", credit: "Logo · book design — 김리한 / chapter graphics — Team 1", blocks: [
+      { id: "branding", label: "Branding", credit: "Team 1 branding — 김리한 외 2명", blocks: [
         { t: "text", ko: [
-          "공백[ ]수명 — 대괄호 사이를 비운 워드마크로, 쓰임을 다한 폐어망의 수명 사이에 다음 쓰임이 들어갈 자리를 남겼다. 책의 장 표지에는 그물, 쓰임, 찢김, 엉킴, 수선, 다음 쓰임의 여섯 장면을 선으로 그렸다."
+          "공백수명(Empty Lifespan)은 사람이 쓸모를 다했다고 선언한 뒤에도 물질과 기능이 남아 있는, 다음 역할을 아직 찾지 못한 시간이다. 누가 어떤 기준으로 수명의 끝을 선언하는지 묻고, 폐기물로 규정된 상태와 남아 있는 기능 사이의 간극을 찾는 브랜드로 정리했다.",
+          "로고는 '공백'과 '수명' 사이를 대괄호로 비웠다. 대괄호는 폐기와 재활용 사이에 있지만 잘 보이지 않던 시간이자, 앞으로 무엇이든 채워질 수 있는 자리다. 슬로건은 '공백 너머의 수명을 바라보다', 서체는 MaruBuri, 색은 폐어망의 파랑에서 가져온 #3F649C와 #6DACE7."
         ] },
-        { t: "full", src: "sdf/t1_logo.png", narrow: true },
-        { t: "trio", src: ["sdf/t1_chapter1.png", "sdf/t1_chapter2.png", "sdf/t1_chapter3.png"] },
-        { t: "trio", src: ["sdf/t1_chapter4.png", "sdf/t1_chapter5.png", "sdf/t1_chapter6.png"] },
-        { t: "full", src: "sdf/t1_lines.png", narrow: true },
-        { t: "section", h: "Book — Draft (2026.11.07)", ko: [
-          "64쪽 프로세스 북 「공백[ ]수명」. 목포 북항·남항의 현장 기록, 어민과 수선자, 어망 공장의 인터뷰, 소재 실험을 담는다. 편집과 조판을 맡아 진행하고 있다. 표지는 그물코, 비어 있는 한 칸, 찢긴 자리, 한 줄의 선 등 여러 안을 거쳐 그물 한가운데가 비어 있는 안으로 정했다."
+        { t: "full", src: "sdf/t1_brand_concept.jpg" },
+        { t: "full", src: "sdf/t1_logo_meaning.jpg" },
+        { t: "section", h: "Process book — in progress", ko: [
+          "공백수명의 정의, 폐어망을 고른 이유, 어망의 생애와 목포 현장 기록, 어민·수선자 인터뷰, 소재 실험과 제품 제작, 에필로그로 이어지는 프로세스 북을 만들고 있다. 아래는 2026년 11월 7일 검토용 초안이다."
         ] },
-        { t: "pair", src: ["sdf/book_cover.png", "sdf/book_pur.png"], cap: "Cover" },
-        { t: "pair", src: ["sdf/book_12-13.jpg", "sdf/book_20.jpg"] },
+        { t: "pair", src: ["sdf/book_cover.png", "sdf/book_12-13.jpg"] },
         { t: "pair", src: ["sdf/book_26-27.jpg", "sdf/book_28-29.jpg"] },
         { t: "pair", src: ["sdf/book_30-31.jpg", "sdf/book_36-37.jpg"] },
-        { t: "pair", src: ["sdf/book_38-39.jpg", "sdf/book_40-41.jpg"] },
-        { t: "pair", src: ["sdf/book_42-43.jpg", "sdf/book_44-45.jpg"] },
-        { t: "pair", src: ["sdf/book_48-49.jpg", "sdf/book_32.jpg"], cap: "Draft (2026.11.07)" },
-        { t: "trio", src: ["sdf/cover_draft_A.png", "sdf/cover_draft_B.png", "sdf/cover_draft_C.png"] },
-        { t: "pair", src: ["sdf/cover_draft_D.png", "sdf/cover_draft_E.png"], cap: "Cover drafts A–E" }
-      ] },
-      { id: "product", label: "Product", credit: "Team 1 · research photography — mostly 김리한", blocks: [
-        { t: "text", ko: [
-          "목포 북항과 남항, 폐어망이 모이는 집하장과 배, 그물을 고치는 현장을 찾아가 기록했다. 여기서 모은 폐어망을 바구니로 다시 짓는다.",
-          "전시에서는 다섯 팀이 300 × 600 cm 부스 하나를 나눠 쓴다. 1조는 오브제 두 점 사이에 단차를 두고, 프로세스 북과 다큐멘터리 영상을 함께 놓는다. 작품마다 같은 형식의 명판(150 × 100 mm)을 붙인다."
+        { t: "pair", src: ["sdf/book_38-39.jpg", "sdf/book_40-41.jpg"], cap: "Draft (2026.11.07)" },
+        { t: "section", h: "Documentary", ko: [
+          "목포의 사람들과 폐어망의 생애를 따라가는 다큐멘터리. 인트로(목포항과 슬로건), 1장 어민이 생각하는 어망의 수명, 2장 공백수명에 놓인 폐어망, 3장 안강망 수선자, 아웃트로로 짰다. 목포 두 차례 현장 촬영에서 사진과 영상을 찍었다."
         ] },
+        { t: "full", src: "sdf/t1_doc_intro.jpg", cap: "Storyboard — Opening / Intro" }
+      ] },
+      { id: "product", label: "Product", credit: "Team 1 — basket", blocks: [
+        { t: "text", ko: [
+          "폐어망을 겹쳐 열로 압착한 서피스로 바스켓을 만든다. '잡던 물질이 담는 물질이 된다.' 안강망 수선자가 수선 도구를 담는 바스켓과, 새참을 담는 넓고 얕은 바스켓 두 가지다. 폐로프와 폐그물 조각, 폐부표처럼 다음 쓰임을 기다리는 폐어구를 함께 담아 두는 자리이기도 하다.",
+          "처음에는 스트랩을 엮는 방식을 시도했지만 형태를 버티지 못해, 스트랩과 서피스를 나누지 않고 서피스를 크게 쓰는 방식으로 바꿨다. 마감에는 똑딱이와 스티치 같은 부자재를 더했다."
+        ] },
+        { t: "full", src: "sdf/t1_b2.jpg" },
+        { t: "full", src: "sdf/t1_b1.jpg" },
+        { t: "pair", src: ["sdf/t1_b1_detail.jpg", "sdf/t1_b2_detail.jpg"], cap: "Basket 01 / 02 — finishing details" },
+        { t: "section", h: "Process", ko: ["스트랩 직조 원통형, 쉐이커박스형 서피스, 1:1 페이퍼 목업을 거쳐 형태를 정했다."] },
+        { t: "trio", src: ["sdf/t1_mock_strap.jpg", "sdf/t1_mock_surface.jpg", "sdf/t1_b1_paper.jpg"], cap: "Strap mockup / surface mockup / 1:1 paper mockup" },
+        { t: "section", h: "Field research — 목포", ko: ["목포 북항과 남항, 폐어망 집하장과 배, 그물을 고치는 현장을 두 차례 찾아가 기록했다."] },
         { t: "full", src: "sdf/rs01.jpg" },
         { t: "trio", src: ["sdf/rs02.jpg", "sdf/rs03.jpg", "sdf/rs04.jpg"] },
         { t: "pair", src: ["sdf/rs05.jpg", "sdf/rs06.jpg"] },
         { t: "trio", src: ["sdf/rs07.jpg", "sdf/rs08.jpg", "sdf/rs09.jpg"] },
-        { t: "pair", src: ["sdf/rs10.jpg", "sdf/rs11.jpg"], cap: "Field research — 목포" },
-        { t: "pair", src: ["sdf/obj_nameplate.png", "sdf/obj_display.jpg"], cap: "Nameplate / display plan" }
+        { t: "pair", src: ["sdf/rs10.jpg", "sdf/rs11.jpg"], cap: "Photography — mostly 김리한" }
       ] }
     ]
   },
@@ -111,7 +112,12 @@ window.WORKS = [
         "〈관념 속의 집〉은 이처럼 저마다 다른 모습으로 존재하는 '마음속의 집'을 하나의 여정으로 엮음과 동시에, 작가 스스로 관념 속에 존재하는 그 어떤 상태에 다다르고자 시도하는 작업이다.",
         "우리는 누구나 마음 한편에 오래 머무는 생각과 시간의 덧칠로 이루어진 기억을 품고 살아간다. 그 기억들은 켜켜이 쌓여 하나의 집을 이루고, 이 작품은 그렇게 형성된 내면의 집에 닿고자 한다."
       ] },
-      { t: "reel", src: "gwannyeom/reels_full.mp4", h: "Full version — 3'32\"", ko: ["외벽과 내벽, 두 개의 면에 프로젝션 매핑으로 펼쳐지는 사운드 인터랙티브 영상의 전체 버전. 소리를 켜고 보면 장면들이 소리에 반응해 움직이는 모습을 볼 수 있다."] },
+      { t: "section", h: "Videos — 3'32\" each", ko: ["외벽과 내벽, 두 개의 면에 프로젝션 매핑으로 펼쳐지는 사운드 인터랙티브 영상. 공연장 3D로 본 디지털 버전, 디지털과 현장을 위아래로 붙인 버전, 공연 당일 현장 기록 세 편이다. 소리를 켜고 보면 장면들이 소리에 반응해 움직인다."] },
+      { t: "videos", items: [
+        { src: "gwannyeom/reels_full.mp4", ar: 0.5625, cap: "Digital / Live" },
+        { src: "gwannyeom/gwannyeom_digital.mp4", ar: 0.8, cap: "Digital — venue 3D" },
+        { src: "gwannyeom/gwannyeom_live_full.mp4", ar: 1.7778, cap: "Live — 2026.10.31" }
+      ] },
       { t: "section", h: "Live — 2026.10.31", ko: ["2026 HCF 미디어아트쇼 당일, 화성예술의전당 외벽에 투사된 현장 기록."] },
       { t: "trio", src: ["gwannyeom/gwannyeom_live_01_opening.mp4", "gwannyeom/gwannyeom_live_02_structure.mp4", "gwannyeom/gwannyeom_live_03_city.mp4"], cap: "Live — opening / structure / city" },
       { t: "grid", cols: 4, src: ["gwannyeom/s1.jpg", "gwannyeom/s2.jpg", "gwannyeom/s3.jpg", "gwannyeom/s4.jpg", "gwannyeom/s5.jpg", "gwannyeom/s6.jpg", "gwannyeom/s7.jpg", "gwannyeom/s8.jpg"], cap: "Venue preview (3D) — scenes" }
