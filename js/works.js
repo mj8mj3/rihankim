@@ -394,7 +394,7 @@ window.WORKS = [
     credit: "Solo — interviews, concept, development, installation",
     poster: "transparent/poster.jpg",
     cover: "transparent/i01.jpg",
-    hero: { img: "transparent/screen.jpg" },
+    hero: { img: "transparent/screen2.jpg" },
     line: "호수공원을 스쳐간 사람들의 기억이 글자가 되고, 글자는 호수의 수면이 된다.",
     blocks: [
       { t: "text", lead: true, ko: [
