@@ -363,18 +363,19 @@ window.WORKS = [
     period: "2026.10",
     medium: "Laser-cut stainless steel 0.3t (tested: birch, basswood, poplar plywood 1.5t)",
     credit: "Personal work — Digital Makers Lab",
-    cover: "meomun/m06.jpg",
-    hero: { img: "meomun/m06.jpg" },
+    cover: "meomun/hero.jpg",
+    hero: { img: "meomun/hero.jpg" },
     line: "남기고 싶은 한 줄만 보이게 하는 책갈피.",
     blocks: [
       { t: "text", ko: [
         "책을 읽다 남기고 싶은 문장이 있으면 밑줄을 긋는 대신 이 책갈피를 끼운다. 가운데 창으로 그 한 줄만 보인다.",
         "처음에는 1.5t 합판으로 만들었는데, 두꺼워서 종이에 자국이 남았다. 그래서 0.3t 스테인리스로 바꿔 레이저로 잘랐다."
       ] },
-      { t: "pair", src: ["meomun/m01.jpg", "meomun/m02.jpg"] },
-      { t: "pair", src: ["meomun/m03.jpg", "meomun/m15.jpg"] },
+      { t: "full", src: "meomun/m06.jpg" },
       { t: "full", src: "meomun/m04.jpg" },
-      { t: "full", src: "meomun/m16.jpg", cap: "Material tests — plywood 1.5t / stainless steel 0.3t" }
+      { t: "pair", src: ["meomun/m15.jpg", "meomun/m16.jpg"], cap: "Stainless steel 0.3t and plywood 1.5t versions" },
+      { t: "section", h: "Process", ko: ["도면을 그리고, 레이저로 자른 뒤 줄과 사포로 모서리를 다듬었다."] },
+      { t: "trio", src: ["meomun/m01.jpg", "meomun/m02.jpg", "meomun/m03.jpg"], cap: "Drawing / laser-cut parts / deburring" }
     ]
   },
   {

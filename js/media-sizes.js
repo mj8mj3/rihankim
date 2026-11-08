@@ -213,4 +213,5 @@ window.MEDIA_SIZES = {"gwannyeom/s1":{"w":[960,1920,2304],"size":[2304,2880]},
 "garage3/sp_rihan_proj":{"w":[722,1444],"size":[1444,2400]},
 "garage3/op_ux":{"w":[1200,1920],"size":[1920,1080]},
 "garage3/ob_desc":{"w":[1200,1367],"size":[1367,1318]},
-"chungman/poster":{"w":[850,1700,2040],"size":[2040,2880]}};
+"chungman/poster":{"w":[850,1700,2040],"size":[2040,2880]},
+"meomun/hero":{"w":[1200,1851],"size":[1851,1228]}};
