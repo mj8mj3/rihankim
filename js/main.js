@@ -100,7 +100,7 @@
 
     // Small Works — Projects: 상세가 있으면 상세로, 없으면(card) 이미지를 새 탭으로.
     var projects = SCHOOL.map(function (w) {
-      var href = w.card ? MEDIA + w.cover : "work.html?id=" + w.id;
+      var href = w.card ? largest(w.cover) : "work.html?id=" + w.id;
       return '<a class="small__item small__item--project" href="' + href + '"' + (w.card ? ' target="_blank" rel="noopener"' : "") + ">" +
         '<span class="card__no">' + num(w) + "</span>" +
         '<figure class="small__img small__img--project">' + media(w.cover, "", false, "240px") + "</figure>" +

@@ -418,6 +418,53 @@ window.WORKS = [
     ]
   },
   {
+    id: "algomi",
+    school: true,
+    tag: "UX·GUI",
+    title: "Algomi",
+    titleEn: "Algorithm + Me",
+    year: 2026,
+    period: "2026.06",
+    medium: "Service ideation prototype, GUI design",
+    cover: "algomi/01.jpg",
+    hero: { img: "algomi/01.jpg" },
+    line: "쌓여 온 디지털 데이터를 하나의 캐릭터로 시각화해, 자신의 디지털 자아를 마주하게 하는 서비스.",
+    blocks: [
+      { t: "text", ko: [
+        "Algomi는 우리가 인지하지 못한 채 쌓아온 디지털 데이터를 시각화하여, 자신의 디지털 자아를 마주하게 하는 서비스다. 유튜브, 인스타그램, 네이버와 같은 여러 플랫폼에서 누적된 콘텐츠 소비 패턴은 Algomi를 통해 하나의 캐릭터로 시각화되며, 이를 통해 그동안 어렴풋이만 알고 있던 자신의 알고리즘을 직관적으로 확인할 수 있다.",
+        "캐릭터가 가진 각 키워드를 누르면 해당 알고리즘이 어떤 플랫폼에서, 어떤 콘텐츠를 통해 형성되었는지 그 출처까지 한눈에 모아볼 수 있다. 변화하고자 하는 방향을 키워드로 설정하면 캐릭터가 그에 맞춰 점진적으로 변해, 알고리즘과 디지털 세계 속 자신의 자아에 능동적인 태도를 취하도록 돕는다. 친구들의 알고리즘 캐릭터를 함께 탐색하고 비교하는 소셜 경험으로도 확장된다."
+      ] },
+      { t: "trio", src: ["algomi/02.jpg", "algomi/03.jpg", "algomi/04.jpg"] },
+      { t: "pair", src: ["algomi/06.jpg", "algomi/08.jpg"] }
+    ]
+  },
+  {
+    id: "mi",
+    school: true,
+    tag: "Graphic·Drawing",
+    card: true,
+    title: "美 — 아름다울 미",
+    year: 2026,
+    period: "2026.06",
+    medium: "흑지, 화이트 마카, 실크원단",
+    size: "297 × 420 mm",
+    cover: "mi/cover.jpg"
+  },
+  {
+    id: "bodoni",
+    school: true,
+    tag: "Graphic·Editorial",
+    title: "Bodoni",
+    titleEn: "Type Specimen Poster",
+    year: 2026,
+    period: "2026.06",
+    medium: "Poster, Adobe Illustrator",
+    size: "A2",
+    cover: "bodoni/b1.jpg",
+    hero: { img: "bodoni/b1.jpg", tall: true },
+    blocks: []
+  },
+  {
     id: "lake",
     school: true,
     tag: "Media Art",
