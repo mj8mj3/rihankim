@@ -111,12 +111,9 @@ window.WORKS = [
         "〈관념 속의 집〉은 이처럼 저마다 다른 모습으로 존재하는 '마음속의 집'을 하나의 여정으로 엮음과 동시에, 작가 스스로 관념 속에 존재하는 그 어떤 상태에 다다르고자 시도하는 작업이다.",
         "우리는 누구나 마음 한편에 오래 머무는 생각과 시간의 덧칠로 이루어진 기억을 품고 살아간다. 그 기억들은 켜켜이 쌓여 하나의 집을 이루고, 이 작품은 그렇게 형성된 내면의 집에 닿고자 한다."
       ] },
-      { t: "reel", src: "gwannyeom/reels.mp4", h: "Highlight — 60\" (full version 3'32\" on Instagram)", url: "https://www.instagram.com/p/DfMk1Yah3jI/", ko: ["외벽과 내벽, 두 개의 면에 프로젝션 매핑으로 펼쳐지는 사운드 인터랙티브 영상에서 1분을 골랐다. 소리를 켜고 보면 장면들이 소리에 반응해 움직이는 모습을 볼 수 있다. 3분 32초 전체 버전은 인스타그램에서 볼 수 있다."] },
+      { t: "reel", src: "gwannyeom/reels_full.mp4", h: "Full version — 3'32\"", ko: ["외벽과 내벽, 두 개의 면에 프로젝션 매핑으로 펼쳐지는 사운드 인터랙티브 영상의 전체 버전. 소리를 켜고 보면 장면들이 소리에 반응해 움직이는 모습을 볼 수 있다."] },
       { t: "section", h: "Live — 2026.10.31", ko: ["2026 HCF 미디어아트쇼 당일, 화성예술의전당 외벽에 투사된 현장 기록."] },
       { t: "trio", src: ["gwannyeom/gwannyeom_live_01_opening.mp4", "gwannyeom/gwannyeom_live_02_structure.mp4", "gwannyeom/gwannyeom_live_03_city.mp4"], cap: "Live — opening / structure / city" },
-      { t: "pair", src: ["gwannyeom/live1.jpg", "gwannyeom/live2.jpg"] },
-      { t: "trio", src: ["gwannyeom/live3.jpg", "gwannyeom/live4.jpg", "gwannyeom/live5.jpg"] },
-      { t: "trio", src: ["gwannyeom/live6.jpg", "gwannyeom/live7.jpg", "gwannyeom/live8.jpg"] },
       { t: "grid", cols: 4, src: ["gwannyeom/s1.jpg", "gwannyeom/s2.jpg", "gwannyeom/s3.jpg", "gwannyeom/s4.jpg", "gwannyeom/s5.jpg", "gwannyeom/s6.jpg", "gwannyeom/s7.jpg", "gwannyeom/s8.jpg"], cap: "Venue preview (3D) — scenes" }
     ]
   },
