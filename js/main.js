@@ -202,6 +202,10 @@
     var id = q.get("id"), facet = q.get("facet");
     // 예전 NIMBUS 주소는 Garage Project 3의 Object 섹션으로 보낸다.
     if (id === "nimbus") { id = "garage3"; facet = facet || "object"; }
+    // 예전 SDF 한 묶음 주소: 1조 분야는 공백[ ]수명 항목으로 보낸다.
+    if (id === "sdf2026" && /^(team1|book|process)$/.test(facet || "")) { id = "gongbaek"; facet = "branding"; }
+    if (id === "sdf2026" && /^(object|research)$/.test(facet || "")) { id = "gongbaek"; facet = "product"; }
+    if (id === "sdf2026" && facet === "overview") facet = "brand";
     var w = ALL.filter(function (x) { return x.id === id && !x.card; })[0] || WORKS[0];
     var PAGES = (w.ongoing ? ONGOING : w.school ? SCHOOL : WORKS).filter(function (x) { return !x.card; });
     var i = PAGES.indexOf(w);
