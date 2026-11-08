@@ -21,7 +21,7 @@ window.WORKS = [
     facets: [
       { id: "brand", label: "Branding", credit: "Brand identity — 김리한", blocks: [
         { t: "text", ko: [
-          "홍익대 「Design Challenge[캡스톤디자인]」 다섯 팀이 서울디자인페스티벌 2026에서 부스 하나를 함께 쓴다. 전체 이름은 2nd LAB — 버려진 재료의 두 번째 가능성을 탐구하는 실험실이다. 다섯 팀이 각자 폐기물을 모으고 실험해 새로운 소재와 오브제로 만든 과정을 함께 보여 준다.",
+          "「Design Challenge[캡스톤디자인]」 다섯 팀이 서울디자인페스티벌 2026에서 부스 하나를 함께 쓴다. 전체 이름은 2nd LAB — 버려진 재료의 두 번째 가능성을 탐구하는 실험실이다. 다섯 팀이 각자 폐기물을 모으고 실험해 새로운 소재와 오브제로 만든 과정을 함께 보여 준다.",
           "기본 로고 '2nd LAB'과 변형 로고들을 하나의 시스템으로 만들었다. 서체는 JetBrains Mono와 Noto Sans KR, 색은 #C4B6A0 · #FCFCFC · #101010 · Cloud Dancer(#F0EEE9). 다섯 팀의 엽서(100 × 152 mm)는 로고와 레이아웃을 통일해 하나의 묶음으로 보이게 했다."
         ] },
         { t: "full", src: "sdf/brand_logo_set.png" },
@@ -270,7 +270,7 @@ window.WORKS = [
           { h: "08.04 — 1st briefing", ko: "흐름과 판매 아이템은 좋은 평가를 받았다. 낮과 밤이 분명히 달라야 한다는 피드백에 따라 낮은 편집숍과 음료, 밤은 사전 예약 호스팅으로 나눴다." },
           { h: "08.10–11 — Insight trip, 강릉", ko: "강릉 소품샵을 돌며 컵과 소품을 모으고, 각자 집과 지인에게서 빌릴 수 있는 사물을 아카이브했다. 돌아와서 받은 피드백 — 밖에서 안이 보이지 않으니 어떤 공간인지 알리는 사이니지가 필요하다." },
           { h: "08.16–18 — Decisions", ko: "집기 제작 예산을 50만 원 이내로 잡고, 합판 원장 7장과 2T 철판(컵 진열 뒤 아카이브 월)을 사기로 했다. 화장실로 이어지는 복도에는 파티션을 직접 세우기로 했다." },
-          { h: "08.24 — Fabrication", ko: "홍익대 P동에서 테이블쏘로, 시우터 협동조합과 홍익대 U동 메이커스페이스에서 CNC로 판재를 재단했다." },
+          { h: "08.24 — Fabrication", ko: "공방에서 테이블쏘로, 시우터 협동조합과 메이커스페이스에서 CNC로 판재를 재단했다." },
           { h: "08.31–09.03 — Open", ko: "설치를 마치고 낮에는 컵과 음료, 밤에는 날마다 다른 프로그램으로 운영했다." }
         ] },
         { t: "grid", cols: 5, src: ["garage3/pl_team1.jpg", "garage3/pl_team2.jpg", "garage3/pl_team3.jpg", "garage3/pl_team4.jpg", "garage3/pl_team5.jpg"], cap: "1st briefing (midterm)" },
@@ -310,7 +310,7 @@ window.WORKS = [
         { t: "pair", src: ["garage3/sp_display1.jpg", "garage3/sp_display2.jpg"] },
         { t: "trio", src: ["garage3/sp_plan.jpg", "garage3/sp_section.jpg", "garage3/sp_zoning.jpg"], cap: "Floor plan / section / zoning" },
         { t: "section", h: "Fixtures — design & making", ko: [
-          "공간 팀은 존별 집기와 가구를 설계하고 직접 만들었다. 판재는 홍익대 P동에서 테이블쏘로 직접 재단하거나, 시우터 협동조합과 U동 메이커스페이스에서 CNC로 잘랐다. 2층 좌식 테이블 다리는 각재와 투바이 목재로 짜고, 현장에서 실측해 높이를 맞출 수 있게 했다. 2층 바닥과 천장 높이를 직접 재서, 펜던트 조명은 줄 길이 2,100–2,200 mm로 낮은 진열 테이블 위 눈높이에 오도록 정했다."
+          "공간 팀은 존별 집기와 가구를 설계하고 직접 만들었다. 판재는 공방에서 테이블쏘로 직접 재단하거나, 시우터 협동조합과 메이커스페이스에서 CNC로 잘랐다. 2층 좌식 테이블 다리는 각재와 투바이 목재로 짜고, 현장에서 실측해 높이를 맞출 수 있게 했다. 2층 바닥과 천장 높이를 직접 재서, 펜던트 조명은 줄 길이 2,100–2,200 mm로 낮은 진열 테이블 위 눈높이에 오도록 정했다."
         ] },
         { t: "pair", src: ["garage3/sp_cnc.jpg", "garage3/sp_legs.jpg"], cap: "Cutting plan by method (table saw / CNC ×2) · floor-table legs" },
         { t: "list", items: ["Standing table — 직접 제작", "Bench — 직접 제작", "Low table — 테이블쏘로 직접 가공", "Floor table (2F) — CNC 상판 + 각재 다리", "Stones — 직접 수집"] },
