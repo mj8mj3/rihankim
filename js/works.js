@@ -230,62 +230,96 @@ window.WORKS = [
     titleEn: "(NIMBUS)",
     year: 2026,
     period: "2026.08.31–09.03",
-    place: "섭골길 일대, 조치원",
+    place: "프라이빗 라운지(카페 어반 옆), 섭골길, 조치원",
     exhibition: "Garage Project 3 \"Find your Sp( )t\"",
     organizer: "문화공작소 (Sejong)",
     medium: "Collective shop — planning, branding, space, operation, program / Object: NIMBUS (steel mesh pendant light)",
-    role: "Space design · Fixtures & furniture making (Team MOIN) / NIMBUS (solo)",
+    role: "Space team — zoning, fixtures & furniture design and making (Team MOIN) / NIMBUS (solo)",
     cover: "nimbus/n09.jpg",
     hero: { img: "nimbus/n05.jpg" },
     line: "사람과 시대와 사물이 한 방에 모이는 collective shop MOIN, 그리고 그 안에 띄운 철제 메쉬 조명 NIMBUS.",
     facets: [
-      { id: "overview", label: "Overview", credit: "Team MOIN", blocks: [
+      { id: "overview", label: "Overview", credit: "Team MOIN (7) — space design · fixtures & furniture making: 김리한", blocks: [
         { t: "text", ko: [
           "Garage Project 3 \"Find your Sp( )t\"는 조치원 섭골길 골목 곳곳의 공간에서 열린 프로젝트다. 'Spot'은 내 취향이 세상과 만나는 점이자, 서로의 관심이 이어져 만들어지는 문화의 거리를 뜻한다.",
-          "팀 MOIN은 '사람들을 불러 모으기 위해 오래전부터 사물을 수집해온 한 컬렉터의 공간'이라는 설정의 collective shop을 열었다. 팀이 함께 기획·브랜딩·공간·운영·프로그램을 만들고, 팀원 각자는 그 공간 안에 놓일 개인 작품을 만들었다. 김리한은 공간 디자인과 집기·가구 제작을 맡았고, 개인 작품으로 펜던트 조명 NIMBUS를 만들었다.",
-          "방문객들은 '조치원에서 못 보던 공간 같다', '감도 높다', '편안하고 아늑하다'고 말했다. 감도를 과시하기보다 편안하게 체감할 수 있는 공간을 만들고자 했던 의도가 그 반응 속에서 확인되었다."
+          "팀 MOIN(7명)은 카페 '어반' 옆 건물의 2층짜리 프라이빗 라운지를 맡아, 7월 13일 첫 회의부터 9월 3일까지 약 두 달 동안 collective shop 한 곳을 기획하고 만들고 운영했다. 설정은 '사람들을 불러 모으기 위해 오래전부터 사물을 수집해 온 한 컬렉터의 방'이다. 공간 안의 가구·조명·컵·오브제는 모두 살 수 있고, 방문객은 고른 컵에 음료를 받아 마시며 머문다.",
+          "팀은 공간(3명), 브랜딩(2명), 스타일링(2명), 예산으로 일을 나눴다. 김리한은 공간 팀에서 존 구성과 집기·가구 설계·제작을 맡았고, 개인 작품으로 펜던트 조명 NIMBUS를 만들어 DISPLAY(1)에 걸었다."
         ] },
         { t: "full", src: "nimbus/n06.jpg" },
-        { t: "full", src: "garage3/ov_space.jpg", narrow: true }
+        { t: "full", src: "garage3/ov_space.jpg", narrow: true },
+        { t: "section", h: "Response", ko: [
+          "방문객들은 '조치원에서 못 보던 공간 같다', '이런 공간이 더 많아졌으면 좋겠다', '감도 높다', '편안하고 아늑하다'고 말했다. 카페나 판매점 한 가지로 읽히기보다, 둘러보고 앉아서 머무는 공간으로 받아들여졌다."
+        ] }
       ] },
       { id: "planning", label: "Planning", credit: "Team MOIN · personal notes: 김리한", blocks: [
         { t: "text", ko: [
-          "조치원(鳥致院)은 충청권의 남북과 동서를 잇는 요충지이자 사람과 물산이 모이던 곳이다. 이름의 '원(院)'은 말을 묶어 두고 쉬어 가던 조선시대의 역원에서 왔다. 오늘의 조치원은 더 이상 중심지가 아니고 사람들은 흩어졌다. 팀은 여기서 다시 사람을 모으는 컬렉터의 공간을 떠올렸다.",
-          "관람과 사용, 감상과 구매의 경계가 나뉘지 않는 체류형 컬렉트 숍, 그 중심에는 컵이 있다. 콘셉트는 '사물이 모인다, 사람들이 모인다, 취향이 모인다'로 정리했다."
+          "조치원(鳥致院)은 충청권의 남북과 동서를 잇는 요충지이자 사람과 물산이 모이던 곳이다. 이름의 '원(院)'은 말을 묶어 두고 쉬어 가던 조선시대의 역원에서 왔다. 오늘의 조치원은 더 이상 중심지가 아니다. 팀은 한때 사람이 모이던 이 땅에서 다시 사람을 모으는 장소를 열기로 했다.",
+          "서로 다른 사람의 작업을 한 공간에 모으려면 그것을 묶어 줄 장치가 필요했다. 그래서 '한 명의 컬렉터'라는 가상의 인물을 세웠다. 컬렉터에게 수집은 과시가 아니라 손님을 맞기 위한 준비이고, 그가 가장 많이 모은 사물은 사람과 사람을 잇는 컵이다."
         ] },
-        { t: "grid", cols: 5, src: ["garage3/pl_team1.jpg", "garage3/pl_team2.jpg", "garage3/pl_team3.jpg", "garage3/pl_team4.jpg", "garage3/pl_team5.jpg"] },
-        { t: "text", ko: [
-          "개인 기획 노트에서는 '시간의 흔적, 낡음의 미학'을 붙잡았다. 새것을 낡아 보이게 만드는 대신 시간이 만든 흔적을 그대로 담는 오브젝트를 인사이트 트립에서 발로 뛰며 모으고, 고쳐서 공간에 두는 방향이다. 현장 답사에서는 뻥 뚫린 2층 공간을 조금 더 아늑하고 프라이빗하게 감싸는 방법을 고민했다."
+        { t: "pair", src: ["garage3/pl_jochiwon1.jpg", "garage3/pl_jochiwon2.jpg"], cap: "Background — 鳥致院" },
+        { t: "process", h: "Timeline", steps: [
+          { h: "07.13 — OT", ko: "공간은 카페 어반 옆 건물의 프라이빗 라운지로 정해졌다. 여러 디자이너가 한 공간을 함께 꾸리는 collective exhibition 형식으로 가기로 했다." },
+          { h: "07.20 — Concept ideation", ko: "각자 관심사와 해 보고 싶은 작업을 나누고 공간 설정을 여러 개 내놓았다. 조건 다섯 가지를 정리했다 — 컬렉터의 방, 모든 것을 살 수 있음, 과거와 현재의 사물이 함께 놓임, 낮과 밤이 다름, 사람이 모이는 곳." },
+          { h: "07.27 — 컬렉터의 방", ko: "상위 개념을 '컬렉터의 방'으로 확정하고, 방문객과 공간이 처음 만나는 사물을 컵으로 정했다. 무드보드 키워드는 collected, nonchalant, handcrafted, natural texture, aged." },
+          { h: "08.04 — 1st briefing", ko: "흐름과 판매 아이템은 좋은 평가를 받았다. 낮과 밤이 분명히 달라야 한다는 피드백에 따라 낮은 편집숍과 음료, 밤은 사전 예약 호스팅으로 나눴다." },
+          { h: "08.10–11 — Insight trip, 강릉", ko: "강릉 소품샵을 돌며 컵과 소품을 모으고, 각자 집과 지인에게서 빌릴 수 있는 사물을 아카이브했다. 돌아와서 받은 피드백 — 밖에서 안이 보이지 않으니 어떤 공간인지 알리는 사이니지가 필요하다." },
+          { h: "08.16–18 — Decisions", ko: "집기 제작 예산을 50만 원 이내로 잡고, 합판 원장 7장과 2T 철판(컵 진열 뒤 아카이브 월)을 사기로 했다. 화장실로 이어지는 복도에는 파티션을 직접 세우기로 했다." },
+          { h: "08.24 — Fabrication", ko: "홍익대 P동에서 테이블쏘로, 시우터 협동조합과 홍익대 U동 메이커스페이스에서 CNC로 판재를 재단했다." },
+          { h: "08.31–09.03 — Open", ko: "설치를 마치고 낮에는 컵과 음료, 밤에는 날마다 다른 프로그램으로 운영했다." }
         ] },
-        { t: "section", h: "Insight trip — 강릉, 2026.08.10–11", ko: ["강릉의 소품샵과 거리를 걸으며 시간이 만든 흔적이 남은 사물들을 찾아다녔다."] },
-        { t: "full", src: "garage3/pl_trip.jpg", narrow: true },
+        { t: "grid", cols: 5, src: ["garage3/pl_team1.jpg", "garage3/pl_team2.jpg", "garage3/pl_team3.jpg", "garage3/pl_team4.jpg", "garage3/pl_team5.jpg"], cap: "1st briefing (midterm)" },
+        { t: "section", h: "Personal notes — 김리한", ko: [
+          "기획 초반 노트에서는 '시간의 흔적, 낡음의 미학'을 붙잡았다. 새것을 낡아 보이게 만드는 대신 시간이 만든 흔적을 그대로 담은 사물을 인사이트 트립에서 모으고 고쳐 두자는 방향이다. 현장 답사에서는 뻥 뚫린 공간을 반투명 천으로 감싸 아늑하게 만들고, 2층에서 투사하는 방법을 고민했다."
+        ] },
         { t: "trio", src: ["garage3/pl_rihan1.jpg", "garage3/pl_rihan2.jpg", "garage3/pl_rihan3.jpg"] },
-        { t: "pair", src: ["garage3/pl_rihan4.jpg", "garage3/pl_rihan5.jpg"], cap: "Personal planning notes & site survey" }
+        { t: "pair", src: ["garage3/pl_rihan4.jpg", "garage3/pl_rihan5.jpg"], cap: "Personal planning notes & site survey" },
+        { t: "full", src: "garage3/pl_trip.jpg", narrow: true, cap: "Insight trip — 강릉, 2026.08.10–11" }
       ] },
-      { id: "branding", label: "Branding", credit: "Team MOIN", blocks: [
+      { id: "branding", label: "Branding", credit: "Team MOIN — branding & graphics by the branding team", blocks: [
         { t: "text", ko: [
-          "MOIN은 '모인'에서 왔다. 슬로건은 People, Times and Objects Gathered in One Room. 심볼은 서로 다른 방향에서 사람들이 하나의 중심을 향해 모이는 모습을 그렸다. 중심의 작은 형태들은 한곳에 모인 사람들을, 바깥으로 뻗는 선들은 그 만남에서 다시 퍼져 나가는 관계와 이야기를 뜻한다. 손으로 그린 듯 불규칙한 선으로 다듬었다."
+          "MOIN은 '모인'에서 왔다. 사물이 모이고, 서로 다른 시대가 모이고, 작가들의 취향이 모이고, 사람들이 음료를 즐기러 모인다는 뜻이다. '모이는 중'이 아니라 '모여서 하나가 된 상태'라는 인상을 주려 했다. 슬로건은 People, Times and Objects Gathered in One Room.",
+          "심볼은 여러 방향에서 사람들이 한 중심으로 모이는 모습이다. 가운데의 작은 형태는 모인 사람들, 바깥으로 뻗는 선은 그 만남에서 다시 퍼지는 관계를 뜻한다. 손으로 그린 듯 불규칙한 선으로 다듬었다. 키워드는 GATHER(사람이 모인다), SHIFT(공간이 시간에 따라 바뀐다), COLLECT(컵과 사물과 취향이 모인다)."
         ] },
         { t: "pair", src: ["garage3/br_logo.jpg", "garage3/br_symbol.jpg"] },
-        { t: "full", src: "garage3/br_symbol_mid.jpg", narrow: true }
+        { t: "pair", src: ["garage3/br_color.jpg", "garage3/br_symbol_mid.jpg"], cap: "MOIN White #FAF8F6 · MOIN Black #43403D · MOIN Brown #CCA977" },
+        { t: "section", h: "Applications", ko: [
+          "브랜딩 팀은 메인 포스터, 작품 설명 패브릭 포스터, 컵 매거진(zine), 패키지, 사이니지, 인스타그램 콘텐츠를 만들었다. zine에는 컵마다 번호를 붙이고 산 곳과 특징, 얽힌 이야기를 적었다. 컵은 크라프트 종이백과 캔버스 천, 로고 도장, 벌집 포장지로 싸서 내줬다. 밖에서 안이 보이지 않는다는 피드백에 따라 입구에는 0.6 × 1.6 m 패브릭 사이니지를 걸었다."
+        ] },
+        { t: "trio", src: ["garage3/br_poster1.jpg", "garage3/br_poster2.jpg", "garage3/br_poster3.jpg"], cap: "Posters" },
+        { t: "pair", src: ["garage3/br_signage.jpg", "garage3/br_scope.jpg"], cap: "Fabric signage / branding work scope" }
       ] },
-      { id: "space", label: "Space", credit: "Team MOIN — space design · fixtures & furniture making: 김리한", blocks: [
+      { id: "space", label: "Space", credit: "Space team (3) — zoning, fixtures & furniture design and making incl. 김리한", blocks: [
         { t: "text", ko: [
-          "공간은 ENJOY, DISPLAY, REST, PURCHASE 구역으로 나눴다. 낮은 테이블과 눈높이의 행잉 조명으로 컵이 놓이는 높낮이에 변주를 주고, 2층은 좌식 카페트와 낮은 탁자로 프라이빗하게 감쌌다. 무드보드의 키워드는 collected, nonchalant, handcrafted, natural texture, aged."
+          "들어서는 순간 탁 트인 느낌과 밀도를 함께 갖도록 하는 것이 기준이었다. 입구 쪽에는 컵을 두어 이곳의 주인공이 컵이라는 것을 바로 알게 하고, 가운데에는 시선을 붙잡는 기둥을 세워 공간을 세로로 나눴다. 1층은 ENJOY, DISPLAY(1)(2), REST(1)(2), PURCHASE로, 2층 다락은 좌식 REST(3)로 나눴다."
         ] },
         { t: "pair", src: ["garage3/sp_iso.jpg", "garage3/sp_zones.jpg"] },
-        { t: "pair", src: ["garage3/sp_display1.jpg", "garage3/sp_display2.jpg"] },
-        { t: "trio", src: ["garage3/sp_plan.jpg", "garage3/sp_section.jpg", "garage3/sp_zoning.jpg"] },
-        { t: "section", h: "Fixtures — 김리한 제작", ko: [
-          "스탠딩 테이블과 벤치를 직접 만들었다. 컵이 놓이는 로우 테이블은 테이블소로 직접 깎아 형태를 냈고, 공간 곳곳에 둔 돌은 직접 주워 왔다."
+        { t: "list", items: [
+          "ENJOY — 사이드 테이블 다섯 개를 탑처럼 쌓은 기둥과 스탠딩 테이블 네 개. 기둥 각 단에 프리미엄 컵을 올리고, 스탠딩 테이블에서는 받은 음료를 서서 마신다.",
+          "DISPLAY(1) — 낮은 테이블과 눈높이의 행잉 조명(NIMBUS). 컵이 놓이는 높낮이에 변화를 줬다.",
+          "DISPLAY(2) — 소품 선반. 비어 보일 수 있는 벽을 채우고, 선반 위 소품도 모두 판매한다.",
+          "REST(1)(2) — 소파와 직접 만든 벤치·테이블, 팀원이 자작나무 합판을 카빙해 만든 스툴.",
+          "REST(3) — 2층 다락. 신발을 벗고 앉는 카페트와 유기적인 형태의 낮은 탁자, 팀원이 만든 조명.",
+          "PURCHASE — 계산과 포장, 브랜딩 인쇄물."
         ] },
-        { t: "list", items: ["Standing table — 직접 제작", "Bench — 직접 제작", "Low table — 테이블소로 직접 가공", "Stones — 직접 수집"] },
-        { t: "trio", src: ["nimbus/n03.jpg", "nimbus/n05.jpg", "nimbus/n06.jpg"], cap: "Low table, stones, standing tables and benches in the space" }
+        { t: "pair", src: ["garage3/sp_display1.jpg", "garage3/sp_display2.jpg"] },
+        { t: "trio", src: ["garage3/sp_plan.jpg", "garage3/sp_section.jpg", "garage3/sp_zoning.jpg"], cap: "Floor plan / section / zoning" },
+        { t: "section", h: "Fixtures — design & making", ko: [
+          "공간 팀은 존별 집기와 가구를 설계하고 직접 만들었다. 판재는 홍익대 P동에서 테이블쏘로 직접 재단하거나, 시우터 협동조합과 U동 메이커스페이스에서 CNC로 잘랐다. 2층 좌식 테이블 다리는 각재와 투바이 목재로 짜고, 현장에서 실측해 높이를 맞출 수 있게 했다. 2층 바닥과 천장 높이를 직접 재서, 펜던트 조명은 줄 길이 2,100–2,200 mm로 낮은 진열 테이블 위 눈높이에 오도록 정했다."
+        ] },
+        { t: "pair", src: ["garage3/sp_cnc.jpg", "garage3/sp_legs.jpg"], cap: "Cutting plan by method (table saw / CNC ×2) · floor-table legs" },
+        { t: "list", items: ["Standing table — 직접 제작", "Bench — 직접 제작", "Low table — 테이블쏘로 직접 가공", "Floor table (2F) — CNC 상판 + 각재 다리", "Stones — 직접 수집"] },
+        { t: "trio", src: ["nimbus/n03.jpg", "nimbus/n05.jpg", "nimbus/n06.jpg"], cap: "Low table, stones, standing tables and benches in the space" },
+        { t: "section", h: "Proposal — DISPLAY zone (김리한)", ko: [
+          "인사이트 트립 회의 때 DISPLAY 존에 단초점 프로젝터로 MOIN의 키 컬러를 쓴 몰입형 영상을 투사하는 안과, 콘크리트 블록 사이에 판재를 끼우는 진열대 안을 제안했다."
+        ] },
+        { t: "full", src: "garage3/sp_rihan_proj.jpg", narrow: true }
       ] },
       { id: "operation", label: "Operation", credit: "Team MOIN", blocks: [
         { t: "text", ko: [
-          "MOIN에서는 모든 것을 살 수 있다. 방문객이 고른 컵에 음료를 담아 내고, 쓴 컵은 씻고 포장해 각자의 공간으로 가져가게 했다. 컵 외의 사물은 전시가 끝난 뒤 받는 예약판매로 운영했다. 낮은 사물을 발견하는 시간, 밤은 사람과 사람이 이어지는 시간으로, 조도와 조명의 색, 음료로 둘을 나눴다."
+          "MOIN에서는 모든 것을 살 수 있다. 다만 사는 방식은 물건마다 달랐다. 컵은 그 자리에서 산다. 방문객이 고른 컵에 음료를 담아 주고, 음료 없이 컵만 사면 값을 깎아 준다. 다 마신 컵은 나갈 때 씻고 포장해 건넨다. 가구·그래픽·오브제는 현장에서 예약하고, 운영이 끝난 뒤 받아 간다. 팔 수 없는 물건에는 미리 판매 완료 표시를 했고, 판매 정보는 zine에 담았다.",
+          "방문 흐름은 ENTER → EXPLORE → SELECT → REST → TAKE. 들어와 둘러보고, 컵을 고르고, 앉아서 마시고, 컵을 가져간다. 낮과 밤은 조도와 조명 색, 내는 음료로 나눴다. 낮은 사물을 발견하는 시간, 밤은 사람과 사람이 이어지는 시간이다."
         ] },
+        { t: "full", src: "garage3/op_ux.jpg", cap: "User experience — daytime" },
         { t: "full", src: "garage3/op_cup.jpg", narrow: true }
       ] },
       { id: "object", label: "Object: NIMBUS", credit: "김리한 (solo) — Steel mesh, pendant light, 300 × 700 × 500 mm", blocks: [
@@ -300,70 +334,24 @@ window.WORKS = [
         { t: "trio", src: ["nimbus/n05.jpg", "nimbus/n06.jpg", "nimbus/n07.jpg"] },
         { t: "pair", src: ["nimbus/n09.jpg", "nimbus/n10.jpg"] },
         { t: "full", src: "nimbus/n08.jpg" },
-        { t: "pair", src: ["garage3/ob_drawing.jpg", "garage3/sp_display1.jpg"], cap: "Drawing / planned position in DISPLAY(1)" }
+        { t: "pair", src: ["garage3/ob_drawing.jpg", "garage3/sp_display1.jpg"], cap: "Drawing / planned position in DISPLAY(1)" },
+        { t: "full", src: "garage3/ob_desc.jpg", narrow: true, cap: "Work card on the fabric poster" }
       ] },
       { id: "program", label: "Program", credit: "Team MOIN", blocks: [
         { t: "text", ko: [
-          "3일 동안 낮과 밤을 다르게 운영했다. 낮은 사물을 발견하는 시간, 밤은 사람과 사람이 이어지는 시간이다. 낮에는 매일 같은 방식으로 컵을 고르고 음료를 즐기게 했고, 밤은 날마다 다른 콘셉트로 꾸렸다."
+          "3일 동안 낮과 밤을 다르게 운영했다. 낮에는 매일 같은 방식으로 컵을 고르고 음료를 즐기게 했고, 밤은 날마다 다른 콘셉트로 꾸렸다. 1차 발표 피드백에 따라 밤 프로그램은 낮보다 더 계획된 느낌이 들도록 예약과 순서를 분명히 짰다."
         ] },
         { t: "process", h: "Day / Night", steps: [
           { h: "Daytime — every day", ko: "사물을 발견하는 시간. 방문객이 진열된 컵 가운데 하나를 고르면 그 컵에 음료를 담아 낸다." },
-          { h: "1st Night — DJ Party", ko: "Hyperpop과 Techno 디제잉이 흐르는 공간에서 비어퐁과 시크릿 미션을 함께 즐긴다. 팀을 이루어 게임을 하고 각자 받은 비밀 미션을 수행하며 자연스럽게 대화하고 교류한다." },
-          { h: "2nd Night — Tea Tasting", ko: "사전 예약으로 모인 10명이 각자 좋아하는 음악 한 곡을 골라 오고, 준비된 세 종류의 차를 함께 맛보며 서로의 플레이리스트를 나눈다." },
-          { h: "3rd Night — Movie Night", ko: "마지막 밤, 넓은 공간을 최대한 열어 모두가 함께 영화를 본다." }
+          { h: "1st Night (09.01) — DJ Party", ko: "18:00–21:30. Hyperpop과 Techno 디제잉을 세 시간 내내 배경으로 틀었다. 입장할 때 네 팀 중 하나로 나뉘고, '처음 만난 사람에게 가장 좋아하는 노래를 물어보세요' 같은 개인 시크릿 미션 종이를 받는다. 비어퐁 1·2라운드와 결승을 치르며 자연스럽게 대화하게 했다." },
+          { h: "2nd Night (09.02) — Tea Tasting", ko: "사전 예약으로 모인 10명이 각자 좋아하는 음악 한 곡을 골라 오고, 준비된 세 종류의 차를 함께 맛보며 서로의 플레이리스트를 나눈다." },
+          { h: "3rd Night (09.03) — Movie Night", ko: "마지막 밤, 넓은 공간을 최대한 열고 조도를 낮춰 모두가 같은 화면 앞에 모여 영화를 본다." }
         ] },
         { t: "full", src: "garage3/pg_dj2.jpg" },
         { t: "pair", src: ["garage3/pg_dj1.jpg", "garage3/pg_night.jpg"] },
         { t: "pair", src: ["garage3/pg_tea1.jpg", "garage3/pg_tea2.jpg"], cap: "1st Night DJ Party / 2nd Night Tea Tasting" }
       ] }
     ]
-  },
-  {
-    id: "algomi",
-    school: true,
-    tag: "UX·GUI",
-    title: "Algomi",
-    titleEn: "Algorithm + Me",
-    year: 2026,
-    period: "2026.06",
-    medium: "Service ideation prototype, GUI design",
-    cover: "algomi/01.jpg",
-    hero: { img: "algomi/01.jpg" },
-    line: "쌓여 온 디지털 데이터를 하나의 캐릭터로 시각화해, 자신의 디지털 자아를 마주하게 하는 서비스.",
-    blocks: [
-      { t: "text", ko: [
-        "Algomi는 우리가 인지하지 못한 채 쌓아온 디지털 데이터를 시각화하여, 자신의 디지털 자아를 마주하게 하는 서비스다. 유튜브, 인스타그램, 네이버와 같은 여러 플랫폼에서 누적된 콘텐츠 소비 패턴은 Algomi를 통해 하나의 캐릭터로 시각화되며, 이를 통해 그동안 어렴풋이만 알고 있던 자신의 알고리즘을 직관적으로 확인할 수 있다.",
-        "캐릭터가 가진 각 키워드를 누르면 해당 알고리즘이 어떤 플랫폼에서, 어떤 콘텐츠를 통해 형성되었는지 그 출처까지 한눈에 모아볼 수 있다. 변화하고자 하는 방향을 키워드로 설정하면 캐릭터가 그에 맞춰 점진적으로 변해, 알고리즘과 디지털 세계 속 자신의 자아에 능동적인 태도를 취하도록 돕는다. 친구들의 알고리즘 캐릭터를 함께 탐색하고 비교하는 소셜 경험으로도 확장된다."
-      ] },
-      { t: "trio", src: ["algomi/02.jpg", "algomi/03.jpg", "algomi/04.jpg"] },
-      { t: "pair", src: ["algomi/06.jpg", "algomi/08.jpg"] }
-    ]
-  },
-  {
-    id: "mi",
-    school: true,
-    tag: "Graphic·Drawing",
-    card: true,
-    title: "美 — 아름다울 미",
-    year: 2026,
-    period: "2026.06",
-    medium: "흑지, 화이트 마카, 실크원단",
-    size: "297 × 420 mm",
-    cover: "mi/cover.png"
-  },
-  {
-    id: "bodoni",
-    school: true,
-    tag: "Graphic·Editorial",
-    title: "Bodoni",
-    titleEn: "Type Specimen Poster",
-    year: 2026,
-    period: "2026.06",
-    medium: "Poster, Adobe Illustrator",
-    size: "A2",
-    cover: "bodoni/b1.jpg",
-    hero: { img: "bodoni/b1.jpg", tall: true },
-    blocks: []
   },
   {
     id: "meomun",
