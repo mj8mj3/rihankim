@@ -165,7 +165,7 @@ window.WORKS = [
     medium: "Audio-reactive real-time visuals for stage LED, TouchDesigner",
     role: "LED Visual Production & Live Operation",
     artists: "Hi-Fi Un!corn, hrtz.wav, LUCY, THE FIX, YOUNHA",
-    cover: "xmf/lucy_knight_cradle_A.jpg",
+    cover: "xmf/site14.jpg",
     hero: { video: "xmf/xmf_lucy_stage_15s.mp4", poster: "xmf/hero.jpg" },
     line: "XMF 2026 한국 아티스트 무대 LED 영상 중 일부를 TouchDesigner로 제작하고 현장에서 운용했다.",
     blocks: [
@@ -174,14 +174,11 @@ window.WORKS = [
         "Left or Right, 어리버리, sunday morning, 사랑은 어쩌고, 발아, 뜨거, 못 죽는 기사와 비단 요람, Don't Look Back, HIGH, Rock like star — 곡의 성격에 맞춰 화면의 재료와 움직임을 달리했다."
       ] },
       { t: "pair", src: ["xmf/xmf_lucy_reactive_12s.mp4", "xmf/xmf_hrtzwav_reactive_12s.mp4"], cap: "Reactive visuals — LUCY, hrtz.wav" },
-      { t: "section", h: "On site — 2026.09.29–10.04", ko: ["작업실에서 영상을 준비하고, 무대 설치부터 리허설, 공연까지 현장의 운영석에서 LED 영상을 직접 운용했다."] },
-      { t: "trio", src: ["xmf/site02.jpg", "xmf/site03.jpg", "xmf/site04.jpg"] },
-      { t: "grid", cols: 4, src: ["xmf/site05.jpg", "xmf/site06.jpg", "xmf/site07.jpg", "xmf/site08.jpg"] },
+      { t: "section", h: "On site — 2026.09.29–10.04", ko: ["작업실에서 영상을 준비하고, 무대 설치부터 리허설, 공연까지 현장에서 LED 영상을 직접 운용했다."] },
+      { t: "trio", src: ["xmf/site02.jpg", "xmf/site03.jpg", "xmf/site04.jpg"], cap: "Stage build" },
+      { t: "trio", src: ["xmf/site12.jpg", "xmf/site13.jpg", "xmf/site14.jpg"], cap: "Evening rehearsal" },
       { t: "full", src: "xmf/xmf_live_01_ledstage.mp4", narrow: true, cap: "LED stage — on site" },
-      { t: "trio", src: ["xmf/site09.jpg", "xmf/site14.jpg", "xmf/site15.jpg"] },
-      { t: "grid", cols: 4, src: ["xmf/site10.jpg", "xmf/site11.jpg", "xmf/site12.jpg", "xmf/site13.jpg"] },
-      { t: "grid", cols: 4, src: ["xmf/site16.jpg", "xmf/site17.jpg", "xmf/site18.jpg", "xmf/site19.jpg"] },
-      { t: "grid", cols: 4, src: ["xmf/site01.jpg", "xmf/site20.jpg"], cap: "Preparation / rehearsal pass" },
+      { t: "pair", src: ["xmf/site15.jpg", "xmf/site01.jpg"], cap: "Night stage / preparing the show at home" },
       { t: "grid", cols: 5, src: ["xmf/hifiunicorn_left_or_right_bubbles.jpg", "xmf/hrtzwav_eoribeori_A.jpg", "xmf/lucy_bara_A.jpg", "xmf/thefix_dont_look_back_B.jpg", "xmf/younha_rock_like_star_A.jpg", "xmf/hifiunicorn_left_or_right_firework.jpg", "xmf/hrtzwav_sunday_morning_B.jpg", "xmf/lucy_knight_cradle_A.jpg", "xmf/thefix_high_A.jpg", "xmf/younha_rock_like_star_C.jpg"], cap: "Stills by song — Hi-Fi Un!corn, hrtz.wav, LUCY, THE FIX, YOUNHA" }
     ]
   },
