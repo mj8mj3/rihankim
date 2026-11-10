@@ -83,10 +83,43 @@
       filters.querySelectorAll("button").forEach(function (b) {
         b.onclick = function () {
           filters.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x === b); });
-          grid.querySelectorAll(".card").forEach(function (c) { c.hidden = b.textContent !== "All" && c.getAttribute("data-tag") !== b.textContent; });
+          document.querySelectorAll("#index-grid .card, #index-list .row").forEach(function (c) { c.hidden = b.textContent !== "All" && c.getAttribute("data-tag") !== b.textContent; });
         };
       });
     }
+
+    // 목록 보기: 번호 · 제목 · 장소 · 분야 · 연도. 마우스를 올리면 표지가 커서 옆에 뜬다.
+    var list = document.getElementById("index-list");
+    if (list) {
+      list.innerHTML = WORKS.map(function (w) {
+        var inner = '<span class="row__no">' + num(w) + '</span>' +
+          '<span class="row__title" lang="ko">' + esc(w.title) + (w.titleEn ? " <em>" + esc(w.titleEn) + "</em>" : "") + "</span>" +
+          '<span class="row__place" lang="ko">' + esc(w.exhibition || w.medium || "") + "</span>" +
+          '<span class="row__tag">' + esc(w.tag) + "</span>" +
+          '<span class="row__year">' + esc(w.year || "") + "</span>";
+        return '<li class="row" data-tag="' + esc(w.tag) + '" data-cover="' + esc(single(w.cover)) + '">' + (w.card ? "<div>" + inner + "</div>" : '<a href="work.html?id=' + w.id + '">' + inner + "</a>") + "</li>";
+      }).join("");
+      var peek = document.createElement("div");
+      peek.className = "peek"; peek.innerHTML = "<img alt=\"\">";
+      document.body.appendChild(peek);
+      var pimg = peek.firstChild;
+      list.addEventListener("mousemove", function (e) { peek.style.left = (e.clientX + 170) + "px"; peek.style.top = e.clientY + "px"; });
+      list.querySelectorAll(".row").forEach(function (r) {
+        r.addEventListener("mouseenter", function () { if (/.mp4$/.test(r.dataset.cover)) return; pimg.src = r.dataset.cover; peek.classList.add("on"); });
+        r.addEventListener("mouseleave", function () { peek.classList.remove("on"); });
+      });
+    }
+    var count = document.getElementById("index-count");
+    if (count) count.textContent = "(" + pad(WORKS.length) + ")";
+    var views = document.querySelectorAll(".view button");
+    function setView(v) {
+      views.forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-view") === v); });
+      if (grid) grid.hidden = v !== "grid";
+      if (list) list.hidden = v !== "list";
+      try { localStorage.setItem("rk-view", v); } catch (e) {}
+    }
+    views.forEach(function (b) { b.onclick = function () { setView(b.getAttribute("data-view")); }; });
+    if (views.length) { var saved = null; try { saved = localStorage.getItem("rk-view"); } catch (e) {} if (saved === "list") setView("list"); }
 
     // Ongoing: 진행 중인 작업. 완성작과 섞지 않는다.
     var ongoing = document.getElementById("ongoing-grid");
@@ -126,6 +159,7 @@
         var open = small.hidden;
         small.hidden = !open;
         toggle.setAttribute("aria-expanded", open);
+        toggle.innerHTML = (open ? "Close Small Works" : "Open Small Works") + " <span>" + (open ? "−" : "+") + "</span>";
       };
       if (location.hash === "#small") toggle.onclick();
     }
@@ -277,8 +311,44 @@
     });
   }
 
+  // 아래로 내릴 땐 머리말을 숨기고, 위로 올리면 다시 보인다.
+  function autoHide() {
+    var h = document.querySelector(".site-header");
+    if (!h) return;
+    var last = scrollY, ticking = false;
+    addEventListener("scroll", function () {
+      if (ticking) return; ticking = true;
+      requestAnimationFrame(function () {
+        var y = scrollY;
+        h.classList.toggle("is-hidden", y > 120 && y > last + 2);
+        if (y < last - 2 || y <= 120) h.classList.remove("is-hidden");
+        last = y; ticking = false;
+      });
+    }, { passive: true });
+  }
+  // 서울 시각 (푸터)
+  function clock() {
+    var els = document.querySelectorAll(".js-clock");
+    if (!els.length) return;
+    function tick() {
+      var s = new Date().toLocaleTimeString("en-GB", { timeZone: "Asia/Seoul", hour: "2-digit", minute: "2-digit" });
+      els.forEach(function (e) { e.textContent = "— " + s; });
+    }
+    tick(); setInterval(tick, 30000);
+  }
+  // 화면에 들어올 때 살짝 떠오르게. 지원 안 하면 그냥 보인다.
+  function reveal() {
+    var sel = ".card, .row, .small__item, .work > section:not(.opener), .work > figure, .facet > section, .facet > figure, .facet__head, .cv, .about__bio, .press__list li, .pager";
+    var els = [].slice.call(document.querySelectorAll(sel)).concat([].slice.call(document.querySelectorAll(".rv")));
+    if (!("IntersectionObserver" in window) || matchMedia("(prefers-reduced-motion: reduce)").matches) { els.forEach(function (e) { e.classList.add("in"); }); return; }
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
+    }, { rootMargin: "0px 0px -6% 0px", threshold: 0.04 });
+    els.forEach(function (e, i) { e.classList.add("rv"); e.style.transitionDelay = (e.classList.contains("card") ? (i % 3) * 80 : 0) + "ms"; io.observe(e); });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
-    renderIndex(); renderWork(); renderPress(); renderMail();
+    renderIndex(); renderWork(); renderPress(); renderMail(); clock(); reveal(); autoHide();
     var here = document.body.getAttribute("data-page");
     document.querySelectorAll(".nav a").forEach(function (a) { if (a.getAttribute("data-page") === here) a.setAttribute("aria-current", "page"); });
   });
