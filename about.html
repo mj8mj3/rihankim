@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="favicon.ico?v=38" sizes="any">
-  <link rel="icon" href="favicon.svg?v=38" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=38">
+  <link rel="icon" href="favicon.ico?v=39" sizes="any">
+  <link rel="icon" href="favicon.svg?v=39" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=39">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap">
-  <link rel="stylesheet" href="css/style.css?v=38">
+  <link rel="stylesheet" href="css/style.css?v=39">
   <title>About — Rihan Kim</title>
   <meta name="description" content="About Rihan Kim (김리한).">
   <link rel="canonical" href="https://rihankim.com/about.html">
@@ -20,75 +20,79 @@
   <meta property="og:image" content="https://rihankim.com/assets/og.jpg">
   <meta name="twitter:card" content="summary_large_image">
 </head>
-<body data-page="about">
-  <header class="site-header">
-    <a class="logo" href="index.html">Rihan Kim</a>
-    <nav class="nav">
+<body data-page="about" id="top">
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header g">
+    <a class="logo" href="index.html">Rihan Kim <span lang="ko" style="font-weight:400;color:var(--ink-2)">김리한</span></a>
+    <span class="role mono">Media art · Installation · Interaction · Design</span>
+    <nav class="nav" aria-label="Main">
       <a data-page="works" href="index.html#works">Works</a>
       <a data-page="about" href="about.html">About</a>
       <a data-page="press" href="press.html">Press</a>
+      <a href="#contact">Contact</a>
     </nav>
   </header>
-  <main class="about">
-    <div class="run"><span>Rihan Kim — Portfolio</span><span>About</span></div>
-    <section class="about__grid">
-      <figure class="about__photo"><img src="assets/media/about/profile-982.webp" srcset="assets/media/about/profile-982.webp 982w, assets/media/about/profile-1966.webp 1966w, assets/media/about/profile-2358.webp 2358w" sizes="(max-width: 900px) 420px, 33vw" width="2358" height="2880" alt="Rihan Kim" fetchpriority="high"></figure>
-      <div class="about__text">
-        <h1>Rihan Kim <span lang="ko">김리한</span></h1>
-        <div class="about__bio" lang="ko">
+  <main id="main">
+    <section class="page-head g"><h1>About<span lang="ko">김리한 Rihan Kim</span></h1></section>
+    <section class="ab g">
+      <figure class="ab__photo"><img src="assets/media/about/profile-982.webp" srcset="assets/media/about/profile-982.webp 982w, assets/media/about/profile-1966.webp 1966w, assets/media/about/profile-2358.webp 2358w" sizes="(max-width: 720px) 100vw, 33vw" width="2358" height="2880" alt="Rihan Kim" fetchpriority="high"><figcaption>Rihan Kim — Seoul, KR</figcaption></figure>
+      <div class="ab__main">
+        <div class="ab__bio" lang="ko">
           <p>김리한은 소리와 빛, 공간을 재료로 작업한다. TouchDesigner로 짓는 실시간 영상을 건물의 벽과 무대 위에 펼치고, 감열지나 철제 메쉬처럼 물성이 뚜렷한 재료로 설치 작업을 한다.</p>
           <p>익숙해서 더 이상 보이지 않게 된 장소, 마음속에 지어지고 허물어지는 집처럼, 눈앞의 공간과 그 공간에 쌓인 기억이 겹치는 자리에 관심을 둔다.</p>
         </div>
+        <div class="ab__btns">
+          <a class="btn btn--solid js-mail-btn" href="#contact">Get in touch <span>→</span></a>
+          <a class="btn" href="index.html#works">View works <span>→</span></a>
+        </div>
         <div class="cv">
-          <h2 class="label">Education</h2>
+          <div class="cv__sec"><h2 class="label">Exhibitions &amp; Performances</h2>
+          <ul>
+            <li><span>2026.10</span><span lang="ko"><a href="work.html?id=gwannyeom">「관념 속의 집」</a>, 2026 HCF 미디어아트쇼, 화성예술의전당</span></li>
+            <li><span>2026.10</span><span lang="ko"><a href="work.html?id=seungmu">〈승무〉</a> (Team houseCall), 2026 HCF 미디어아트쇼, 화성예술의전당 야외공연장</span></li>
+            <li><span>2026.10</span><span lang="ko"><a href="work.html?id=xmf">XMF 2026</a> 무대 LED 영상, 인천 파라다이스시티</span></li>
+            <li><span>2026.09</span><span lang="ko">《ATTACHED HOME》, 갤러리 실, 세종 조치원 — <a href="work.html?id=chungman">「충만한 세상에 복이 있을지어니?」</a></span></li>
+            <li><span>2026.09</span><span lang="ko"><a href="work.html?id=garage3">Garage Project 3</a> — MOIN, NIMBUS</span></li>
+            <li><span>2026.05</span><span lang="ko">〈세종 즐겨찾기 : pinned sejong〉, BRT작은미술관, 세종 — <a href="work.html?id=transparent">「투명해진 공간」</a></span></li>
+          </ul></div>
+          <div class="cv__sec"><h2 class="label">Support</h2>
+          <ul>
+            <li><span>2026</span><span lang="ko">K-Art 청년 창작자 지원사업 (문화체육관광부, 한국문화예술위원회, 세종시문화관광재단) — 《ATTACHED HOME》</span></li>
+          </ul></div>
+          <div class="cv__sec"><h2 class="label">Press</h2>
+          <ul>
+            <li><span>2026</span><span><a href="press.html">2026 HCF 미디어아트쇼 관련 기사 12건</a> →</span></li>
+          </ul></div>
+          <div class="cv__sec"><h2 class="label">Education</h2>
           <ul>
             <li><span>2023–</span><span>Hongik University, Design Convergence <span lang="ko">(재학 중)</span></span></li>
             <li><span>2020–2023</span><span>Pohang Jecheol High School</span></li>
-          </ul>
-          <h2 class="label">Exhibitions &amp; Performances</h2>
+          </ul></div>
+          <div class="cv__sec"><h2 class="label">Tools</h2>
+          <p class="tools">TouchDesigner · GLSL · Python · Arduino · Processing · MediaPipe · Figma · Illustrator</p></div>
+          <div class="cv__sec"><h2 class="label">Contact</h2>
           <ul>
-            <li><span>2026.10</span><span lang="ko">「관념 속의 집」, 2026 HCF 미디어아트쇼, 화성예술의전당</span></li>
-            <li><span>2026.10</span><span lang="ko">〈승무〉 (Team houseCall), 2026 HCF 미디어아트쇼, 화성예술의전당 야외공연장</span></li>
-            <li><span>2026.10</span><span lang="ko">XMF 2026 무대 LED 영상, 인천 파라다이스시티</span></li>
-            <li><span>2026.09</span><span lang="ko">《ATTACHED HOME》, 갤러리 실, 세종 조치원 — 「충만한 세상에 복이 있을지어니?」</span></li>
-            <li><span>2026.09</span><span lang="ko">Garage Project 3 — MOIN, NIMBUS</span></li>
-            <li><span>2026.05</span><span lang="ko">〈세종 즐겨찾기 : pinned sejong〉, BRT작은미술관, 세종 — 「투명해진 공간」</span></li>
-          </ul>
-          <h2 class="label">Support</h2>
-          <ul>
-            <li><span>2026</span><span lang="ko">K-Art 청년 창작자 지원사업 (문화체육관광부, 한국문화예술위원회, 세종시문화관광재단) — 《ATTACHED HOME》</span></li>
-          </ul>
-          <h2 class="label">Press</h2>
-          <ul>
-            <li><span>2026</span><span><a href="press.html">2026 HCF 미디어아트쇼 관련 기사 12건 →</a></span></li>
-          </ul>
-          <h2 class="label">Tools</h2>
-          <p class="tools">TouchDesigner · GLSL · Python · Arduino · Processing · MediaPipe · Figma · Illustrator</p>
-          <h2 class="label">Contact</h2>
-          <ul class="contact">
             <li><span>Email</span><span><a class="js-mail" data-u="8230wjkjm" data-d="gmail.com" href="#">Email</a></span></li>
             <li><span>Instagram</span><span><a href="https://www.instagram.com/rhankim/" target="_blank" rel="noopener">@rhankim</a></span></li>
             <li><span>Works</span><span><a href="https://www.instagram.com/keemrihan/" target="_blank" rel="noopener">@keemrihan</a></span></li>
-          </ul>
+          </ul></div>
         </div>
       </div>
     </section>
   </main>
-  <footer class="site-footer">
-    <div class="site-footer__big">
-      <span class="label">Contact</span>
-      <a class="js-mail" data-u="8230wjkjm" data-d="gmail.com" href="#">Email</a>
+  <footer class="site-footer g" id="contact">
+    <div class="ft__ask">
+      <span class="label">Contact — Commissions, collaborations, exhibitions</span>
     </div>
-    <div class="site-footer__bottom">
-      <div class="site-footer__contact">
-        <a href="https://www.instagram.com/rhankim/" target="_blank" rel="noopener">Instagram @rhankim</a>
-        <a href="https://www.instagram.com/keemrihan/" target="_blank" rel="noopener">Works @keemrihan</a>
-      </div>
-      <div class="site-footer__meta"><span>Seoul, KR <span class="js-clock"></span></span><span>© 2026 Rihan Kim</span></div>
-    </div>
+    <a class="ft__mail js-mail" data-u="8230wjkjm" data-d="gmail.com" href="#">Email</a>
+    <div class="ft__col"><span class="label">Instagram</span><a href="https://www.instagram.com/rhankim/" target="_blank" rel="noopener"><span class="tl">@rhankim</span> ↗</a><a href="https://www.instagram.com/keemrihan/" target="_blank" rel="noopener"><span class="tl">Works @keemrihan</span> ↗</a></div>
+    <div class="ft__col"><span class="label">Index</span><a href="index.html#works"><span class="tl">Works</span></a><a href="index.html#ongoing"><span class="tl">Ongoing</span></a><a href="index.html#small"><span class="tl">Small Works</span></a></div>
+    <div class="ft__col"><span class="label">Information</span><a href="about.html"><span class="tl">About &amp; CV</span></a><a href="press.html"><span class="tl">Press</span></a></div>
+    <div class="ft__col"><span class="label">Based in</span><span>Seoul, KR</span><span class="mono js-clock" style="color:#8d8a83"></span></div>
+    <div class="ft__bottom mono"><span>© 2026 Rihan Kim</span><a href="#top">Back to top ↑</a></div>
   </footer>
-  <script src="js/media-sizes.js?v=38"></script>
-  <script src="js/works.js?v=38"></script>
-  <script src="js/main.js?v=38"></script>
+  <script src="js/media-sizes.js?v=39"></script>
+  <script src="js/works.js?v=39"></script>
+  <script src="js/main.js?v=39"></script>
 </body>
 </html>

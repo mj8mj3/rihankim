@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="favicon.ico?v=38" sizes="any">
-  <link rel="icon" href="favicon.svg?v=38" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=38">
+  <link rel="icon" href="favicon.ico?v=39" sizes="any">
+  <link rel="icon" href="favicon.svg?v=39" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=39">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap">
-  <link rel="stylesheet" href="css/style.css?v=38">
+  <link rel="stylesheet" href="css/style.css?v=39">
   <title>Press — Rihan Kim</title>
   <meta name="description" content="Press — Rihan Kim (김리한).">
   <link rel="canonical" href="https://rihankim.com/press.html">
@@ -20,38 +20,40 @@
   <meta property="og:image" content="https://rihankim.com/assets/og.jpg">
   <meta name="twitter:card" content="summary_large_image">
 </head>
-<body data-page="press">
-  <header class="site-header">
-    <a class="logo" href="index.html">Rihan Kim</a>
-    <nav class="nav">
+<body data-page="press" id="top">
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header g">
+    <a class="logo" href="index.html">Rihan Kim <span lang="ko" style="font-weight:400;color:var(--ink-2)">김리한</span></a>
+    <span class="role mono">Media art · Installation · Interaction · Design</span>
+    <nav class="nav" aria-label="Main">
       <a data-page="works" href="index.html#works">Works</a>
       <a data-page="about" href="about.html">About</a>
       <a data-page="press" href="press.html">Press</a>
+      <a href="#contact">Contact</a>
     </nav>
   </header>
-  <main class="press">
-    <div class="run"><span>Rihan Kim — Portfolio</span><span>Press</span></div>
-    <section class="press__head">
-      <h1>Press</h1>
-      <p class="press__note">2026 HCF Media Art Show — related works: <span id="press-related"></span></p>
-    </section>
-    <ul id="press-list" class="press__list"></ul>
+  <main id="main">
+    <section class="page-head g"><h1>Press<span id="press-count"></span></h1></section>
+    <div class="sec__head g" style="padding-top:0;border-bottom:0"><p class="label" style="grid-column:1/7;margin:0">2026 HCF Media Art Show — coverage</p><p class="pr__rel">Related works: <span id="press-related"></span></p></div>
+    <div class="pr">
+      <div class="pr__cols mono" aria-hidden="true"><span style="grid-column:1/2">N°</span><span style="grid-column:2/4">Date</span><span style="grid-column:4/7">Outlet</span><span style="grid-column:7/12">Headline</span></div>
+      <ol id="press-list"></ol>
+    </div>
+    <div class="g" style="padding-top:48px"><div style="grid-column:1/13;display:flex;gap:10px;flex-wrap:wrap"><a class="btn btn--solid" href="work.html?id=gwannyeom">View 관념 속의 집 <span>→</span></a><a class="btn" href="about.html">About &amp; CV <span>→</span></a></div></div>
   </main>
-  <footer class="site-footer">
-    <div class="site-footer__big">
-      <span class="label">Contact</span>
-      <a class="js-mail" data-u="8230wjkjm" data-d="gmail.com" href="#">Email</a>
+  <footer class="site-footer g" id="contact">
+    <div class="ft__ask">
+      <span class="label">Contact — Commissions, collaborations, exhibitions</span>
     </div>
-    <div class="site-footer__bottom">
-      <div class="site-footer__contact">
-        <a href="https://www.instagram.com/rhankim/" target="_blank" rel="noopener">Instagram @rhankim</a>
-        <a href="https://www.instagram.com/keemrihan/" target="_blank" rel="noopener">Works @keemrihan</a>
-      </div>
-      <div class="site-footer__meta"><span>Seoul, KR <span class="js-clock"></span></span><span>© 2026 Rihan Kim</span></div>
-    </div>
+    <a class="ft__mail js-mail" data-u="8230wjkjm" data-d="gmail.com" href="#">Email</a>
+    <div class="ft__col"><span class="label">Instagram</span><a href="https://www.instagram.com/rhankim/" target="_blank" rel="noopener"><span class="tl">@rhankim</span> ↗</a><a href="https://www.instagram.com/keemrihan/" target="_blank" rel="noopener"><span class="tl">Works @keemrihan</span> ↗</a></div>
+    <div class="ft__col"><span class="label">Index</span><a href="index.html#works"><span class="tl">Works</span></a><a href="index.html#ongoing"><span class="tl">Ongoing</span></a><a href="index.html#small"><span class="tl">Small Works</span></a></div>
+    <div class="ft__col"><span class="label">Information</span><a href="about.html"><span class="tl">About &amp; CV</span></a><a href="press.html"><span class="tl">Press</span></a></div>
+    <div class="ft__col"><span class="label">Based in</span><span>Seoul, KR</span><span class="mono js-clock" style="color:#8d8a83"></span></div>
+    <div class="ft__bottom mono"><span>© 2026 Rihan Kim</span><a href="#top">Back to top ↑</a></div>
   </footer>
-  <script src="js/media-sizes.js?v=38"></script>
-  <script src="js/works.js?v=38"></script>
-  <script src="js/main.js?v=38"></script>
+  <script src="js/media-sizes.js?v=39"></script>
+  <script src="js/works.js?v=39"></script>
+  <script src="js/main.js?v=39"></script>
 </body>
 </html>

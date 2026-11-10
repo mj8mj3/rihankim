@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="favicon.ico?v=38" sizes="any">
-  <link rel="icon" href="favicon.svg?v=38" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=38">
+  <link rel="icon" href="favicon.ico?v=39" sizes="any">
+  <link rel="icon" href="favicon.svg?v=39" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=39">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap">
-  <link rel="stylesheet" href="css/style.css?v=38">
+  <link rel="stylesheet" href="css/style.css?v=39">
   <title>Rihan Kim — Portfolio</title>
   <meta name="description" content="Rihan Kim (김리한). Media art, installation and interaction.">
   <link rel="canonical" href="https://rihankim.com/">
@@ -20,76 +20,77 @@
   <meta property="og:image" content="https://rihankim.com/assets/og.jpg">
   <meta name="twitter:card" content="summary_large_image">
 </head>
-<body data-page="home">
-  <header class="site-header">
-    <a class="logo" href="index.html">Rihan Kim</a>
-    <nav class="nav">
+<body data-page="home" id="top">
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header g">
+    <a class="logo" href="index.html">Rihan Kim <span lang="ko" style="font-weight:400;color:var(--ink-2)">김리한</span></a>
+    <span class="role mono">Media art · Installation · Interaction · Design</span>
+    <nav class="nav" aria-label="Main">
       <a data-page="works" href="index.html#works">Works</a>
       <a data-page="about" href="about.html">About</a>
       <a data-page="press" href="press.html">Press</a>
+      <a href="#contact">Contact</a>
     </nav>
   </header>
-  <main>
-    <section class="hero" aria-label="Rihan Kim">
-      <a class="hero__media" href="work.html?id=gwannyeom" aria-label="관념 속의 집" tabindex="-1">
-        <video src="assets/media/gwannyeom/clip.mp4" poster="assets/media/gwannyeom/clip-poster.webp" autoplay muted loop playsinline></video>
+  <main id="main">
+    <section class="intro g" aria-label="Introduction">
+      <h1 class="intro__name">Rihan Kim<small>Portfolio<br>2023 — 2026<br>Seoul, KR</small></h1>
+      <div class="intro__text">
+        <nav class="intro__sel" aria-label="Selected works"><span class="label">Selected works</span><ol id="intro-sel"></ol></nav>
+        <p class="intro__lead" lang="ko">김리한은 소리와 빛, 공간을 재료로 작업한다. TouchDesigner로 짓는 실시간 영상을 건물의 벽과 무대 위에 펼치고, 감열지나 철제 메쉬처럼 물성이 뚜렷한 재료로 설치 작업을 한다.</p>
+        <p class="intro__disc mono"><span>Media art</span><span>Installation</span><span>Interaction</span><span>Branding &amp; Web</span></p>
+        <div class="intro__cta">
+          <a class="btn btn--solid" href="work.html?id=gwannyeom">View featured work <span>→</span></a>
+          <a class="btn" href="#works">Index of works <span>↓</span></a>
+        </div>
+      </div>
+      <a class="feature" href="work.html?id=gwannyeom">
+        <div class="feature__media"><video src="assets/media/gwannyeom/clip.mp4" poster="assets/media/gwannyeom/clip-poster.webp" autoplay muted loop playsinline aria-label="관념 속의 집 — video excerpt"></video></div>
+        <div class="feature__cap">
+          <span class="no">N° 01</span>
+          <strong lang="ko">관념 속의 집</strong>
+          <span class="label" lang="ko">Featured — 2026 HCF 미디어아트쇼, 화성예술의전당</span>
+          <span class="go">Open project →</span>
+        </div>
       </a>
-      <div class="hero__inner">
-        <h1 class="hero__name">Rihan Kim</h1>
-        <div class="hero__row">
-          <p class="hero__meta"><span lang="ko">김리한</span><span>Media art</span><span>Installation</span><span>Interaction</span></p>
-          <p class="hero__now"><span class="label">Featured — N° 01</span><a href="work.html?id=gwannyeom" lang="ko">관념 속의 집, 2026 <span>→</span></a></p>
+    </section>
+
+    <section id="works" class="sec idx">
+      <div class="sec__head g">
+        <h2>Works<sup id="index-count"></sup></h2>
+        <div class="sec__tools">
+          <div id="index-filters" class="filters" role="group" aria-label="Filter by discipline"></div>
+          <div class="view" role="group" aria-label="View"><button type="button" data-view="list" aria-pressed="true">List</button><button type="button" data-view="grid" aria-pressed="false">Grid</button></div>
         </div>
       </div>
+      <div class="idx__cols g mono" aria-hidden="true"><span class="cols-no">N°</span><span class="cols-title">Title</span><span class="cols-disc">Discipline</span><span class="cols-place">Venue / Exhibition</span><span class="cols-year">Year</span></div>
+      <ol id="index-list" class="idx__list"></ol>
+      <div id="index-grid" class="idx__grid" hidden></div>
     </section>
 
-    <section class="statement">
-      <h2 class="label rv">About</h2>
-      <div class="statement__body rv" lang="ko">
-        <p>김리한은 소리와 빛, 공간을 재료로 작업한다. TouchDesigner로 짓는 실시간 영상을 건물의 벽과 무대 위에 펼치고, 감열지나 철제 메쉬처럼 물성이 뚜렷한 재료로 설치 작업을 한다.</p>
-        <p>익숙해서 더 이상 보이지 않게 된 장소, 마음속에 지어지고 허물어지는 집처럼, 눈앞의 공간과 그 공간에 쌓인 기억이 겹치는 자리에 관심을 둔다.</p>
-        <a class="more" href="about.html" lang="en">About &amp; CV →</a>
-      </div>
+    <section id="ongoing" class="sec">
+      <div class="sec__head g"><h2>Ongoing<sup id="ongoing-count"></sup></h2><p class="sec__note mono">In progress — SDF 2026, COEX Hall A</p></div>
+      <div id="ongoing-grid" class="ongo"></div>
     </section>
 
-    <section id="works" class="index">
-      <div class="index__head">
-        <div class="index__title"><h2>Works</h2><span class="count" id="index-count"></span></div>
-        <div class="index__tools">
-          <div id="index-filters" class="filters"></div>
-          <div class="view" role="group" aria-label="View"><button type="button" data-view="grid" aria-pressed="true">Grid</button><button type="button" data-view="list" aria-pressed="false">List</button></div>
-        </div>
-      </div>
-      <div id="index-grid" class="index__grid index__grid--works"></div>
-      <ul id="index-list" class="index__list" hidden></ul>
-    </section>
-
-    <section class="index" id="ongoing">
-      <div class="index__head"><div class="index__title"><h2>Ongoing</h2><span class="count">In progress</span></div></div>
-      <div id="ongoing-grid" class="index__grid index__grid--ongoing"></div>
-    </section>
-
-    <section class="small" id="small">
-      <div class="index__head"><div class="index__title"><h2>Small Works</h2><span class="count">Projects &amp; reels</span></div></div>
-      <button id="small-toggle" class="small__toggle" type="button" aria-expanded="false" aria-controls="small-grid">Open Small Works <span>+</span></button>
-      <div id="small-grid" class="small__grid" hidden></div>
+    <section id="small" class="sec">
+      <div class="sec__head g"><h2>Small Works</h2><p class="sec__note mono">Projects &amp; reels</p></div>
+      <div id="small-grid" class="small"></div>
     </section>
   </main>
-  <footer class="site-footer">
-    <div class="site-footer__big">
-      <span class="label">Contact</span>
-      <a class="js-mail" data-u="8230wjkjm" data-d="gmail.com" href="#">Email</a>
+  <footer class="site-footer g" id="contact">
+    <div class="ft__ask">
+      <span class="label">Contact — Commissions, collaborations, exhibitions</span>
     </div>
-    <div class="site-footer__bottom">
-      <div class="site-footer__contact">
-        <a href="https://www.instagram.com/rhankim/" target="_blank" rel="noopener">Instagram @rhankim</a>
-        <a href="https://www.instagram.com/keemrihan/" target="_blank" rel="noopener">Works @keemrihan</a>
-      </div>
-      <div class="site-footer__meta"><span>Seoul, KR <span class="js-clock"></span></span><span>© 2026 Rihan Kim</span></div>
-    </div>
+    <a class="ft__mail js-mail" data-u="8230wjkjm" data-d="gmail.com" href="#">Email</a>
+    <div class="ft__col"><span class="label">Instagram</span><a href="https://www.instagram.com/rhankim/" target="_blank" rel="noopener"><span class="tl">@rhankim</span> ↗</a><a href="https://www.instagram.com/keemrihan/" target="_blank" rel="noopener"><span class="tl">Works @keemrihan</span> ↗</a></div>
+    <div class="ft__col"><span class="label">Index</span><a href="index.html#works"><span class="tl">Works</span></a><a href="index.html#ongoing"><span class="tl">Ongoing</span></a><a href="index.html#small"><span class="tl">Small Works</span></a></div>
+    <div class="ft__col"><span class="label">Information</span><a href="about.html"><span class="tl">About &amp; CV</span></a><a href="press.html"><span class="tl">Press</span></a></div>
+    <div class="ft__col"><span class="label">Based in</span><span>Seoul, KR</span><span class="mono js-clock" style="color:#8d8a83"></span></div>
+    <div class="ft__bottom mono"><span>© 2026 Rihan Kim</span><a href="#top">Back to top ↑</a></div>
   </footer>
-  <script src="js/media-sizes.js?v=38"></script>
-  <script src="js/works.js?v=38"></script>
-  <script src="js/main.js?v=38"></script>
+  <script src="js/media-sizes.js?v=39"></script>
+  <script src="js/works.js?v=39"></script>
+  <script src="js/main.js?v=39"></script>
 </body>
 </html>

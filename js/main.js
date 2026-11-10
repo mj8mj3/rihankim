@@ -2,41 +2,51 @@
   var MEDIA = "assets/media/";
   var ALL = window.WORKS || [];
   var SIZES = window.MEDIA_SIZES || {};
-  // 대표 작업(Works)과 작은 프로젝트(Small Works 안 Projects)를 나눈다. 번호는 각 묶음 안에서 매긴다.
+  // 대표 작업(Works) · 진행 중(Ongoing) · 작은 프로젝트(Small Works 안 Projects). 번호는 각 묶음 안에서 매긴다.
   var WORKS = ALL.filter(function (w) { return !w.school && !w.ongoing; });
   var ONGOING = ALL.filter(function (w) { return w.ongoing; });
   var SCHOOL = ALL.filter(function (w) { return w.school; });
+  var REDUCE = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
   function pad(n) { return (n < 10 ? "0" : "") + n; }
   function num(w) { return w.ongoing ? "O" + pad(ONGOING.indexOf(w) + 1) : w.school ? "P" + pad(SCHOOL.indexOf(w) + 1) : pad(WORKS.indexOf(w) + 1); }
+  function group(w) { return w.ongoing ? ONGOING : w.school ? SCHOOL : WORKS; }
 
-  // 이미지와 mp4를 같은 방식으로 넣는다. mp4는 소리 없이 반복 재생.
-  // 이미지는 js/media-sizes.js 목록이 있으면 WebP 여러 폭(srcset)으로, 없으면 파일 그대로 넣는다.
+  // 이미지와 mp4를 같은 방식으로 넣는다. 이미지는 media-sizes.js 목록이 있으면 WebP 여러 폭(srcset).
   function key(src) { return src.replace(/\.(jpg|jpeg|png|webp)$/i, ""); }
-  function srcset(k) {
-    return SIZES[k].w.map(function (w) { return MEDIA + k + "-" + w + ".webp " + w + "w"; }).join(", ");
-  }
-  // 포스터처럼 한 장만 쓸 때: 2400 이하에서 가장 큰 것.
-  function single(src) {
+  function srcset(k) { return SIZES[k].w.map(function (w) { return MEDIA + k + "-" + w + ".webp " + w + "w"; }).join(", "); }
+  function single(src, max) {
     var e = SIZES[key(src)];
     if (!e) return MEDIA + src;
-    var w = e.w.filter(function (x) { return x <= 2400; }).pop() || e.w[0];
+    var w = e.w.filter(function (x) { return x <= (max || 2400); }).pop() || e.w[0];
     return MEDIA + key(src) + "-" + w + ".webp";
   }
-  // 크게 보기용: 가장 큰 변형.
   function largest(src) {
     var e = SIZES[key(src)];
     return e ? MEDIA + key(src) + "-" + e.w[e.w.length - 1] + ".webp" : MEDIA + src;
   }
-  // 포스터를 누르면 화면 가득 크게 보여 준다. 배경·이미지 클릭이나 Esc로 닫는다.
-  function lightbox(url) {
+  function media(src, cls, eager, sizes, alt) {
+    if (/\.mp4$/.test(src)) return '<video class="' + (cls || "") + '" src="' + MEDIA + src + '" poster="' + MEDIA + src.replace(/.mp4$/, "") + '-poster.webp" autoplay muted loop playsinline controls preload="metadata"></video>';
+    var e = SIZES[key(src)];
+    var attrs = e
+      ? ' src="' + MEDIA + key(src) + "-" + e.w[0] + '.webp" srcset="' + srcset(key(src)) + '" sizes="' + (sizes || "100vw") + '" width="' + e.size[0] + '" height="' + e.size[1] + '"'
+      : ' src="' + MEDIA + src + '"';
+    return '<img class="' + (cls || "") + '"' + attrs + ' alt="' + esc(alt || "") + '"' + (eager ? ' fetchpriority="high"' : ' loading="lazy" decoding="async"') + ">";
+  }
+  var HALF = "(max-width: 720px) 100vw, 50vw", THIRD = "(max-width: 720px) 50vw, 33vw";
+  function ko(text, tag) { return "<" + (tag || "p") + ' lang="ko">' + esc(text) + "</" + (tag || "p") + ">"; }
+  function place(w) { return w.exhibition || w.place || w.credit || ""; }
+
+  // 포스터 크게 보기. 배경·이미지 클릭이나 Esc로 닫고, 닫으면 원래 버튼으로 포커스를 돌린다.
+  function lightbox(url, from) {
     var box = document.createElement("div");
     box.className = "lightbox";
     box.setAttribute("role", "dialog");
+    box.setAttribute("aria-modal", "true");
     box.setAttribute("aria-label", "Poster");
-    box.innerHTML = '<img src="' + url + '" alt=""><button class="lightbox__close" type="button" aria-label="Close">Close</button>';
-    function close() { box.remove(); document.removeEventListener("keydown", onKey); document.documentElement.style.overflow = ""; }
+    box.innerHTML = '<img src="' + url + '" alt=""><button class="lightbox__close" type="button">Close ✕</button>';
+    function close() { box.remove(); document.removeEventListener("keydown", onKey); document.documentElement.style.overflow = ""; if (from) from.focus(); }
     function onKey(e) { if (e.key === "Escape") close(); }
     box.addEventListener("click", close);
     document.addEventListener("keydown", onKey);
@@ -46,145 +56,146 @@
   }
   document.addEventListener("click", function (e) {
     var t = e.target.closest && e.target.closest("[data-full]");
-    if (t) { e.preventDefault(); lightbox(t.getAttribute("data-full")); }
+    if (t) { e.preventDefault(); lightbox(t.getAttribute("data-full"), t); }
   });
-  function media(src, cls, eager, sizes) {
-    if (/\.mp4$/.test(src)) return '<video class="' + (cls || "") + '" src="' + MEDIA + src + '" poster="' + MEDIA + key(src) + '-poster.webp" autoplay muted loop playsinline controls preload="metadata"></video>';
-    var e = SIZES[key(src)];
-    var attrs = e
-      ? ' src="' + MEDIA + key(src) + "-" + e.w[0] + '.webp" srcset="' + srcset(key(src)) + '" sizes="' + (sizes || "100vw") + '" width="' + e.size[0] + '" height="' + e.size[1] + '"'
-      : ' src="' + MEDIA + src + '"';
-    return '<img class="' + (cls || "") + '"' + attrs + ' alt=""' + (eager ? ' fetchpriority="high"' : ' loading="lazy" decoding="async"') + ">";
-  }
-  var HALF = "(max-width: 600px) 100vw, 50vw", THIRD = "(max-width: 600px) 100vw, 33vw", CARD = "(max-width: 600px) 50vw, 33vw", HERO = "(max-width: 900px) 100vw, 66vw";
-  function ko(text, tag) { return "<" + (tag || "p") + ' lang="ko">' + esc(text) + "</" + (tag || "p") + ">"; }
 
-  // ---------- 메인: 작품 색인 ----------
+  // ---------- 홈: 번호 매긴 작품 색인 ----------
+  var GRID_PATTERN = [8, 4, 4, 4, 4, 6, 6];
+  function layoutGrid(grid) {
+    var vis = [].slice.call(grid.children).filter(function (t) { return !t.hidden; });
+    vis.forEach(function (t, i) {
+      var span = GRID_PATTERN[i % GRID_PATTERN.length];
+      // 마지막 줄이 비지 않게: 남은 개수에 맞춰 채운다.
+      t.style.gridColumn = "span " + span;
+      t.querySelector(".tile__img").style.aspectRatio = span === 4 ? "4 / 5" : "3 / 2";
+    });
+  }
+
   function renderIndex() {
-    var grid = document.getElementById("index-grid");
-    if (!grid) return;
-    // 카드: 상세 페이지가 없는 작업(card: true)은 링크 없이 작은 이미지와 메타만.
-    grid.innerHTML = WORKS.map(function (w) {
-      var inner = '<span class="card__no">' + num(w) + '<span class="card__tag">' + esc(w.tag) + "</span></span>" +
-        '<figure class="card__img">' + media(w.cover, "", false, CARD) + "</figure>" +
-        '<span class="card__title" lang="ko">' + esc(w.title) + (w.titleEn ? " <em>" + esc(w.titleEn) + "</em>" : "") + "</span>" +
-        '<span class="card__meta">' + esc(w.period || w.year || "") + "</span>" +
-        (w.card ? '<span class="card__medium" lang="ko">' + esc([w.medium, w.size].filter(Boolean).join(" · ")) + "</span>" : "");
-      return w.card
-        ? '<div class="card card--plain" data-tag="' + esc(w.tag) + '">' + inner + "</div>"
-        : '<a class="card" data-tag="' + esc(w.tag) + '" href="work.html?id=' + w.id + '">' + inner + "</a>";
+    var sel = document.getElementById("intro-sel");
+    if (sel) sel.innerHTML = WORKS.filter(function (w) { return !w.card; }).slice(0, 5).map(function (w) {
+      return '<li><a href="work.html?id=' + w.id + '"><span class="no">' + num(w) + '</span><span lang="ko">' + esc(w.title) + '</span><span class="mono">' + esc(w.tag) + "</span></a></li>";
+    }).join("") + '<li class="more"><a href="#works"><span class="no">→</span><span>All works (' + pad(WORKS.length) + ")</span></a></li>";
+    var list = document.getElementById("index-list");
+    if (!list) return;
+
+    // 표: N° · 제목 · 분야 · 장소/전시 · 연도
+    list.innerHTML = WORKS.map(function (w) {
+      var inner = '<span class="row__thumb">' + media(w.cover, "", false, "25vw") + "</span>" +
+        '<span class="row__no no">' + num(w) + "</span>" +
+        '<span class="row__title" lang="ko">' + esc(w.title) + (w.titleEn ? " <em lang=\"en\">" + esc(w.titleEn) + "</em>" : "") + "</span>" +
+        '<span class="row__disc mono">' + esc(w.tag) + "</span>" +
+        '<span class="row__place" lang="ko">' + esc(place(w)) + "</span>" +
+        '<span class="row__year mono">' + esc(w.year || "") + (w.card ? "" : " <i aria-hidden=\"true\">→</i>") + "</span>";
+      return '<li class="row" data-tag="' + esc(w.tag) + '" data-cover="' + esc(single(w.cover, 1400)) + '">' +
+        (w.card ? "<div>" + inner + "</div>" : '<a href="work.html?id=' + w.id + '">' + inner + "</a>") + "</li>";
     }).join("");
 
-    var filters = document.getElementById("index-filters");
-    if (filters) {
-      var tags = ["All"];
-      WORKS.forEach(function (w) { if (tags.indexOf(w.tag) < 0) tags.push(w.tag); });
-      filters.innerHTML = tags.map(function (t, i) { return '<button type="button" aria-pressed="' + (i === 0) + '">' + esc(t) + "</button>"; }).join("");
-      filters.querySelectorAll("button").forEach(function (b) {
-        b.onclick = function () {
-          filters.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x === b); });
-          document.querySelectorAll("#index-grid .card, #index-list .row").forEach(function (c) { c.hidden = b.textContent !== "All" && c.getAttribute("data-tag") !== b.textContent; });
-        };
-      });
-    }
+    // 그리드: 같은 작품을 큰 이미지로
+    var grid = document.getElementById("index-grid");
+    grid.innerHTML = WORKS.map(function (w) {
+      var inner = '<figure class="tile__img">' + media(w.cover, "", false, "(max-width: 720px) 100vw, (max-width: 1100px) 50vw, 66vw") + "</figure>" +
+        '<span class="tile__meta"><span class="no">' + num(w) + '</span><strong lang="ko">' + esc(w.title) + '</strong><span class="label">' + esc(w.year || "") + "</span>" +
+        '<span class="sub mono">' + esc(w.tag) + "</span></span>";
+      return w.card ? '<div class="tile" data-tag="' + esc(w.tag) + '">' + inner + "</div>"
+        : '<a class="tile" data-tag="' + esc(w.tag) + '" href="work.html?id=' + w.id + '">' + inner + "</a>";
+    }).join("");
+    layoutGrid(grid);
 
-    // 목록 보기: 번호 · 제목 · 장소 · 분야 · 연도. 마우스를 올리면 표지가 커서 옆에 뜬다.
-    var list = document.getElementById("index-list");
-    if (list) {
-      list.innerHTML = WORKS.map(function (w) {
-        var inner = '<span class="row__no">' + num(w) + '</span>' +
-          '<span class="row__title" lang="ko">' + esc(w.title) + (w.titleEn ? " <em>" + esc(w.titleEn) + "</em>" : "") + "</span>" +
-          '<span class="row__place" lang="ko">' + esc(w.exhibition || w.medium || "") + "</span>" +
-          '<span class="row__tag">' + esc(w.tag) + "</span>" +
-          '<span class="row__year">' + esc(w.year || "") + "</span>";
-        return '<li class="row" data-tag="' + esc(w.tag) + '" data-cover="' + esc(single(w.cover)) + '">' + (w.card ? "<div>" + inner + "</div>" : '<a href="work.html?id=' + w.id + '">' + inner + "</a>") + "</li>";
-      }).join("");
+    // 분야 필터 (개수 표시)
+    var filters = document.getElementById("index-filters");
+    var tags = ["All"], counts = { All: WORKS.length };
+    WORKS.forEach(function (w) { if (tags.indexOf(w.tag) < 0) { tags.push(w.tag); counts[w.tag] = 0; } counts[w.tag]++; });
+    filters.innerHTML = tags.map(function (t, i) { return '<button type="button" data-tag="' + esc(t) + '" aria-pressed="' + (i === 0) + '">' + esc(t) + "<sup>" + counts[t] + "</sup></button>"; }).join("");
+    filters.querySelectorAll("button").forEach(function (b) {
+      b.onclick = function () {
+        var t = b.getAttribute("data-tag");
+        filters.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x === b); });
+        document.querySelectorAll("#index-grid .tile, #index-list .row").forEach(function (c) { c.hidden = t !== "All" && c.getAttribute("data-tag") !== t; });
+        layoutGrid(grid);
+      };
+    });
+    document.getElementById("index-count").textContent = "(" + pad(WORKS.length) + ")";
+
+    // 표 ↔ 그리드
+    var views = document.querySelectorAll(".view button"), cols = document.querySelector(".idx__cols");
+    function setView(v) {
+      views.forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-view") === v); });
+      grid.hidden = v !== "grid"; list.hidden = v !== "list";
+      if (cols) cols.hidden = v !== "list";
+      try { localStorage.setItem("rk1-view", v); } catch (e) {}
+    }
+    views.forEach(function (b) { b.onclick = function () { setView(b.getAttribute("data-view")); }; });
+    var saved = null; try { saved = localStorage.getItem("rk1-view"); } catch (e) {}
+    if (saved === "grid") setView("grid");
+
+    // 표 위 미리보기(마우스 있는 화면만)
+    if (matchMedia("(hover: hover) and (min-width: 721px)").matches) {
       var peek = document.createElement("div");
-      peek.className = "peek"; peek.innerHTML = "<img alt=\"\">";
+      peek.className = "peek"; peek.setAttribute("aria-hidden", "true"); peek.innerHTML = '<img alt="">';
       document.body.appendChild(peek);
       var pimg = peek.firstChild;
-      list.addEventListener("mousemove", function (e) { peek.style.left = (e.clientX + 170) + "px"; peek.style.top = e.clientY + "px"; });
+      list.addEventListener("mousemove", function (e) { peek.style.left = Math.min(e.clientX + 200, innerWidth - 170) + "px"; peek.style.top = e.clientY + "px"; });
       list.querySelectorAll(".row").forEach(function (r) {
-        r.addEventListener("mouseenter", function () { if (/.mp4$/.test(r.dataset.cover)) return; pimg.src = r.dataset.cover; peek.classList.add("on"); });
+        r.addEventListener("mouseenter", function () { pimg.src = r.dataset.cover; peek.classList.add("on"); });
         r.addEventListener("mouseleave", function () { peek.classList.remove("on"); });
       });
     }
-    var count = document.getElementById("index-count");
-    if (count) count.textContent = "(" + pad(WORKS.length) + ")";
-    var views = document.querySelectorAll(".view button");
-    function setView(v) {
-      views.forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-view") === v); });
-      if (grid) grid.hidden = v !== "grid";
-      if (list) list.hidden = v !== "list";
-      try { localStorage.setItem("rk-view", v); } catch (e) {}
-    }
-    views.forEach(function (b) { b.onclick = function () { setView(b.getAttribute("data-view")); }; });
-    if (views.length) { var saved = null; try { saved = localStorage.getItem("rk-view"); } catch (e) {} if (saved === "list") setView("list"); }
 
-    // Ongoing: 진행 중인 작업. 완성작과 섞지 않는다.
+    // Ongoing
     var ongoing = document.getElementById("ongoing-grid");
-    if (ongoing) ongoing.innerHTML = ONGOING.map(function (w) {
-      return '<a class="card card--ongoing" href="work.html?id=' + w.id + '">' +
-        '<span class="card__no">' + num(w) + '<span class="badge">' + esc(w.status) + "</span></span>" +
-        '<figure class="card__img">' + media(w.cover, "", false, CARD) + "</figure>" +
-        '<span class="card__title" lang="ko">' + esc(w.title) + "</span>" +
-        '<span class="card__meta">' + esc(w.period) + " — " + esc(w.exhibition) + "</span></a>";
+    document.getElementById("ongoing-count").textContent = "(" + pad(ONGOING.length) + ")";
+    ongoing.innerHTML = ONGOING.map(function (w) {
+      return '<a class="ongo__item" href="work.html?id=' + w.id + '">' +
+        "<figure>" + media(w.cover, "", false, "(max-width: 720px) 100vw, 20vw") + "</figure>" +
+        '<div class="ongo__body"><div class="top"><span class="no">' + num(w) + '</span><span class="badge">' + esc(w.status) + "</span></div>" +
+        '<h3 lang="ko">' + esc(w.title) + "</h3>" +
+        '<span class="label">' + esc(w.tag) + " — " + esc(w.period) + "</span>" +
+        (w.line ? ko(w.line) : "") +
+        '<span class="go">Open — ' + (w.facets || []).map(function (f) { return esc(f.label); }).join(" / ") + " →</span></div></a>";
     }).join("");
 
-    // Small Works — Projects: 상세가 있으면 상세로, 없으면(card) 이미지를 새 탭으로.
+    // Small Works: Projects(상세 있으면 상세로, 없으면 이미지 크게) + Reels(인스타그램)
+    var small = document.getElementById("small-grid");
     var projects = SCHOOL.map(function (w) {
       var href = w.card ? largest(w.cover) : "work.html?id=" + w.id;
-      return '<a class="small__item small__item--project" href="' + href + '"' + (w.card ? ' target="_blank" rel="noopener"' : "") + ">" +
-        '<span class="card__no">' + num(w) + "</span>" +
-        '<figure class="small__img small__img--project">' + media(w.cover, "", false, "240px") + "</figure>" +
-        '<span class="card__title" lang="ko">' + esc(w.title) + "</span>" +
-        '<span class="card__meta">' + esc(w.year || "") + "</span>" +
-        '<span class="card__medium" lang="ko">' + esc(w.medium || "") + "</span></a>";
+      return '<a class="sm" href="' + href + '"' + (w.card ? ' target="_blank" rel="noopener"' : "") + ">" +
+        "<figure>" + media(w.cover, "", false, "(max-width: 720px) 50vw, 25vw") + "</figure>" +
+        '<span class="tile__meta"><span class="no">' + num(w) + '</span><strong lang="ko">' + esc(w.title) + '</strong><span class="label">' + esc(w.year || "") + "</span>" +
+        '<span class="sub mono">' + esc(w.tag) + "</span></span></a>";
     }).join("");
-
-    var small = document.getElementById("small-grid"), toggle = document.getElementById("small-toggle");
-    if (small && toggle) {
-      // Reels: 인스타 게시물로 연결.
-      var reels = (window.SMALL || []).map(function (s, i) {
-        return '<a class="small__item" href="' + s.url + '" target="_blank" rel="noopener">' +
-          '<span class="card__no">R' + pad(i + 1) + "</span>" +
-          '<figure class="small__img">' + media(s.src) + "</figure>" +
-          '<span class="card__title" lang="ko">' + esc(s.title) + "</span>" +
-          '<span class="card__meta">' + esc(s.date) + "</span>" +
-          '<span class="card__medium">' + esc(s.tool) + " — Instagram ↗</span></a>";
-      }).join("");
-      small.innerHTML = '<h3 class="label small__sub">Projects</h3><div class="small__row">' + projects + "</div>" +
-        '<h3 class="label small__sub">Reels</h3><div class="small__row">' + reels + "</div>";
-      toggle.onclick = function () {
-        var open = small.hidden;
-        small.hidden = !open;
-        toggle.setAttribute("aria-expanded", open);
-        toggle.innerHTML = (open ? "Close Small Works" : "Open Small Works") + " <span>" + (open ? "−" : "+") + "</span>";
-      };
-      if (location.hash === "#small") toggle.onclick();
-    }
+    var reels = (window.SMALL || []).map(function (s, i) {
+      return '<a class="sm sm--reel" href="' + s.url + '" target="_blank" rel="noopener">' +
+        "<figure>" + media(s.src, "", false, "(max-width: 720px) 50vw, 25vw") + "</figure>" +
+        '<span class="tile__meta"><span class="no">R' + pad(i + 1) + '</span><strong lang="ko">' + esc(s.title) + '</strong><span class="label">↗</span>' +
+        '<span class="sub mono">' + esc(s.date) + " — " + esc(s.tool) + "</span></span></a>";
+    }).join("");
+    small.innerHTML = '<h3 class="small__sub label"><span>Projects</span><span>(' + pad(SCHOOL.length) + ")</span></h3>" + projects +
+      '<h3 class="small__sub label"><span>Reels — Instagram</span><span>(' + pad((window.SMALL || []).length) + ")</span></h3>" + reels;
   }
 
   // ---------- 상세 ----------
   function facts(w) {
     var rows = [
-      ["Date", [w.period, w.place].filter(Boolean).join(" — ")],
+      ["Date", w.period],
+      ["Venue", w.place],
       ["Exhibition", w.exhibition],
-      ["Organized & supported by", w.organizer],
-      ["Supported by", w.supported],
+      ["Organizer", w.organizer],
+      ["Support", w.supported],
       ["Medium", w.medium],
       ["Size", w.size],
       ["Duration", w.duration],
       ["Role", w.role],
       ["Credit", w.credit],
-      ["Collaboration", w.collab],
+      ["Collab.", w.collab],
       ["Artists", w.artists]
     ].filter(function (r) { return r[1]; });
     return '<dl class="facts">' + rows.map(function (r) {
-      return "<dt>" + r[0] + '</dt><dd lang="ko">' + esc(r[1]) + "</dd>";
+      return "<div><dt>" + r[0] + '</dt><dd lang="ko">' + esc(r[1]) + "</dd></div>";
     }).join("") + "</dl>";
   }
 
+  function cap(b) { return b.cap ? "<figcaption>" + esc(b.cap) + "</figcaption>" : ""; }
   function block(b) {
     switch (b.t) {
       case "text":
@@ -192,95 +203,106 @@
       case "section":
         return '<section class="b-section"><h2 class="label">' + esc(b.h) + '</h2><div class="b-text__body">' + b.ko.map(function (p) { return ko(p); }).join("") + "</div></section>";
       case "videos":
-        // 긴 영상 여러 편: 나란히 두고, 누를 때만 재생(자동재생·미리 받기 없음). 높이를 맞춘다.
+        // 긴 영상 여러 편: 나란히, 누를 때만 재생(미리 받기 없음).
         return '<section class="b-videos">' + b.items.map(function (v) {
-          return '<figure class="b-videos__item" style="flex:' + v.ar + ' 1 0"><video style="aspect-ratio:' + v.ar + '" src="' + MEDIA + v.src + '" poster="' + MEDIA + v.src.replace(/\.mp4$/, "") + '-poster.webp" controls playsinline preload="none"></video>' +
-            '<figcaption class="label">' + esc(v.cap) + "</figcaption></figure>";
+          return '<figure class="b-videos__item" style="flex:' + v.ar + ' 1 0;max-width:calc(80vh * ' + v.ar + ')"><video style="aspect-ratio:' + v.ar + '" src="' + MEDIA + v.src + '" poster="' + MEDIA + v.src.replace(/\.mp4$/, "") + '-poster.webp" controls playsinline preload="none"></video>' +
+            "<figcaption>" + esc(v.cap) + "</figcaption></figure>";
         }).join("") + "</section>";
       case "reel":
-        // 세로 영상: 가운데 화면 높이 안쪽으로, 옆에 설명. 소리는 컨트롤로 켠다.
         return '<section class="b-reel"><div class="b-reel__info"><h2 class="label">' + esc(b.h) + "</h2>" + b.ko.map(function (p) { return ko(p); }).join("") +
-          (b.url ? '<a class="more" href="' + b.url + '" target="_blank" rel="noopener">Full version on Instagram ↗</a>' : "") + "</div>" +
+          (b.url ? '<p><a class="more" href="' + b.url + '" target="_blank" rel="noopener">Full version on Instagram ↗</a></p>' : "") + "</div>" +
           '<figure class="b-reel__video"><video src="' + MEDIA + b.src + '" poster="' + MEDIA + key(b.src) + '-poster.webp" controls muted playsinline preload="metadata"></video></figure></section>';
       case "link":
         return '<section class="b-text"><p class="b-text__body"><a class="more" href="' + b.url + '" target="_blank" rel="noopener">' + esc(b.label) + "</a></p></section>";
       case "list":
         return '<section class="b-text"><ul class="b-list" lang="ko">' + b.items.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul></section>";
       case "full":
-        return '<figure class="b-full' + (b.narrow ? " b-full--narrow" : "") + '">' + media(b.src, "", false, b.narrow ? "(max-width: 1100px) 100vw, 1100px" : "100vw") + cap(b) + "</figure>";
+        return '<figure class="b-full' + (b.narrow ? " b-full--narrow" : "") + '">' + media(b.src, "", false, b.narrow ? "(max-width: 1100px) 100vw, 66vw" : "100vw") + cap(b) + "</figure>";
       case "pair":
       case "trio":
         return '<figure class="b-row b-row--' + b.src.length + '">' + b.src.map(function (s) { return "<div>" + media(s, "", false, b.src.length === 2 ? HALF : THIRD) + "</div>"; }).join("") + cap(b) + "</figure>";
       case "grid":
-        return '<figure class="b-grid" style="--cols:' + (b.cols || 4) + '">' + b.src.map(function (s) { return "<div>" + media(s, "", false, "(max-width: 600px) 50vw, " + Math.round(100 / (b.cols || 4)) + "vw") + "</div>"; }).join("") + cap(b) + "</figure>";
+        return '<figure class="b-grid" style="--cols:' + (b.cols || 4) + '">' + b.src.map(function (s) { return "<div>" + media(s, "", false, "(max-width: 720px) 50vw, " + Math.round(100 / (b.cols || 4)) + "vw") + "</div>"; }).join("") + cap(b) + "</figure>";
       case "yt":
         return '<figure class="b-yt"><div class="b-yt__frame"><iframe src="https://www.youtube-nocookie.com/embed/' + b.id + '?rel=0" title="Video" loading="lazy" allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div></figure>';
       case "process":
         return '<section class="b-process"><h2 class="label">' + esc(b.h || "Process") + "</h2><ol>" + b.steps.map(function (s, i) {
-          return "<li><span>" + pad(i + 1) + " " + esc(s.h) + "</span>" + ko(s.ko) + "</li>";
+          return "<li><span>" + pad(i + 1) + " — " + esc(s.h) + "</span>" + ko(s.ko) + "</li>";
         }).join("") + "</ol>" + (b.src ? '<div class="b-row b-row--' + b.src.length + '">' + b.src.map(function (s) { return "<div>" + media(s, "", false, THIRD) + "</div>"; }).join("") + "</div>" : "") + "</section>";
     }
     return "";
   }
+
   // 분야별 섹션: 위쪽 탭(All + 분야), 각 섹션 #앵커, &facet= 로 한 분야만 보기.
+  var LETTERS = "ABCDEFGHIJ";
   function facets(w, fc) {
     var base = "work.html?id=" + w.id;
     var tabs = '<nav class="facet-tabs" aria-label="Sections"><a href="' + base + '"' + (fc ? "" : ' aria-current="page"') + ">All</a>" +
-      w.facets.map(function (f) { return '<a href="' + base + "&facet=" + f.id + '"' + (fc === f ? ' aria-current="page"' : "") + ">" + esc(f.label) + "</a>"; }).join("") + "</nav>";
+      w.facets.map(function (f, i) { return '<a href="' + base + "&facet=" + f.id + '"' + (fc === f ? ' aria-current="page"' : "") + ">" + LETTERS[i] + " — " + esc(f.label) + "</a>"; }).join("") + "</nav>";
     return tabs + (fc ? [fc] : w.facets).map(function (f) {
-      return '<section class="facet" id="' + f.id + '"><header class="facet__head"><h2>' + esc(f.label) + '</h2><p lang="ko">' + esc(f.credit || "") + "</p>" +
-        (fc ? "" : '<a class="facet__link" href="' + base + "&facet=" + f.id + '">View only this section →</a>') + "</header>" +
-        f.blocks.map(block).join("") + "</section>";
+      var i = w.facets.indexOf(f);
+      return '<section class="facet" id="' + f.id + '"><header class="facet__head g"><span class="no">' + LETTERS[i] + "</span><h2>" + esc(f.label) + '</h2><p lang="ko">' + esc(f.credit || "") + "</p>" +
+        (fc ? '<a class="facet__link" href="' + base + '">All sections →</a>' : '<a class="facet__link" href="' + base + "&facet=" + f.id + '">Only this section →</a>') + "</header>" +
+        '<div class="flow">' + f.blocks.map(block).join("") + "</div></section>";
     }).join("");
   }
-  function cap(b) { return b.cap ? "<figcaption>" + esc(b.cap) + "</figcaption>" : ""; }
 
   function renderWork() {
     var root = document.getElementById("work");
     if (!root) return;
     var q = new URLSearchParams(location.search);
     var id = q.get("id"), facet = q.get("facet");
-    // 예전 NIMBUS 주소는 Garage Project 3의 Object 섹션으로 보낸다.
+    // 예전 주소 호환
     if (id === "nimbus") { id = "garage3"; facet = facet || "object"; }
-    // 예전 SDF 한 묶음 주소: 1조 분야는 공백[ ]수명 항목으로 보낸다.
     if (id === "sdf2026" && /^(team1|book|process)$/.test(facet || "")) { id = "gongbaek"; facet = "branding"; }
     if (id === "sdf2026" && /^(object|research)$/.test(facet || "")) { id = "gongbaek"; facet = "product"; }
     if (id === "sdf2026" && facet === "overview") facet = "brand";
     var w = ALL.filter(function (x) { return x.id === id && !x.card; })[0] || WORKS[0];
-    var PAGES = (w.ongoing ? ONGOING : w.school ? SCHOOL : WORKS).filter(function (x) { return !x.card; });
+    var PAGES = group(w).filter(function (x) { return !x.card; });
     var i = PAGES.indexOf(w);
-    document.title = w.title + (w.titleEn ? " " + w.titleEn : "") + " — Rihan Kim";
     var fc = w.facets && facet ? w.facets.filter(function (f) { return f.id === facet; })[0] : null;
-    if (fc) document.title = w.title + " — " + fc.label + " — Rihan Kim";
+    document.title = w.title + (fc ? " — " + fc.label : w.titleEn ? " " + w.titleEn : "") + " — Rihan Kim";
     var url = "https://rihankim.com/work.html?id=" + w.id + (fc ? "&facet=" + fc.id : "");
     [["link[rel=canonical]", "href", url], ['meta[property="og:url"]', "content", url], ['meta[property="og:title"]', "content", document.title]].forEach(function (x) {
       var el = document.querySelector(x[0]); if (el) el.setAttribute(x[1], x[2]);
     });
+    var groupName = w.ongoing ? "Ongoing" : w.school ? "Small Works" : "Works";
+    var groupHref = w.ongoing ? "index.html#ongoing" : w.school ? "index.html#small" : "index.html#works";
 
     var hero = w.hero.video
-      ? '<video src="' + MEDIA + w.hero.video + '" poster="' + single(w.hero.poster) + '" autoplay muted loop playsinline></video>'
-      : media(w.hero.img, "", true, w.hero.tall ? "(max-width: 900px) 100vw, 640px" : HERO);
+      ? '<video src="' + MEDIA + w.hero.video + '" poster="' + single(w.hero.poster) + '" autoplay muted loop playsinline aria-label="' + esc(w.title) + ' — video excerpt"></video>'
+      : media(w.hero.img, "", true, w.hero.tall ? "(max-width: 720px) 100vw, 60vw" : "100vw", w.title);
+
+    var side = facts(w) +
+      (w.poster ? '<figure class="poster"><button class="poster__open" type="button" data-full="' + largest(w.poster) + '" aria-label="Poster — view large">' + media(w.poster, "", false, "96px") + '</button><figcaption>Poster<br>Click to enlarge ↗</figcaption></figure>' : "");
+    var btns = (w.site ? '<a class="btn btn--solid" href="' + w.site + '" target="_blank" rel="noopener">Visit site <span>↗</span></a>' : "") +
+      '<a class="btn" href="#next">Next work <span>↓</span></a>' +
+      '<a class="btn" href="#contact">Enquire <span>→</span></a>';
 
     var html =
-      '<div class="run"><span>Rihan Kim — Portfolio</span><span>N° ' + num(w) + " / " + esc(w.titleEn || w.title) + "</span></div>" +
-      '<section class="opener' + (w.hero.tall ? " opener--tall" : "") + '">' +
-        '<div class="opener__info">' +
-          '<p class="opener__no">' + num(w) + " — " + esc(w.tag) + (w.status ? ' <span class="badge">' + esc(w.status) + "</span>" : "") + "</p>" +
-          '<h1 lang="ko">' + esc(w.title) + (w.titleEn ? '<span lang="en">' + esc(w.titleEn) + "</span>" : "") + "</h1>" +
-          (w.line ? '<p class="opener__line" lang="ko">' + esc(w.line) + "</p>" : "") +
-          facts(w) +
-          (w.site ? '<a class="more" href="' + w.site + '" target="_blank" rel="noopener">Visit site ↗</a>' : "") +
-          (w.poster ? '<figure class="poster"><figcaption>Poster</figcaption><button class="poster__open" type="button" data-full="' + largest(w.poster) + '" aria-label="Poster — view large">' + media(w.poster, "", true, "132px") + '</button><span class="poster__hint">Click to enlarge</span></figure>' : "") +
-        "</div>" +
-        '<figure class="opener__media">' + hero + "</figure>" +
+      '<div class="w-top g mono"><a href="' + groupHref + '">← ' + groupName + '</a><span class="mid">Rihan Kim — ' + esc(w.tag) + "</span>" +
+        '<span class="pos">N° ' + num(w) + " / " + pad(PAGES.length) + "</span></div>" +
+      '<header class="w-head g"><span class="no">N° ' + num(w) + "</span>" +
+        '<h1 lang="ko">' + esc(w.title) + (w.titleEn ? '<span lang="en">' + esc(w.titleEn) + "</span>" : "") + "</h1>" +
+        '<p class="tags mono"><span>' + esc(w.tag) + "</span><span>" + esc(w.year || "") + "</span>" + (w.status ? '<span class="badge">' + esc(w.status) + "</span>" : "") + "</p></header>" +
+      '<figure class="w-hero' + (w.hero.tall ? " w-hero--tall" : "") + '">' + hero + "</figure>" +
+      '<section class="dossier g">' +
+        (w.line ? '<div class="dossier__lead">' + ko(w.line) + '<div class="btns">' + btns + "</div></div>" : "") +
+        '<div class="dossier__side">' + side + (w.line ? "" : '<div class="btns" style="display:flex;gap:10px;flex-wrap:wrap">' + btns + "</div>") + "</div>" +
       "</section>" +
-      (w.facets ? facets(w, fc) : w.blocks.map(block).join(""));
+      (w.facets ? facets(w, fc) : '<div class="flow">' + (w.blocks || []).map(block).join("") + "</div>");
 
     var prev = PAGES[(i + PAGES.length - 1) % PAGES.length], next = PAGES[(i + 1) % PAGES.length];
-    html += '<nav class="pager"><a href="work.html?id=' + prev.id + '"><small>Previous — ' + num(prev) + '</small><span lang="ko">' + esc(prev.title) + "</span></a>" +
-      (w.ongoing ? '<a href="index.html#ongoing"><small>Index</small><span>Ongoing</span></a>' : w.school ? '<a href="index.html#small"><small>Index</small><span>Small Works</span></a>' : '<a href="index.html#works"><small>Index</small><span>All works</span></a>') +
-      '<a href="work.html?id=' + next.id + '"><small>Next — ' + num(next) + '</small><span lang="ko">' + esc(next.title) + "</span></a></nav>";
+    html += '<nav class="next" id="next" aria-label="More work">' +
+      '<a class="next__main" href="work.html?id=' + next.id + '"><span class="label">Next — N° ' + num(next) + " · " + esc(next.tag) + "</span>" +
+        '<strong lang="ko">' + esc(next.title) + " →</strong><figure>" + media(next.cover, "", false, "(max-width: 720px) 100vw, 25vw") + "</figure></a>" +
+      '<div class="next__sub">' +
+        '<a href="work.html?id=' + prev.id + '"><span class="label">← Previous — N° ' + num(prev) + '</span><span lang="ko">' + esc(prev.title) + "</span></a>" +
+        '<a href="' + groupHref + '"><span class="label">Index</span><span>All ' + groupName.toLowerCase() + " (" + pad(PAGES.length) + ")</span></a>" +
+        '<a href="about.html"><span class="label">Information</span><span>About &amp; CV →</span></a>' +
+      "</div></nav>";
     root.innerHTML = html;
+    if (location.hash && location.hash !== "#next") { var t = document.querySelector(location.hash); if (t) t.scrollIntoView(); }
   }
 
   // ---------- Press ----------
@@ -290,15 +312,17 @@
     var related = (window.PRESS_WORKS || []).map(function (id) {
       var w = WORKS.filter(function (x) { return x.id === id; })[0];
       return w ? '<a href="work.html?id=' + w.id + '" lang="ko">' + esc(w.title) + "</a>" : "";
-    }).join(", ");
-    var rel = document.getElementById("press-related");
-    if (rel) rel.innerHTML = related;
-    list.innerHTML = (window.PRESS || []).map(function (p) {
+    }).filter(Boolean).join(", ");
+    document.getElementById("press-related").innerHTML = related;
+    var P = window.PRESS || [];
+    document.getElementById("press-count").textContent = "(" + pad(P.length) + ")";
+    list.innerHTML = P.map(function (p, n) {
       return '<li><a href="' + p.url + '" target="_blank" rel="noopener">' +
-        '<span class="pr__date">' + p.date + "</span>" +
+        '<span class="pr__no no">' + pad(n + 1) + "</span>" +
+        '<span class="pr__date mono">' + esc(p.date) + "</span>" +
         '<span class="pr__outlet" lang="ko">' + esc(p.outlet) + (p.kind ? " <em>" + esc(p.kind) + "</em>" : "") + "</span>" +
         '<span class="pr__title" lang="ko">' + esc(p.title) + "</span>" +
-        '<span class="pr__go">↗</span></a></li>';
+        '<span class="pr__go" aria-hidden="true">↗</span></a></li>';
     }).join("");
   }
 
@@ -310,45 +334,32 @@
       a.textContent = addr;
     });
   }
-
-  // 아래로 내릴 땐 머리말을 숨기고, 위로 올리면 다시 보인다.
-  function autoHide() {
-    var h = document.querySelector(".site-header");
-    if (!h) return;
-    var last = scrollY, ticking = false;
-    addEventListener("scroll", function () {
-      if (ticking) return; ticking = true;
-      requestAnimationFrame(function () {
-        var y = scrollY;
-        h.classList.toggle("is-hidden", y > 120 && y > last + 2);
-        if (y < last - 2 || y <= 120) h.classList.remove("is-hidden");
-        last = y; ticking = false;
-      });
-    }, { passive: true });
-  }
-  // 서울 시각 (푸터)
   function clock() {
     var els = document.querySelectorAll(".js-clock");
     if (!els.length) return;
     function tick() {
       var s = new Date().toLocaleTimeString("en-GB", { timeZone: "Asia/Seoul", hour: "2-digit", minute: "2-digit" });
-      els.forEach(function (e) { e.textContent = "— " + s; });
+      els.forEach(function (e) { e.textContent = s + " KST"; });
     }
     tick(); setInterval(tick, 30000);
   }
-  // 화면에 들어올 때 살짝 떠오르게. 지원 안 하면 그냥 보인다.
+  // 화면에 들어올 때 살짝 떠오르게. 움직임 줄이기 설정이면 없음.
   function reveal() {
-    var sel = ".card, .row, .small__item, .work > section:not(.opener), .work > figure, .facet > section, .facet > figure, .facet__head, .cv, .about__bio, .press__list li, .pager";
-    var els = [].slice.call(document.querySelectorAll(sel)).concat([].slice.call(document.querySelectorAll(".rv")));
-    if (!("IntersectionObserver" in window) || matchMedia("(prefers-reduced-motion: reduce)").matches) { els.forEach(function (e) { e.classList.add("in"); }); return; }
+    if (REDUCE || !("IntersectionObserver" in window)) return;
+    var els = document.querySelectorAll(".tile, .sm, .ongo__item, .flow > *, .facet__head, .cv__sec, .next");
     var io = new IntersectionObserver(function (es) {
       es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
-    }, { rootMargin: "0px 0px -6% 0px", threshold: 0.04 });
-    els.forEach(function (e, i) { e.classList.add("rv"); e.style.transitionDelay = (e.classList.contains("card") ? (i % 3) * 80 : 0) + "ms"; io.observe(e); });
+    }, { rootMargin: "0px 0px -5% 0px", threshold: 0.02 });
+    els.forEach(function (e) { e.classList.add("rv"); io.observe(e); });
+  }
+  // 움직임 줄이기: 자동 재생 영상은 멈추고 포스터만.
+  function calmVideos() {
+    if (!REDUCE) return;
+    document.querySelectorAll("video[autoplay]").forEach(function (v) { v.removeAttribute("autoplay"); v.pause(); v.setAttribute("controls", ""); });
   }
 
   document.addEventListener("DOMContentLoaded", function () {
-    renderIndex(); renderWork(); renderPress(); renderMail(); clock(); reveal(); autoHide();
+    renderIndex(); renderWork(); renderPress(); renderMail(); clock(); calmVideos(); reveal();
     var here = document.body.getAttribute("data-page");
     document.querySelectorAll(".nav a").forEach(function (a) { if (a.getAttribute("data-page") === here) a.setAttribute("aria-current", "page"); });
   });
