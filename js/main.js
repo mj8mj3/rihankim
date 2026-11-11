@@ -301,8 +301,58 @@
         '<a href="' + groupHref + '"><span class="label">Index</span><span>All ' + groupName.toLowerCase() + " (" + pad(PAGES.length) + ")</span></a>" +
         '<a href="about.html"><span class="label">Information</span><span>About &amp; CV →</span></a>' +
       "</div></nav>";
+    html += '<div class="dock" id="dock"><i class="dock__bar"></i><a href="' + groupHref + '">← ' + groupName + '</a>' +
+      '<span class="dock__mid">N° ' + num(w) + '<b lang="ko">' + esc(w.title) + '</b></span>' +
+      '<a class="dock__next" href="work.html?id=' + next.id + '"><span class="k">Next — </span><span lang="ko">' + esc(next.title) + '</span> →</a></div>';
     root.innerHTML = html;
+    dock();
     if (location.hash && location.hash !== "#next") { var t = document.querySelector(location.hash); if (t) t.scrollIntoView(); }
+  }
+
+  // 상세 하단 이동 바: 히어로를 지나면 나타나고, 끝의 Next 블록이 보이면 숨는다
+  function dock() {
+    var d = document.getElementById("dock"), bar = d && d.querySelector(".dock__bar"), nx = document.getElementById("next");
+    if (!d) return;
+    var tick = false;
+    function upd() {
+      tick = false;
+      var y = window.scrollY, h = document.documentElement.scrollHeight - innerHeight;
+      var end = nx ? nx.getBoundingClientRect().top < innerHeight * 0.85 : false;
+      d.classList.toggle("on", y > innerHeight * 0.7 && !end);
+      bar.style.transform = "scaleX(" + (h > 0 ? Math.min(1, y / h) : 0) + ")";
+    }
+    window.addEventListener("scroll", function () { if (!tick) { tick = true; requestAnimationFrame(upd); } }, { passive: true });
+    upd();
+  }
+
+  // 자동 재생 영상: 화면 안에 있을 때만 재생, 홈 대표 영상에는 Pause 버튼
+  function smartVideos() {
+    var vids = [].slice.call(document.querySelectorAll("video[autoplay]"));
+    if (REDUCE || !vids.length) return;
+    vids.forEach(function (v) { v.dataset.auto = "1"; });
+    if ("IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (en) {
+          var v = en.target;
+          if (en.isIntersecting) { if (v.dataset.auto === "1") { var p = v.play(); if (p && p.catch) p.catch(function () {}); } }
+          else v.pause();
+        });
+      }, { threshold: 0.15 });
+      vids.forEach(function (v) { io.observe(v); });
+    }
+    var fv = document.querySelector(".feature__media video");
+    if (fv) {
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "vtoggle"; b.textContent = "Pause"; b.setAttribute("aria-label", "Pause video");
+      b.addEventListener("click", function (e) {
+        e.preventDefault(); e.stopPropagation();
+        var on = fv.dataset.auto === "1";
+        fv.dataset.auto = on ? "0" : "1";
+        if (on) fv.pause(); else fv.play();
+        b.textContent = on ? "Play" : "Pause"; b.setAttribute("aria-label", (on ? "Play" : "Pause") + " video");
+      });
+      fv.parentNode.appendChild(b);
+    }
   }
 
   // ---------- Press ----------
@@ -359,7 +409,7 @@
   }
 
   document.addEventListener("DOMContentLoaded", function () {
-    renderIndex(); renderWork(); renderPress(); renderMail(); clock(); calmVideos(); reveal();
+    renderIndex(); renderWork(); renderPress(); renderMail(); clock(); calmVideos(); smartVideos(); reveal();
     var here = document.body.getAttribute("data-page");
     document.querySelectorAll(".nav a").forEach(function (a) { if (a.getAttribute("data-page") === here) a.setAttribute("aria-current", "page"); });
   });
