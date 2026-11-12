@@ -198,8 +198,8 @@ window.WORKS = [
     size: "Variable",
     credit: "2인 공동 작업",
     poster: "chungman/poster.jpg",
-    cover: "chungman/overview.jpg",
-    hero: { img: "chungman/overview.jpg", tall: true },
+    cover: "chungman/n361.jpg",
+    hero: { img: "chungman/n244.jpg", tall: true },
     line: "계속해서 주어진다. 감당의 여부는 중요하지 않다. '나'는 그것을 감아낸다.",
     blocks: [
       { t: "text", lead: true, ko: [
@@ -208,17 +208,24 @@ window.WORKS = [
       { t: "text", ko: [
         "세상은 여러 발전을 이루었고 이루 말할 수 없는 풍요를 안겨주었다. 그러한 세계는 우리에게 확정적인 행복을 보장하는가. 많은 것이 빠르게 변화하고 쏟아져 나오는 동안, 우리는 그 속도에 온전히 닿지 못한 채 살아간다. 이 작품은 그 간극에서 발생하는 불안과 소외를 바라보며, 외부 상황 속 내면의 심리에 질문한다."
       ] },
-      { t: "full", src: "chungman/c01.jpg" },
-      { t: "pair", src: ["chungman/c02.jpg", "chungman/c03.jpg"] },
-      { t: "trio", src: ["chungman/c04.jpg", "chungman/c06.jpg", "chungman/c07.jpg"] },
+      { t: "full", src: "chungman/n361.jpg" },
+      { t: "pair", src: ["chungman/n700.jpg", "chungman/n390.jpg"] },
+      { t: "pair", src: ["chungman/n386.jpg", "chungman/n389.jpg"] },
       { t: "text", ko: [
         "네 개의 기둥 위에 놓인 감열지 프린터가 멈추지 않고 종이를 출력하고, 종이는 바닥에 떨어져 쌓인다. 중앙의 낮은 자리에는 감열지를 감아올리는 오브제 '나'가 놓인다. 관객의 눈높이보다 조금 아래에 있고, 프린터보다 현저히 느리다.",
         "오브제 '나'는 수평축에 감열지를 감는 장치다. 스테퍼 모터가 축을 돌리고, 종이의 지름은 20mm에서 시작해 최대 약 140mm까지 부푼다. 불규칙하게 멈췄다가 다시 돌기를 반복한다. 고장이 아니라 상태다.",
         "감열지는 열과 빛에 의해 스스로 사라지는 매체다. 프레임은 원목과 금속이며, 볼트와 베어링, 축이 드러난 채로 실제로 작동한다."
       ] },
-      { t: "full", src: "chungman/c12.jpg" },
-      { t: "trio", src: ["chungman/c08.jpg", "chungman/c10.jpg", "chungman/c11.jpg"] },
-      { t: "pair", src: ["chungman/c09.jpg", "chungman/c05.jpg"] },
+      { t: "trio", src: ["chungman/n712.jpg", "chungman/n408.jpg", "chungman/n395.jpg"] },
+      { t: "pair", src: ["chungman/n253.jpg", "chungman/n370.jpg"] },
+      { t: "full", src: "chungman/n381.jpg" },
+      { t: "trio", src: ["chungman/n726.jpg", "chungman/n709.jpg", "chungman/n343.jpg"] },
+      { t: "section", h: "Graphics — thermal paper", ko: ["감열지에 출력되는 그래픽. 제목의 '복(福)'에서 출발해 인복·돈복·일복을 대화 기록과 영수증, 계약서 같은 문서의 형식으로 옮겼고, 프린터는 이 긴 띠를 끊지 않고 계속 출력한다."] },
+      { t: "trio", src: ["chungman/g01.jpg", "chungman/g02.jpg", "chungman/g03.jpg"] },
+      { t: "full", src: "chungman/band1.jpg" },
+      { t: "full", src: "chungman/band2.jpg" },
+      { t: "full", src: "chungman/band3.jpg" },
+      { t: "pair", src: ["chungman/g15.jpg", "chungman/g16.jpg"] },
       { t: "process", steps: [
         { h: "Idea", ko: "감열지(영수증 종이)를 거래와 시간, 순간의 기록으로 리서치했다. 실시간 출력, 출력과 스캔이 반복되는 재귀 구조, 계속 도는 장치를 떠올렸고, '세계와 나 사이의 시차, 거기서 오는 버거움과 잠식'을 키워드로 삼았다." },
         { h: "Sketch", ko: "높이가 다른 스툴과 영수증 프린터, 쌓이는 감열지, 관객의 위치를 스케치하고, 아두이노로 프린터 출력과 감기 장치를 구현하는 계획을 세웠다." },
