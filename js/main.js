@@ -244,7 +244,7 @@
 
     var prev = PAGES[(i + PAGES.length - 1) % PAGES.length], next = PAGES[(i + 1) % PAGES.length];
     html += '<nav class="pager"><a href="work.html?id=' + prev.id + '"><small>Previous — ' + num(prev) + '</small><span lang="ko">' + esc(prev.title) + "</span></a>" +
-      (w.ongoing ? '<a href="index.html#ongoing"><small>Index</small><span>Ongoing</span></a>' : w.school ? '<a href="index.html#small"><small>Index</small><span>Small Works</span></a>' : '<a href="index.html#works"><small>Index</small><span>All works</span></a>') +
+      (w.ongoing ? '<a href="./#ongoing"><small>Index</small><span>Ongoing</span></a>' : w.school ? '<a href="./#small"><small>Index</small><span>Small Works</span></a>' : '<a href="./#works"><small>Index</small><span>All works</span></a>') +
       '<a href="work.html?id=' + next.id + '"><small>Next — ' + num(next) + '</small><span lang="ko">' + esc(next.title) + "</span></a></nav>";
     root.innerHTML = html;
   }
