@@ -199,7 +199,7 @@ window.WORKS = [
     size: "Variable",
     credit: "2인 공동 작업",
     poster: "chungman/poster.jpg",
-    cover: "chungman/n361.jpg",
+    cover: "chungman/n244.jpg",
     hero: { img: "chungman/n244.jpg", tall: true },
     line: "세상은 쉬지 않고 내려보내고, 나는 한 뼘씩 감아 올린다.",
     blocks: [
